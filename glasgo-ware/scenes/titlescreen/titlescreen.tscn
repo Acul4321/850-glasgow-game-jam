@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://svrc040bbpki"]
+
+[ext_resource type="Script" uid="uid://bxvrdc0a5xbmj" path="res://scenes/titlescreen/titlescreen.gd" id="1_goq6b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7q3kq"]
+font_size = 100
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_goq6b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0.19650912, 0.40728524, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -153.0
+offset_top = -6.0
+offset_right = -101.0
+offset_bottom = 1580.7236
+rotation = -1.1047934
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -118.0
+offset_top = 782.0
+offset_right = -66.0
+offset_bottom = 2368.7236
+rotation = -2.2095869
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 94.0
+offset_right = 872.0
+offset_bottom = 251.0
+text = "GLASGOWARE"
+label_settings = SubResource("LabelSettings_7q3kq")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Regular" type="Button" parent="."]
+offset_left = 398.0
+offset_top = 393.0
+offset_right = 672.0
+offset_bottom = 474.0
+text = "REGULAR (10 rounds & boss)"
+metadata/_edit_use_anchors_ = true
+
+[node name="Endless" type="Button" parent="."]
+offset_left = 401.0
+offset_top = 499.0
+offset_right = 675.0
+offset_bottom = 580.0
+text = "ENDLESS (Get a very highscore!)"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 306.0
+offset_top = 454.0
+offset_right = 559.0
+offset_bottom = 591.0

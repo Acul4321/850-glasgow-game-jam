@@ -11,8 +11,23 @@ config_version=5
 [application]
 
 config/name="GlasgoWare"
+run/main_scene="uid://svrc040bbpki"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://assets/icons/icon.svg"
+
+[autoload]
+
+Constants="*res://scripts/constants.gd"
+Global="*res://scripts/global.gd"
+Transition="*res://scenes/transition.tscn"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [rendering]
 
