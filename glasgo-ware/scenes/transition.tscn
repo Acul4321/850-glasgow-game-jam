@@ -64,10 +64,10 @@ offset_top = -17.0
 offset_right = 1217.0
 offset_bottom = 690.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.08252167, 0.10241636, 0.15404904, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_f0i4t")
 }
-speed_scale = 3.0
+speed_scale = 4.0
