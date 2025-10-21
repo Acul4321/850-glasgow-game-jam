@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr8yryef5op4m"]
+
+[ext_resource type="Script" uid="uid://wo6okcmlk6oa" path="res://scenes/ui/gameui.gd" id="1_33h1x"]
+[ext_resource type="Texture2D" uid="uid://deh8th5kuxwcq" path="res://assets/ui/border.png" id="1_txfg7"]
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_33h1x")
+
+[node name="Border" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_txfg7")

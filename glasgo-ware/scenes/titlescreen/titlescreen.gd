@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var regular_button: Button = $Regular
 @onready var endless_button: Button = $Endless
@@ -6,7 +6,6 @@ extends Node2D
 func _ready():
 	regular_button.pressed.connect(_regular_play_button)
 	endless_button.pressed.connect(_endless_play_button)
-	print(regular_button, endless_button)
 
 func _regular_play_button():
 	Global.game_type = Constants.GAME_TYPE.REGULAR
