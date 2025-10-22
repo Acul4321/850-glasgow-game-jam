@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr8yryef5op4m"]
+[gd_scene load_steps=4 format=3 uid="uid://dr8yryef5op4m"]
 
 [ext_resource type="Script" uid="uid://wo6okcmlk6oa" path="res://scenes/ui/gameui.gd" id="1_33h1x"]
 [ext_resource type="Texture2D" uid="uid://deh8th5kuxwcq" path="res://assets/ui/border.png" id="1_txfg7"]
+[ext_resource type="Texture2D" uid="uid://bovyw6bfh2bbg" path="res://assets/game/bomb/5.png" id="3_nqx3d"]
 
 [node name="GameUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_33h1x")
 
 [node name="Border" type="TextureRect" parent="."]
@@ -14,3 +16,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_txfg7")
+
+[node name="Bomb" type="TextureRect" parent="."]
+offset_left = 11.0
+offset_top = 456.0
+offset_right = 944.5927
+offset_bottom = 638.0
+texture = ExtResource("3_nqx3d")

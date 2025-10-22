@@ -20,7 +20,7 @@ font_size = 64
 [node name="Main" type="Node2D"]
 script = ExtResource("1_bcd04")
 instruction_text = "Shake The Can!"
-duration = 4.0
+duration = 3.0
 
 [node name="IrnBru" type="AnimatedSprite2D" parent="."]
 position = Vector2(554, 339)

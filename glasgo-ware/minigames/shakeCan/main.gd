@@ -1,15 +1,15 @@
 extends Microgame
 
 @export var required_presses := 10
-
-@onready var can_sprite := $IrnBru
 var press_count := 0
 var shake_intensity := 0.0
+@onready var can_sprite := $IrnBru
 
 func _on_game_start() -> void:
 	can_sprite.rotation = 0.0
 	press_count = 0
 	shake_intensity = 0.0
+	
 	set_process(true)
 
 func _unhandled_input(event):
