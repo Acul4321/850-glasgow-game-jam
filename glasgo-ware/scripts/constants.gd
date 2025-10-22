@@ -4,3 +4,15 @@ enum GAME_TYPE {
 	REGULAR,
 	ENDLESS  
 }  
+
+enum INPUT_TYPE {  
+	KEYBOARD,
+	MOUSE,
+	KEYBOARD_AND_MOUSE  
+}  
+
+const INPUT_TYPE_NAMES = {
+	INPUT_TYPE.KEYBOARD: "Keyboard",
+	INPUT_TYPE.MOUSE: "Mouse",
+	INPUT_TYPE.KEYBOARD_AND_MOUSE: "Keyboard + Mouse",
+}

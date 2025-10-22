@@ -49,6 +49,7 @@ grow_vertical = 2
 text = "Round: 1
 LIVES: XXX"
 label_settings = SubResource("LabelSettings_21fob")
+horizontal_alignment = 1
 
 [node name="WinOrLose" type="Label" parent="."]
 layout_mode = 1

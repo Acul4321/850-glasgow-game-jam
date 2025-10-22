@@ -1,6 +1,5 @@
 extends Control
 
-const TEST_MINIGAME := preload("res://minigames/shakeCan/main.tscn")
 const INSTRUCTION_SCENE := preload("res://scenes/instruction.tscn")
 
 const DOOR_IMAGES := {
@@ -15,22 +14,32 @@ var round: int = 1
 
 @onready var Door: TextureRect = $Door
 @onready var Status: Label = $Status
+@onready var WinOrLose: Label = $WinOrLose
 
 func _ready() -> void:
+	var minigames: Array[PackedScene] = []
+	var dir := DirAccess.open("res://minigames")
+	
+	for subdir_name in dir.get_directories():
+		var path := "res://minigames/" + subdir_name + "/main.tscn"
+		if ResourceLoader.exists(path):
+			minigames.append(load(path))
+			print("Loaded minigame:", path)
+	
 	while true:
 		Global.timer_update.emit(-1)
 		Door.texture = DOOR_IMAGES["Closed"]
 		Door.scale = Vector2(1, 1)
-		$WinOrLose.visible = false
+		WinOrLose.visible = false
 		
 		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
-		var minigame := TEST_MINIGAME.instantiate()
+		var minigame := minigames[randi() % minigames.size()].instantiate()
 		var instruction := INSTRUCTION_SCENE.instantiate()
 		add_child(instruction)
 		
-		instruction.start(minigame.instruction_text, INSTRUCTION_WAIT)
+		instruction.start(minigame.instruction_text + "\n(" + Constants.INPUT_TYPE_NAMES[minigame.instruction_input] + ")", INSTRUCTION_WAIT)
 		await Global.wait(INSTRUCTION_WAIT)
 		Door.texture = DOOR_IMAGES["Open"]
 		Status.visible = false
@@ -48,20 +57,20 @@ func _ready() -> void:
 		minigame.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		var tween_2 := create_tween()
-		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		tween_2.parallel().tween_callback(func(): Door.texture = DOOR_IMAGES["Closed"]).set_delay(0.3)
 		
 		await Global.wait(0.3)
 		
 		if result:
-			$WinOrLose.text = "ROUND WIN!"
-			$WinOrLose.label_settings.font_color = Color(0,1,0)
+			WinOrLose.text = "ROUND WIN!"
+			WinOrLose.label_settings.font_color = Color(0,1,0)
 		else:
-			$WinOrLose.text = "ROUND LOST!"
-			$WinOrLose.label_settings.font_color = Color(1,0,0)
+			WinOrLose.text = "ROUND LOST!"
+			WinOrLose.label_settings.font_color = Color(1,0,0)
 			lives -= 1
 		
-		$WinOrLose.visible = true
+		WinOrLose.visible = true
 		Status.text = "Round: " + str(round) + "\nLives: " + ("X".repeat(lives))
 		Status.visible = true
 		
@@ -70,8 +79,8 @@ func _ready() -> void:
 		minigame.queue_free()
 		
 		if lives <= 0:
-			$WinOrLose.text = "GAME OVER"
-			$WinOrLose.label_settings.font_color = Color(1,0,0)
+			WinOrLose.text = "GAME OVER"
+			WinOrLose.label_settings.font_color = Color(1,0,0)
 			await Global.wait(2)
 			Transition.fade_to_scene("res://scenes/titlescreen/titlescreen.tscn")
 			break

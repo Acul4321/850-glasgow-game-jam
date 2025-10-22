@@ -26,3 +26,4 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "TEST"
 label_settings = SubResource("LabelSettings_0jjx2")
+horizontal_alignment = 1

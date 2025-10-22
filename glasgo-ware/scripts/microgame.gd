@@ -3,6 +3,7 @@ class_name Microgame
 
 signal microgame_completed(success: bool)
 
+@export var instruction_input: Constants.INPUT_TYPE = Constants.INPUT_TYPE.KEYBOARD
 @export var instruction_text: String = "Do it!"
 @export var duration: float = 6.0
 @export var timeout_counts_as_win: bool = false
@@ -30,7 +31,7 @@ func _ready() -> void:
 		await Global.wait(0.6)
 		current_time -= 1
 		
-	Global.timer_update.emit(current_time)
+	Global.timer_update.emit(-1)
 	_on_timer_timeout()
 
 func _on_game_start() -> void:
