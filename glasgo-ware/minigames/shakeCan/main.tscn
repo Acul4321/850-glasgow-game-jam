@@ -23,8 +23,8 @@ instruction_text = "Shake The Can!"
 duration = 4.0
 
 [node name="IrnBru" type="AnimatedSprite2D" parent="."]
-position = Vector2(554, 339)
-scale = Vector2(0.73865294, 0.738653)
+position = Vector2(288, 162)
+scale = Vector2(0.24780378, 0.24780379)
 sprite_frames = SubResource("SpriteFrames_138be")
 
 [node name="BoomLabel" type="Label" parent="."]

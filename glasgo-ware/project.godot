@@ -24,7 +24,11 @@ Transition="*res://scenes/transition.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -37,3 +41,4 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/decals/filter=0
 textures/light_projectors/filter=0
+environment/glow/upscale_mode=0

@@ -8,7 +8,6 @@ func start(text: String, duration: float) -> void:
 	prompt.text = text
 	
 	prompt.modulate.a = 0.0
-	prompt.label_settings.font_size = 48
 	prompt.scale = Vector2(7, 7)
 	
 	prompt.set_anchor(SIDE_LEFT, 0.5)
