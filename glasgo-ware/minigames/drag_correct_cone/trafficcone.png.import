@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3cnuvruv350p"
-path="res://.godot/imported/irn_bru.png-d62f6599f6cdece5bd0b183e5cb2820e.ctex"
+uid="uid://x20408aor0qk"
+path="res://.godot/imported/trafficcone.png-470707fecde7c2a3c4749707c5dc3854.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/drag_correct_cone/irn_bru.png"
-dest_files=["res://.godot/imported/irn_bru.png-d62f6599f6cdece5bd0b183e5cb2820e.ctex"]
+source_file="res://minigames/drag_correct_cone/trafficcone.png"
+dest_files=["res://.godot/imported/trafficcone.png-470707fecde7c2a3c4749707c5dc3854.ctex"]
 
 [params]
 

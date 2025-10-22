@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tc47qqg4onau"
-path="res://.godot/imported/dooropened.png-b62c1b2c52020c4a600f4071b71a6a74.ctex"
+uid="uid://d7a8ep4o4rtl"
+path="res://.godot/imported/horse.png-781c191445fac23c697f684beed88bcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/bomb/dooropened.png"
-dest_files=["res://.godot/imported/dooropened.png-b62c1b2c52020c4a600f4071b71a6a74.ctex"]
+source_file="res://minigames/drag_correct_cone/horse.png"
+dest_files=["res://.godot/imported/horse.png-781c191445fac23c697f684beed88bcc.ctex"]
 
 [params]
 

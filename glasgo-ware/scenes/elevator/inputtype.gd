@@ -1,15 +1,9 @@
-extends Sprite2D
-
-const INPUT_TYPE_TEXTURES := [
-	preload("res://assets/ui/keyboard.png"),
-	preload("res://assets/ui/mouse.png"),
-	preload("res://assets/ui/keyboard.png")
-]
+extends AnimatedSprite2D
 
 @export var input_type: Constants.INPUT_TYPE = Constants.INPUT_TYPE.KEYBOARD
 
 func _ready() -> void:
-	texture = INPUT_TYPE_TEXTURES[input_type]
+	animation = str(input_type)
 	
 	var old_scale = scale
 	rotation_degrees = -100

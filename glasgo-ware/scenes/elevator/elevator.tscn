@@ -1,8 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://chygjssu373cc"]
+[gd_scene load_steps=7 format=3 uid="uid://chygjssu373cc"]
 
 [ext_resource type="Script" uid="uid://b8m7bp5dxlcb5" path="res://scenes/elevator/elevator.gd" id="1_x8gua"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="2_7w7uo"]
 [ext_resource type="Texture2D" uid="uid://c28mtaasqij8l" path="res://assets/game/bomb/doorclosed.png" id="2_21fob"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_21fob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_21fob")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_21fob"]
 font = ExtResource("2_7w7uo")
@@ -23,15 +34,10 @@ grow_vertical = 2
 pivot_offset = Vector2(576, 324)
 script = ExtResource("1_x8gua")
 
-[node name="Door" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(288, 162)
-texture = ExtResource("2_21fob")
+[node name="Door" type="AnimatedSprite2D" parent="."]
+position = Vector2(288, 162)
+sprite_frames = SubResource("SpriteFrames_21fob")
+animation = &"idle"
 
 [node name="Status" type="Label" parent="."]
 layout_mode = 1

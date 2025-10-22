@@ -3,17 +3,12 @@ extends Control
 const INSTRUCTION_SCENE := preload("res://scenes/elevator/instruction.tscn")
 const INPUTTYPE_SCENE := preload("res://scenes/elevator/inputtype.tscn")
 
-const DOOR_IMAGES := {
-	"Closed": preload("res://assets/game/bomb/doorclosed.png"),
-	"Open": preload("res://assets/game/bomb/dooropened.png"),
-}
-
-const INSTRUCTION_WAIT := 1
+const INSTRUCTION_WAIT := 1.2
 
 var round: int = 1
 @export var lives: int = 3
 
-@onready var Door: TextureRect = $Door
+@onready var Door: AnimatedSprite2D = $Door
 @onready var Status: Label = $Status
 @onready var WinOrLose: Label = $WinOrLose
 
@@ -29,16 +24,16 @@ func _ready() -> void:
 	
 	while true:
 		Global.timer_update.emit(-1)
-		Door.texture = DOOR_IMAGES["Closed"]
+		Door.animation = "idle"
 		Door.scale = Vector2(1, 1)
+		Door.modulate.a = 1
 		WinOrLose.visible = false
 		
 		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
 		var inputtype_node: Node2D = INPUTTYPE_SCENE.instantiate()
-		inputtype_node.name = "InputType"
-		inputtype_node.position = get_viewport_rect().size / 2
+		inputtype_node.position = (get_viewport_rect().size / 2)
 		add_child(inputtype_node)
 		
 		await Global.wait(1)
@@ -49,12 +44,12 @@ func _ready() -> void:
 		
 		instruction.start(minigame.instruction_text, INSTRUCTION_WAIT)
 		await Global.wait(INSTRUCTION_WAIT)
-		Door.texture = DOOR_IMAGES["Open"]
 		Status.visible = false
 		inputtype_node.queue_free()
 		
 		var tween_1 := create_tween()
 		tween_1.tween_property(Door, "scale", Vector2(2, 2), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween_1.parallel().tween_property(Door, "modulate:a", 0, 0.1)
 		
 		minigame.process_mode = Node.PROCESS_MODE_INHERIT
 		var parent = get_parent()
@@ -66,10 +61,13 @@ func _ready() -> void:
 		minigame.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		var tween_2 := create_tween()
-		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		tween_2.parallel().tween_callback(func(): Door.texture = DOOR_IMAGES["Closed"]).set_delay(0.3)
+		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		tween_2.parallel().tween_callback(func(): Door.animation = "idle").set_delay(0.3)
+		tween_2.parallel().tween_property(Door, "modulate:a", 1, 0.2)
 		
-		await Global.wait(0.3)
+		await Global.wait(0.4)
+		
+		minigame.queue_free()
 		
 		if result:
 			WinOrLose.text = "ROUND WIN!"
@@ -83,9 +81,8 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + ("X".repeat(lives))
 		Status.visible = true
 		
-		await Global.wait(0.7)
+		await Global.wait(1.5)
 		
-		minigame.queue_free()
 		
 		if lives <= 0:
 			WinOrLose.text = "GAME OVER"
