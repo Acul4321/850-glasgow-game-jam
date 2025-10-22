@@ -9,8 +9,6 @@ func _on_game_start() -> void:
 	can_sprite.rotation = 0.0
 	press_count = 0
 	shake_intensity = 0.0
-	
-	set_process(true)
 
 func _unhandled_input(event):
 	if not is_timer_running:

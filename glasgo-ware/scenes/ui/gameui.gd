@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var bomb_textures: Array[Texture2D] = [
+const bomb_textures: Array[Texture2D] = [
 	preload("res://assets/game/bomb/0.png"),
 	preload("res://assets/game/bomb/1.png"),
 	preload("res://assets/game/bomb/2.png"),
