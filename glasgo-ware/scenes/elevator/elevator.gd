@@ -32,13 +32,15 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
+		var minigame := minigames[randi() % minigames.size()].instantiate()
+		
 		var inputtype_node: Node2D = INPUTTYPE_SCENE.instantiate()
+		inputtype_node.input_type = minigame.instruction_input
 		inputtype_node.position = (get_viewport_rect().size / 2)
 		add_child(inputtype_node)
 		
 		await Global.wait(1)
 		
-		var minigame := minigames[randi() % minigames.size()].instantiate()
 		var instruction := INSTRUCTION_SCENE.instantiate()
 		add_child(instruction)
 		

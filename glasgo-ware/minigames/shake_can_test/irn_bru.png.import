@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7i5budylt6lv"
-path="res://.godot/imported/irn_bru.png-013552696dbbee3e74ece73f0a9a277c.ctex"
+path="res://.godot/imported/irn_bru.png-957ee7b3d1c665bc4e1cd514670dbe02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/shakeCan/irn_bru.png"
-dest_files=["res://.godot/imported/irn_bru.png-013552696dbbee3e74ece73f0a9a277c.ctex"]
+source_file="res://minigames/shake_can_test/irn_bru.png"
+dest_files=["res://.godot/imported/irn_bru.png-957ee7b3d1c665bc4e1cd514670dbe02.ctex"]
 
 [params]
 

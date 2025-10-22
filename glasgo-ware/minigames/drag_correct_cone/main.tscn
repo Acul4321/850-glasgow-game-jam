@@ -71,6 +71,7 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cu2ju"]
+resource_local_to_scene = true
 shader = ExtResource("8_qoo6k")
 shader_parameter/enabled = true
 shader_parameter/border_width = 0.02

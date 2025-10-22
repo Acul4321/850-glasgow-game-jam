@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdgau6w458by5"]
 
-[ext_resource type="Texture2D" uid="uid://7i5budylt6lv" path="res://minigames/shakeCan/irn_bru.png" id="1_2psaw"]
-[ext_resource type="Script" uid="uid://jgtrrx66sop7" path="res://minigames/shakeCan/main.gd" id="1_bcd04"]
+[ext_resource type="Texture2D" uid="uid://7i5budylt6lv" path="res://minigames/shake_can_test/irn_bru.png" id="1_2psaw"]
+[ext_resource type="Script" uid="uid://jgtrrx66sop7" path="res://minigames/shake_can_test/main.gd" id="1_bcd04"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_138be"]
 animations = [{

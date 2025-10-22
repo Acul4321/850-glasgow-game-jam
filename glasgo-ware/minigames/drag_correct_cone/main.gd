@@ -51,14 +51,6 @@ func _on_game_start() -> void:
 										is_success = false
 		)
 
-func _unhandled_input(event):
-	if not is_timer_running:
-		return
-
-	if event.is_action_pressed("ui_accept"):
-		if false:
-			is_success = true
-
 func _process(_delta):
 	if is_timer_running:
 		if selected_cone:
