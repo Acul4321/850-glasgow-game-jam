@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfbiit0thclts"]
 
-[ext_resource type="Script" uid="uid://bwp0fq5j7fpmg" path="res://scenes/instruction.gd" id="1_maccc"]
+[ext_resource type="Script" uid="uid://bwp0fq5j7fpmg" path="res://scenes/elevator/instruction.gd" id="1_maccc"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="2_posfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0jjx2"]

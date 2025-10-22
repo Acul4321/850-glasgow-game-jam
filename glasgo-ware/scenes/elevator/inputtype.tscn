@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dokw6bpr8qxvw"]
+
+[ext_resource type="Texture2D" uid="uid://c4dkokh3wtwxv" path="res://assets/ui/keyboard.png" id="1_dp76c"]
+[ext_resource type="Script" uid="uid://cke1h86ad5qt1" path="res://scenes/elevator/inputtype.gd" id="1_j72rk"]
+
+[node name="InputType" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_dp76c")
+script = ExtResource("1_j72rk")

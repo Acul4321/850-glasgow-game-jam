@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://biacebml03o06"]
+
+[ext_resource type="Script" uid="uid://0fpks87xqkcn" path="res://minigames/drag_correct_cone/main.gd" id="1_8qtjh"]
+[ext_resource type="Texture2D" uid="uid://b3cnuvruv350p" path="res://minigames/drag_correct_cone/irn_bru.png" id="2_d4pww"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_138be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d4pww")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
+font_size = 64
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8qtjh")
+instruction_text = "Shake The Can!"
+duration = 4.0
+
+[node name="IrnBru" type="AnimatedSprite2D" parent="."]
+position = Vector2(288, 162)
+scale = Vector2(0.24780378, 0.24780379)
+sprite_frames = SubResource("SpriteFrames_138be")
+
+[node name="BoomLabel" type="Label" parent="."]
+visible = false
+offset_right = 51.0
+offset_bottom = 23.0
+text = "BOOM"
+label_settings = SubResource("LabelSettings_bcd04")

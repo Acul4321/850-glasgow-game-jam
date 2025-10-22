@@ -1,13 +1,14 @@
 extends Control
 
-const INSTRUCTION_SCENE := preload("res://scenes/instruction.tscn")
+const INSTRUCTION_SCENE := preload("res://scenes/elevator/instruction.tscn")
+const INPUTTYPE_SCENE := preload("res://scenes/elevator/inputtype.tscn")
 
 const DOOR_IMAGES := {
 	"Closed": preload("res://assets/game/bomb/doorclosed.png"),
 	"Open": preload("res://assets/game/bomb/dooropened.png"),
 }
 
-const INSTRUCTION_WAIT := 1.3
+const INSTRUCTION_WAIT := 1
 
 var round: int = 1
 @export var lives: int = 3
@@ -35,18 +36,25 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
+		var inputtype_node: Node2D = INPUTTYPE_SCENE.instantiate()
+		inputtype_node.name = "InputType"
+		inputtype_node.position = get_viewport_rect().size / 2
+		add_child(inputtype_node)
+		
+		await Global.wait(1)
+		
 		var minigame := minigames[randi() % minigames.size()].instantiate()
 		var instruction := INSTRUCTION_SCENE.instantiate()
 		add_child(instruction)
 		
-		instruction.start(minigame.instruction_text + "\n(" + Constants.INPUT_TYPE_NAMES[minigame.instruction_input] + ")", INSTRUCTION_WAIT)
+		instruction.start(minigame.instruction_text, INSTRUCTION_WAIT)
 		await Global.wait(INSTRUCTION_WAIT)
 		Door.texture = DOOR_IMAGES["Open"]
 		Status.visible = false
+		inputtype_node.queue_free()
 		
 		var tween_1 := create_tween()
 		tween_1.tween_property(Door, "scale", Vector2(2, 2), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		
 		
 		minigame.process_mode = Node.PROCESS_MODE_INHERIT
 		var parent = get_parent()
