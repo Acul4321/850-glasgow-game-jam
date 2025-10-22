@@ -5,8 +5,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_0jjx2"]
 font = ExtResource("2_posfn")
-font_size = 48
-outline_size = 24
+font_size = 25
+outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Instruction" type="CanvasLayer"]
