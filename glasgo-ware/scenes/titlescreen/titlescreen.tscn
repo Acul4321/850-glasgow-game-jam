@@ -64,17 +64,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5798611
-anchor_top = 0.4058642
-anchor_right = 0.40104166
-anchor_bottom = 0.13580246
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 offset_left = -340.0
-offset_top = -78.5
 offset_right = 340.0
-offset_bottom = 78.5
+offset_bottom = 157.0
 grow_horizontal = 2
-grow_vertical = 2
+pivot_offset = Vector2(340, 78.5)
 theme = ExtResource("3_7w7l7")
 text = "GLASGOWARE"
 label_settings = SubResource("LabelSettings_7q3kq")
@@ -82,42 +79,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Regular" type="Button" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.36631948
-anchor_top = -0.6481482
-anchor_right = -0.09201389
-anchor_bottom = -0.6481481
-offset_left = 398.0
-offset_top = 393.0
-offset_right = 672.0
-offset_bottom = 474.0
-scale = Vector2(0.44077408, 0.44077408)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.481995
+offset_top = -12.0
+offset_right = 70.48297
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70.483, 65.5)
+theme_override_constants/separation = 19
+
+[node name="Regular" type="Button" parent="Buttons"]
+layout_mode = 2
 theme = ExtResource("3_7w7l7")
-text = "REGULAR (10 rounds & boss)"
+theme_override_font_sizes/font_size = 16
+text = "REGULAR
+"
 metadata/_edit_use_anchors_ = true
 
-[node name="Endless" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.4027778
-anchor_top = -0.80864197
-anchor_right = 0.0052083335
-anchor_bottom = -0.80864197
-offset_left = 401.0
-offset_top = 499.0
-offset_right = 675.0
-offset_bottom = 580.0
-scale = Vector2(0.44077408, 0.44077408)
+[node name="Endless" type="Button" parent="Buttons"]
+layout_mode = 2
 theme = ExtResource("3_7w7l7")
-text = "ENDLESS (Get a very highscore!)"
+theme_override_font_sizes/font_size = 16
+text = "ENDLESS"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 306.0
-offset_top = 454.0
-offset_right = 559.0
-offset_bottom = 591.0
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("3_7w7l7")
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+metadata/_edit_use_anchors_ = true

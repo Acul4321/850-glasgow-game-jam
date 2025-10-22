@@ -1,7 +1,8 @@
 extends Control
 
-@onready var regular_button: Button = $Regular
-@onready var endless_button: Button = $Endless
+@onready var regular_button: Button = $Buttons/Endless
+@onready var endless_button: Button = $Buttons/Endless
+@onready var settings_button: Button = $Buttons/Settings
 
 func _ready():
 	regular_button.pressed.connect(_regular_play_button)
