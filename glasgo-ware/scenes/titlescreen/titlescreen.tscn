@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://svrc040bbpki"]
+[gd_scene load_steps=8 format=3 uid="uid://svrc040bbpki"]
 
 [ext_resource type="Script" uid="uid://bxvrdc0a5xbmj" path="res://scenes/titlescreen/titlescreen.gd" id="1_goq6b"]
+[ext_resource type="Shader" uid="uid://c23xkg12oq5v1" path="res://scenes/titlescreen/pixelator.gdshader" id="2_33qfj"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="2_kkxvh"]
 [ext_resource type="Theme" uid="uid://dqvyubjurbx6y" path="res://scenes/ui/base_theme.tres" id="3_7w7l7"]
+[ext_resource type="Texture2D" uid="uid://df6ifqj3yt37" path="res://assets/ui/titlescreenflag.png" id="3_cfxbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w1ch"]
+shader = ExtResource("2_33qfj")
+shader_parameter/pixel_size = 4.000000142499999
 
 [sub_resource type="LabelSettings" id="LabelSettings_7q3kq"]
 font = ExtResource("2_kkxvh")
@@ -20,46 +26,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_goq6b")
 
-[node name="BackColor" type="ColorRect" parent="."]
+[node name="BackColor" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2w1ch")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.19650912, 0.40728524, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="BackColor2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0068088
-anchor_top = 1.0618829
-anchor_right = 1.0068088
-anchor_bottom = 1.2864873
-offset_left = 48.877014
-offset_top = -11.561005
-offset_right = 69.35504
-offset_bottom = 613.31604
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 2.0559978
-scale = Vector2(1.8055118, 1.0833346)
-metadata/_edit_use_anchors_ = true
-
-[node name="BackColor3" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.006808704
-anchor_top = 1.0618829
-anchor_right = 0.0068087047
-anchor_bottom = 1.0618829
-offset_top = -11.561005
-offset_right = 20.478027
-offset_bottom = 613.3159
-grow_vertical = 0
-rotation = -2.0559978
-scale = Vector2(1.8055118, 1.0833346)
+texture = ExtResource("3_cfxbx")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]

@@ -1,7 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdgau6w458by5"]
+[gd_scene load_steps=9 format=3 uid="uid://bdgau6w458by5"]
 
 [ext_resource type="Texture2D" uid="uid://7i5budylt6lv" path="res://minigames/shake_can_test/irn_bru.png" id="1_2psaw"]
 [ext_resource type="Script" uid="uid://jgtrrx66sop7" path="res://minigames/shake_can_test/main.gd" id="1_bcd04"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="2_ffra6"]
+[ext_resource type="Texture2D" uid="uid://bwaq47uu3i657" path="res://minigames/drag_correct_cone/coneguy.png" id="3_gs73v"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_gs73v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+shader = ExtResource("2_ffra6")
+shader_parameter/color_field = Color(0.67008686, 0, 0.08596899, 1)
+shader_parameter/color_cross = Color(0.8218363, 0.5226002, 0.41982707, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_138be"]
 animations = [{
@@ -15,12 +31,28 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
+font = ExtResource("5_gs73v")
 font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_bcd04")
 instruction_text = "Shake The Can!"
 duration = 5.0
+
+[node name="BG" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_tx11l")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 581.0
+offset_bottom = 332.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gs73v")
 
 [node name="IrnBru" type="AnimatedSprite2D" parent="."]
 position = Vector2(288, 162)
@@ -31,5 +63,5 @@ sprite_frames = SubResource("SpriteFrames_138be")
 visible = false
 offset_right = 51.0
 offset_bottom = 23.0
-text = "BOOM"
+text = "BOOM!"
 label_settings = SubResource("LabelSettings_bcd04")
