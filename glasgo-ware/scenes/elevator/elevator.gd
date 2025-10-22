@@ -57,7 +57,7 @@ func _ready() -> void:
 		minigame.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		var tween_2 := create_tween()
-		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		tween_2.parallel().tween_callback(func(): Door.texture = DOOR_IMAGES["Closed"]).set_delay(0.3)
 		
 		await Global.wait(0.3)
