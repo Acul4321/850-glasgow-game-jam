@@ -7,7 +7,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_7q3kq"]
 font = ExtResource("2_kkxvh")
 font_size = 40
-outline_size = 25
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_goq6b")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BackColor" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_vertical = 2
 color = Color(0, 0.19650912, 0.40728524, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="BackColor2" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0068088
@@ -47,7 +47,7 @@ rotation = 2.0559978
 scale = Vector2(1.8055118, 1.0833346)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect4" type="ColorRect" parent="."]
+[node name="BackColor3" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.006808704
@@ -97,6 +97,7 @@ theme_override_constants/separation = 19
 
 [node name="Regular" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_7w7l7")
 theme_override_font_sizes/font_size = 16
 text = "REGULAR
@@ -105,6 +106,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Endless" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_7w7l7")
 theme_override_font_sizes/font_size = 16
 text = "ENDLESS"
@@ -112,6 +114,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Settings" type="Button" parent="Buttons"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_7w7l7")
 theme_override_font_sizes/font_size = 16
 text = "Settings"

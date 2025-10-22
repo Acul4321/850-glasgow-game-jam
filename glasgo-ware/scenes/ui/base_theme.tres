@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dqvyubjurbx6y"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dqvyubjurbx6y"]
 
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="1_lgmt4"]
+[ext_resource type="StyleBox" uid="uid://ht4sxxxc6ei7" path="res://scenes/ui/new_style_box_flat.tres" id="2_lhgfe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgmt4"]
-bg_color = Color(0.24, 0.24, 0.24, 1)
+bg_color = Color(0.23921569, 0.23921569, 0.23921569, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -70,6 +71,38 @@ expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kerjp"]
+bg_color = Color(0.22352941, 0.39215687, 0.78431374, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agu0p"]
+bg_color = Color(0.22352941, 0.39215687, 0.78431374, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("1_lgmt4")
@@ -77,3 +110,9 @@ Button/styles/disabled = SubResource("StyleBoxFlat_lgmt4")
 Button/styles/hover = SubResource("StyleBoxFlat_lhgfe")
 Button/styles/normal = SubResource("StyleBoxFlat_kqsgc")
 Button/styles/pressed = SubResource("StyleBoxFlat_0l1kb")
+CheckBox/styles/hover = ExtResource("2_lhgfe")
+CheckBox/styles/hover_pressed = ExtResource("2_lhgfe")
+CheckBox/styles/pressed = ExtResource("2_lhgfe")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_kerjp")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_agu0p")
+CheckButton/styles/pressed = ExtResource("2_lhgfe")

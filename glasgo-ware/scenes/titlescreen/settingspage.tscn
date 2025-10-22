@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://xfruleeod2k"]
+
+[ext_resource type="Script" uid="uid://dp2ac0ntiyjxt" path="res://scenes/titlescreen/settingspage.gd" id="1_2lbp1"]
+[ext_resource type="Theme" uid="uid://dqvyubjurbx6y" path="res://scenes/ui/base_theme.tres" id="2_ytj6n"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="3_6t30a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6cl6"]
+font = ExtResource("3_6t30a")
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SettingsPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2lbp1")
+
+[node name="BackColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.19650912, 0.40728524, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -53.0
+offset_right = 125.0
+offset_bottom = -25.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 28)
+focus_mode = 0
+theme = ExtResource("2_ytj6n")
+text = "< Back"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = -0.12962963
+offset_left = -340.0
+offset_right = 340.0
+offset_bottom = 157.0
+grow_horizontal = 2
+pivot_offset = Vector2(340, 78.5)
+theme = ExtResource("2_ytj6n")
+text = "Settings"
+label_settings = SubResource("LabelSettings_n6cl6")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="controls" type="Control" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="disable_mouse_gameplay" type="CheckButton" parent="Settings/controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -12.0
+offset_right = 152.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(152, 14)
+focus_mode = 0
+theme = ExtResource("2_ytj6n")
+theme_override_font_sizes/font_size = 12
+text = "Disable Mouse gameplay"
+alignment = 1
