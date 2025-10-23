@@ -18,6 +18,8 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_21fob"]
 font = ExtResource("2_7w7uo")
 font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hadwe"]
 font = ExtResource("2_7w7uo")
