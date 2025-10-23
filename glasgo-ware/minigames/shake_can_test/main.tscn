@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://7i5budylt6lv" path="res://minigames/shake_can_test/irn_bru.png" id="1_2psaw"]
 [ext_resource type="Script" uid="uid://jgtrrx66sop7" path="res://minigames/shake_can_test/main.gd" id="1_bcd04"]
-[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/game/scottishwater.tscn" id="2_ffra6"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_ffra6"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_gs73v"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_gs73v"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://biacebml03o06"]
 
 [ext_resource type="Script" uid="uid://0fpks87xqkcn" path="res://minigames/drag_correct_cone/main.gd" id="1_8qtjh"]
-[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/game/scottishwater.tscn" id="2_dw50r"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_dw50r"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="2_iwxms"]
 [ext_resource type="Texture2D" uid="uid://dtf4y7eg4b0db" path="res://minigames/drag_correct_cone/smile.png" id="3_d4pww"]
 [ext_resource type="Texture2D" uid="uid://cp5ihcpiehmms" path="res://minigames/drag_correct_cone/angry.png" id="3_m4cc1"]
