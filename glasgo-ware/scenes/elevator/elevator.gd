@@ -16,11 +16,24 @@ func _ready() -> void:
 	var minigames: Array[PackedScene] = []
 	var dir := DirAccess.open("res://minigames")
 	
+	var hide = get_node_or_null("Hide")
+	if hide:
+		hide.visible = true
+	
 	for subdir_name in dir.get_directories():
 		var path := "res://minigames/" + subdir_name + "/main.tscn"
 		if ResourceLoader.exists(path):
 			minigames.append(load(path))
 			print("Loaded minigame:", path)
+		
+	await Global.forever_wait_if_paused(self)
+	
+	if hide:
+		var tw := create_tween()
+		tw.tween_property(hide, "modulate:a", 0, 0.2).set_trans(Tween.TRANS_CIRC)
+		await tw.finished
+		hide.queue_free()
+	hide = null
 	
 	while true:
 		Global.timer_update.emit(-1)
@@ -90,7 +103,7 @@ func _ready() -> void:
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
 			await Global.wait(2)
-			Transition.fade_to_scene("res://scenes/titlescreen/titlescreen.tscn")
+			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"))
 			break
 		
 		round += 1

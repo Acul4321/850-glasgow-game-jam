@@ -1,15 +1,6 @@
 extends CanvasLayer
 
-const bomb_textures: Array[Texture2D] = [
-	preload("res://assets/game/bomb/0.png"),
-	preload("res://assets/game/bomb/1.png"),
-	preload("res://assets/game/bomb/2.png"),
-	preload("res://assets/game/bomb/3.png"),
-	preload("res://assets/game/bomb/4.png"),
-	preload("res://assets/game/bomb/5.png"),
-]
-
-@onready var bomb_sprite: TextureRect = $Bomb
+@onready var bomb_sprite: AnimatedSprite2D = $Bomb
 
 func _ready() -> void:
 	get_tree().node_added.connect(_on_node_added)
@@ -29,14 +20,13 @@ func _on_node_added(node: Node) -> void:
 	_refresh()
 		
 func _on_timer_updated(time_left: int):
-	if time_left >= 0 and time_left < bomb_textures.size():
-		if bomb_textures[time_left]:
-			bomb_sprite.texture = bomb_textures[time_left]
+	if time_left >= 0 and time_left <= 5:
+		bomb_sprite.animation = str(time_left)
 	else:
-		bomb_sprite.texture = null
+		bomb_sprite.animation = str(-1)
 		
 func _refresh() -> void:
-	if get_tree().root.find_child("MainMenu", false, false):
+	if get_tree().root.find_child("MainMenu", true, false):
 		visible = false
 	else:
 		visible = true

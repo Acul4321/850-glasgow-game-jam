@@ -11,11 +11,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4li0"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"-1",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_4kyge")

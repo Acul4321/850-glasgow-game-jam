@@ -1,6 +1,26 @@
 [gd_scene load_steps=6 format=3 uid="uid://d357pljpuof7e"]
 
-[ext_resource type="Script" uid="uid://kwnpy28xkvqn" path="res://scenes/transition.gd" id="1_rerct"]
+[sub_resource type="GDScript" id="GDScript_kg4ax"]
+script/source = "extends CanvasLayer
+
+@onready var anim_player = $AnimationPlayer
+
+func fade_to_scene(path: String):
+	anim_player.play(\"fade_out\")
+	await anim_player.animation_finished
+	await Global.wait(.15)
+	
+	get_tree().change_scene_to_file(path)
+	await get_tree().scene_changed
+	
+	get_tree().paused = true
+	
+	anim_player.play(\"fade_in\")
+	await anim_player.animation_finished
+	await Global.wait(.15)
+	
+	get_tree().paused = false
+"
 
 [sub_resource type="Animation" id="Animation_rerct"]
 length = 0.001
@@ -56,7 +76,7 @@ _data = {
 
 [node name="Transition" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_rerct")
+script = SubResource("GDScript_kg4ax")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

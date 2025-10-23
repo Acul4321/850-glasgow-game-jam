@@ -15,10 +15,7 @@ var is_timer_running: bool = false
 func _ready() -> void:
 	is_success = win_by_default
 	
-	if process_mode == Node.PROCESS_MODE_DISABLED:
-		var current = process_mode
-		while process_mode == current:
-			await get_tree().process_frame
+	await Global.forever_wait_if_paused(self)
 			
 	set_process(true)
 

@@ -12,6 +12,10 @@ var _can_select_cones: bool = true
 
 @onready var head: AnimatedSprite2D = $Head
 
+func _input(event: InputEvent) -> void:
+	if not (event is InputEventMouseButton):
+		return
+
 func _on_game_start() -> void:
 	var cone_spots = [0, 1, 2]
 	cone_spots.shuffle()
