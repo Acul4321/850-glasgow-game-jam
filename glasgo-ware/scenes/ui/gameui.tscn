@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr8yryef5op4m"]
+[gd_scene load_steps=11 format=3 uid="uid://dr8yryef5op4m"]
 
 [ext_resource type="Script" uid="uid://wo6okcmlk6oa" path="res://scenes/ui/gameui.gd" id="1_33h1x"]
 [ext_resource type="Texture2D" uid="uid://deh8th5kuxwcq" path="res://assets/ui/border.png" id="1_txfg7"]
 [ext_resource type="Texture2D" uid="uid://c86e5amhoqtge" path="res://assets/game/bomb/0.png" id="3_4kyge"]
 [ext_resource type="Texture2D" uid="uid://bovyw6bfh2bbg" path="res://assets/game/bomb/5.png" id="3_nqx3d"]
+[ext_resource type="Texture2D" uid="uid://d0gcpe42mwd7r" path="res://assets/ui/pixel.png" id="3_q3g06"]
 [ext_resource type="Texture2D" uid="uid://b1pwj2fedihqc" path="res://assets/game/bomb/1.png" id="4_q3g06"]
 [ext_resource type="Texture2D" uid="uid://bpssvxl72dsqx" path="res://assets/game/bomb/2.png" id="5_mxm7y"]
 [ext_resource type="Texture2D" uid="uid://dppibp5i0207e" path="res://assets/game/bomb/3.png" id="6_qvtsn"]
@@ -11,7 +12,10 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4li0"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q3g06")
+}],
 "loop": true,
 "name": &"-1",
 "speed": 5.0
@@ -82,4 +86,4 @@ texture = ExtResource("1_txfg7")
 [node name="Bomb" type="AnimatedSprite2D" parent="."]
 position = Vector2(185, 281)
 sprite_frames = SubResource("SpriteFrames_t4li0")
-animation = &"5"
+animation = &"-1"

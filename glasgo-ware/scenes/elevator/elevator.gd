@@ -75,6 +75,7 @@ func _ready() -> void:
 		
 		var result = await minigame.microgame_completed
 		print("WINNING RESULT: ", result)
+		Global.timer_update.emit(-1)
 		minigame.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		var tween_1 := create_tween()
