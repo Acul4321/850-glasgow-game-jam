@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://biacebml03o06"]
 
 [ext_resource type="Script" uid="uid://0fpks87xqkcn" path="res://minigames/drag_correct_cone/main.gd" id="1_8qtjh"]
-[ext_resource type="Texture2D" uid="uid://bwaq47uu3i657" path="res://minigames/drag_correct_cone/coneguy.png" id="2_8qtjh"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/game/scottishwater.tscn" id="2_dw50r"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="2_iwxms"]
 [ext_resource type="Texture2D" uid="uid://dtf4y7eg4b0db" path="res://minigames/drag_correct_cone/smile.png" id="3_d4pww"]
 [ext_resource type="Texture2D" uid="uid://cp5ihcpiehmms" path="res://minigames/drag_correct_cone/angry.png" id="3_m4cc1"]
@@ -11,10 +11,11 @@
 [ext_resource type="Shader" uid="uid://caby21xd634ak" path="res://minigames/drag_correct_cone/selection_box.gdshader" id="8_qoo6k"]
 [ext_resource type="Texture2D" uid="uid://d7a8ep4o4rtl" path="res://minigames/drag_correct_cone/horse.png" id="9_8u8mq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u8mq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qoo6k"]
+resource_local_to_scene = true
 shader = ExtResource("2_iwxms")
 shader_parameter/color_field = Color(0.011764706, 0.21960784, 0.65882355, 1)
-shader_parameter/color_cross = Color(0.6624523, 0.66245234, 0.66245216, 1)
+shader_parameter/color_cross = Color(0.6627451, 0.6627451, 0.6627451, 1)
 shader_parameter/tiles_x = 6
 shader_parameter/tiles_y = 5
 shader_parameter/cross_half_width = 0.08
@@ -122,18 +123,10 @@ script = ExtResource("1_8qtjh")
 instruction_input = 1
 instruction_text = "Drag the Traffic Cone"
 
-[node name="BG" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_8u8mq")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -7.0
-offset_top = -8.0
-offset_right = 581.0
-offset_bottom = 332.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_8qtjh")
+[node name="ScottishWater" parent="." instance=ExtResource("2_dw50r")]
+material = SubResource("ShaderMaterial_qoo6k")
+offset_right = 576.0
+offset_bottom = 324.0
 
 [node name="ConeSpots" type="Node2D" parent="."]
 
