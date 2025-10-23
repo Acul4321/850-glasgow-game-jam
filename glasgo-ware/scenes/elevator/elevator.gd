@@ -62,7 +62,11 @@ func _ready() -> void:
 		Status.visible = false
 		inputtype_node.queue_free()
 		
-		TransitionManager.transition_to(minigame, 0.5, 0.0, false, false, self)
+		var tween_2 := create_tween()
+		tween_2.tween_property(Door, "scale", Vector2(3, 3), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		
+		var shader_name = "Door"#TransitionManager.SHADERS.keys().pick_random()
+		TransitionManager.transition_to(minigame, 0.3, 0.0, false, false, self, shader_name)
 		
 		minigame.process_mode = Node.PROCESS_MODE_INHERIT
 		var parent = get_parent()
@@ -70,16 +74,14 @@ func _ready() -> void:
 		parent.move_child(self, -1)
 		
 		var result = await minigame.microgame_completed
-		print("result: ", result)
+		print("WINNING RESULT: ", result)
 		minigame.process_mode = Node.PROCESS_MODE_DISABLED
 		
-		var tween_2 := create_tween()
-		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		tween_2.parallel().tween_callback(func(): Door.animation = "idle").set_delay(0.3)
-		
-		TransitionManager.transition_to(self, 0.5, 0.0, false, false, minigame, true)
-		
-		await Global.wait(0.4)
+		var tween_1 := create_tween()
+		tween_1.tween_property(Door, "scale", Vector2(1, 1), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween_1.parallel().tween_callback(func(): Door.animation = "idle").set_delay(0.3)
+		TransitionManager.transition_to(self, 0.3, 0.0, false, false, minigame, shader_name, true)
+		await Global.wait(0.35)
 		
 		minigame.queue_free()
 		

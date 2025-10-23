@@ -15,12 +15,12 @@ func _ready():
 func _regular_play_button():
 	_disable_buttons()
 	Global.game_type = Constants.GAME_TYPE.REGULAR
-	TransitionManager.transition_to(load("res://scenes/elevator/elevator.tscn"), 0.6, 0.1)
+	TransitionManager.transition_to(load("res://scenes/elevator/elevator.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 
 func _endless_play_button():
 	_disable_buttons()
 	Global.game_type = Constants.GAME_TYPE.ENDLESS
-	TransitionManager.transition_to(load("res://scenes/elevator/elevator.tscn"), 0.6, 0.1)
+	TransitionManager.transition_to(load("res://scenes/elevator/elevator.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 	
 func _settings_spawn():
 	_disable_buttons()

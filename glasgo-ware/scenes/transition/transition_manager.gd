@@ -1,11 +1,12 @@
 extends CanvasLayer
 
-const SHADERS := [
-	preload("res://shaders/transition_circular.gdshader"),
-	preload("res://shaders/transition_diagonal.gdshader"),
-	#preload("res://shaders/transition_hole.gdshader"),
-	preload("res://shaders/transition_scotland.gdshader"),
-]
+const SHADERS := {
+	Circular = preload("res://shaders/transition_circular.gdshader"),
+	Diagonal = preload("res://shaders/transition_diagonal.gdshader"),
+	Hole = preload("res://shaders/transition_hole.gdshader"),
+	Door = preload("res://shaders/transition_door.gdshader"),
+	Scotland = preload("res://shaders/transition_scotland.gdshader"),
+}
 
 var mat: ShaderMaterial
 
@@ -32,6 +33,7 @@ func transition_to(
 	pause_on_transition := true, 
 	delete_old_scene := true,
 	old_scene: Variant = null,
+	preferred_shader_name: Variant = null,
 	inverse_transition_effect: bool = false
 	) -> void:
 		
@@ -40,7 +42,7 @@ func transition_to(
 	
 	visible = true
 	
-	var new_shader: Shader = SHADERS.pick_random()
+	var new_shader: Shader = SHADERS[preferred_shader_name if preferred_shader_name else SHADERS.keys().pick_random()]
 
 	if transition_rect.material == null:
 		transition_rect.material = ShaderMaterial.new()
@@ -78,11 +80,11 @@ func transition_to(
 	
 	var tw := create_tween()
 	if inverse_transition_effect:
-		mat.set_shader_parameter("progress", 1.2)
-		tw.tween_property(mat, "shader_parameter/progress", 0.0, duration).set_trans(Tween.TRANS_QUAD)
+		mat.set_shader_parameter("progress", 1.1)
+		tw.tween_property(mat, "shader_parameter/progress", 0.0, duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	else:
 		mat.set_shader_parameter("progress", 0.0)
-		tw.tween_property(mat, "shader_parameter/progress", 1.2, duration).set_trans(Tween.TRANS_QUAD)
+		tw.tween_property(mat, "shader_parameter/progress", 1.1, duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	
 	await tw.finished
 	if post_duration > 0:
