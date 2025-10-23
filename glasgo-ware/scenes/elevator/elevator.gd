@@ -62,9 +62,7 @@ func _ready() -> void:
 		Status.visible = false
 		inputtype_node.queue_free()
 		
-		var tween_1 := create_tween()
-		tween_1.tween_property(Door, "scale", Vector2(2, 2), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		tween_1.parallel().tween_property(Door, "modulate:a", 0, 0.1)
+		TransitionManager.transition_to(minigame, 0.5, 0.0, false, false, self)
 		
 		minigame.process_mode = Node.PROCESS_MODE_INHERIT
 		var parent = get_parent()
@@ -78,7 +76,8 @@ func _ready() -> void:
 		var tween_2 := create_tween()
 		tween_2.tween_property(Door, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		tween_2.parallel().tween_callback(func(): Door.animation = "idle").set_delay(0.3)
-		tween_2.parallel().tween_property(Door, "modulate:a", 1, 0.2)
+		
+		TransitionManager.transition_to(self, 0.5, 0.0, false, false, minigame, true)
 		
 		await Global.wait(0.4)
 		
@@ -97,7 +96,6 @@ func _ready() -> void:
 		Status.visible = true
 		
 		await Global.wait(1.5)
-		
 		
 		if lives <= 0:
 			WinOrLose.text = "GAME OVER"

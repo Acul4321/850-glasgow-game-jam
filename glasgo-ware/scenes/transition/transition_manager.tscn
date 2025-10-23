@@ -1,12 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cq1ijn7bfg0gd"]
 
-[ext_resource type="Script" uid="uid://l4qhwx8sa83b" path="res://scenes/screens/transition_manager.gd" id="1_qefhy"]
-[ext_resource type="Shader" uid="uid://c8c13jk28csha" path="res://scenes/screens/hole.gdshader" id="3_7mdjg"]
+[ext_resource type="Script" uid="uid://l4qhwx8sa83b" path="res://scenes/transition/transition_manager.gd" id="1_qefhy"]
+[ext_resource type="Shader" uid="uid://bkvqbokhr7f43" path="res://shaders/transition_diagonal.gdshader" id="2_732pf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4le0u"]
-shader = ExtResource("3_7mdjg")
-shader_parameter/radius = 0.1
-shader_parameter/center = Vector2(0.5, 0.5)
+shader = ExtResource("2_732pf")
+shader_parameter/progress = 0.9
 
 [node name="TransitionManager" type="CanvasLayer"]
 layer = 99

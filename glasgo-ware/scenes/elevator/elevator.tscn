@@ -36,6 +36,7 @@ grow_vertical = 2
 pivot_offset = Vector2(576, 324)
 mouse_filter = 2
 script = ExtResource("1_x8gua")
+lives = null
 
 [node name="Door" type="AnimatedSprite2D" parent="."]
 position = Vector2(288, 162)

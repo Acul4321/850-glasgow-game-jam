@@ -9,5 +9,5 @@ func wait(seconds: float) -> void:
 func forever_wait_if_paused(node: Node) -> void:
 	if node.process_mode == Node.PROCESS_MODE_DISABLED:
 		var current = node.process_mode
-		while  node.process_mode == current:
+		while node.process_mode == current:
 			await get_tree().process_frame

@@ -20,7 +20,7 @@ config/icon="res://assets/icons/icon.svg"
 Constants="*res://scripts/constants.gd"
 Global="*res://scripts/global.gd"
 Settings="*res://scripts/settings.gd"
-TransitionManager="*res://scenes/screens/transition_manager.tscn"
+TransitionManager="*res://scenes/transition/transition_manager.tscn"
 GameUI="*res://scenes/ui/gameui.tscn"
 
 [display]

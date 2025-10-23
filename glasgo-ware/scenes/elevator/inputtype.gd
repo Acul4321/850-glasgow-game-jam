@@ -12,4 +12,3 @@ func _ready() -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "scale", old_scale, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(self, "rotation_degrees", 0, 0.3).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
-	
