@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8jls56jygh5n"]
+
+[ext_resource type="Script" uid="uid://kfn661hgsjcw" path="res://minigames/mine_coal/main.gd" id="1_qsl5n"]
+[ext_resource type="Shader" uid="uid://duymqrxkcmmed" path="res://shaders/flag_dupe.gdshader" id="2_i0kkh"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_krw02"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_ex2bo"]
+[ext_resource type="Texture2D" uid="uid://dy1nwmng0w8g7" path="res://minigames/mine_coal/pickaxe.png" id="4_bcaes"]
+[ext_resource type="Script" uid="uid://c5jbwitwv617p" path="res://minigames/mine_coal/pickaxe.gd" id="4_nehi6"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_afby7"]
+[ext_resource type="Texture2D" uid="uid://honcp5t6c82n" path="res://assets/icons/icon.svg" id="6_nehi6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+resource_local_to_scene = true
+shader = ExtResource("2_i0kkh")
+shader_parameter/color_field = Color(0.22689065, 0.14349726, 2.4065375e-08, 1)
+shader_parameter/color_cross = Color(0.18783116, 0.09863979, 0, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.01500000036324
+shader_parameter/feather = 0.05000000074506
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 1.0000000475
+shader_parameter/pixel_size = 16.0000007125
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
+font = ExtResource("5_afby7")
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u480o"]
+shader = ExtResource("3_ex2bo")
+shader_parameter/color_field = Color(1.1488971e-05, 0.0004989621, 0.0049405433, 1)
+shader_parameter/color_cross = Color(0.08109252, 0.08109252, 0.08109252, 1)
+shader_parameter/tiles_x = 8
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.05000000202574
+shader_parameter/feather = 0.05000000074506
+shader_parameter/wave_amp = 0.0
+shader_parameter/wave_freq = 0.10000000149012
+shader_parameter/wave_speed = 0.0
+shader_parameter/pixel_size = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nehi6"]
+size = Vector2(425, 477)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_138be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bcaes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u480o"]
+size = Vector2(209, 143)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qsl5n")
+instruction_input = 1
+instruction_text = "Mine Coal!"
+
+[node name="Soil" parent="." instance=ExtResource("2_krw02")]
+material = SubResource("ShaderMaterial_tx11l")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="BoomLabel" type="Label" parent="."]
+visible = false
+offset_right = 51.0
+offset_bottom = 23.0
+text = "BOOM!"
+label_settings = SubResource("LabelSettings_bcd04")
+
+[node name="Coal" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_u480o")
+offset_left = -245.0
+offset_top = -47.0
+offset_right = 168.0
+offset_bottom = 371.0
+texture = ExtResource("6_nehi6")
+
+[node name="Area2D" type="Area2D" parent="Coal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coal/Area2D"]
+position = Vector2(202.5, 228.5)
+shape = SubResource("RectangleShape2D_nehi6")
+
+[node name="Pickaxe" type="AnimatedSprite2D" parent="."]
+position = Vector2(423, 167)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_138be")
+script = ExtResource("4_nehi6")
+
+[node name="Area2D" type="Area2D" parent="Pickaxe"]
+position = Vector2(-2820, -1113.3333)
+scale = Vector2(6.6666665, 6.6666665)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickaxe/Area2D"]
+position = Vector2(425.50003, 164.5)
+shape = SubResource("RectangleShape2D_u480o")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="area_entered" from="Coal/Area2D" to="Pickaxe" method="_pickaxe_hit"]
