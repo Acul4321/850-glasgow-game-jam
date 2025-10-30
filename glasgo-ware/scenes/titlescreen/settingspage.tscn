@@ -48,6 +48,7 @@ text = "< Back"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = -0.12962963
 anchor_right = 0.5
 anchor_bottom = -0.12962963
 offset_left = -340.0
@@ -80,7 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="disable_mouse_gameplay" type="CheckButton" parent="Settings/controls"]
+[node name="test_setting" type="CheckButton" parent="Settings/controls"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -97,5 +98,5 @@ pivot_offset = Vector2(152, 14)
 focus_mode = 0
 theme = ExtResource("2_ytj6n")
 theme_override_font_sizes/font_size = 12
-text = "Disable Mouse gameplay"
+text = "Test"
 alignment = 1

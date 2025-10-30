@@ -11,6 +11,7 @@ var round: int = 1
 @onready var Door: AnimatedSprite2D = $Door
 @onready var Status: Label = $Status
 @onready var WinOrLose: Label = $WinOrLose
+@onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
 
 func _ready() -> void:
 	var minigames: Array[PackedScene] = []
@@ -101,10 +102,12 @@ func _ready() -> void:
 		await Global.wait(1.5)
 		
 		if lives <= 0:
+			Engine.time_scale = 1
+			PitchEffect.pitch_scale = 1
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
 			await Global.wait(2)
-			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"))
+			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
 		
 		round += 1
