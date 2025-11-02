@@ -31,7 +31,6 @@ script = ExtResource("1_fw2e3")
 instruction_input = 1
 instruction_text = "Avoid the Droplets"
 duration = 7.0
-win_by_default = true
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_6ui3u")]
 material = SubResource("ShaderMaterial_tx11l")
@@ -39,7 +38,7 @@ offset_right = 576.0
 offset_bottom = 324.0
 
 [node name="Umbrella" type="Sprite2D" parent="."]
-position = Vector2(283, 198)
+position = Vector2(277, 200)
 texture = ExtResource("6_regl5")
 
 [node name="UmbrellaArea" type="Area2D" parent="Umbrella"]
@@ -87,7 +86,7 @@ position = Vector2(250, 3)
 shape = SubResource("RectangleShape2D_wfa2y")
 
 [node name="Blud" type="Sprite2D" parent="."]
-position = Vector2(289, 252)
+position = Vector2(289, 265)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_regl5")
 script = ExtResource("8_dw35y")

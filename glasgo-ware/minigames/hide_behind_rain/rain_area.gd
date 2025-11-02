@@ -24,5 +24,8 @@ func _process(delta: float) -> void:
 			RNG.randf_range(-extents.x, extents.x),
 			RNG.randf_range(-extents.y, extents.y),
 		)
+		
+		raindrop.rain_hit.connect(minigame._on_raindrop_hit)
+		
 		minigame.get_node("Raindrops").add_child(raindrop)
 		

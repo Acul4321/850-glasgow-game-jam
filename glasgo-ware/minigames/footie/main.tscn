@@ -111,9 +111,7 @@ animations = [{
 script = ExtResource("1_p1ush")
 celtic_field = null
 celtic_cross = null
-instruction_input = null
-instruction_text = null
-duration = null
+instruction_text = "Keepy Ups!"
 timeout_counts_as_win = null
 win_by_default = true
 
