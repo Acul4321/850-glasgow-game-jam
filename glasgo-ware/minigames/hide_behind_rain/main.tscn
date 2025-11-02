@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3ne5ngmk0doi"]
+
+[ext_resource type="Script" uid="uid://dvefii04a6d8h" path="res://minigames/hide_behind_rain/main.gd" id="1_fw2e3"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_6ui3u"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_aa5jm"]
+[ext_resource type="Script" uid="uid://cw8lb8kn2v11n" path="res://minigames/hide_behind_rain/rain_area.gd" id="5_wfa2y"]
+[ext_resource type="Texture2D" uid="uid://dei8li2jybpju" path="res://minigames/hide_behind_rain/umbrella.png" id="6_regl5"]
+[ext_resource type="Texture2D" uid="uid://bfsrb7ajw5csi" path="res://minigames/hide_behind_rain/Cloud-PNG-8.webp" id="6_wfa2y"]
+[ext_resource type="Texture2D" uid="uid://bbulace01aakc" path="res://minigames/hide_behind_rain/blud.png" id="7_dw35y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+resource_local_to_scene = true
+shader = ExtResource("3_aa5jm")
+shader_parameter/color_field = Color(0.025666676, 0, 0.07, 1)
+shader_parameter/color_cross = Color(0.063839994, 0.057600003, 0.12, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lwlk0"]
+radius = 22.0
+height = 134.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfa2y"]
+size = Vector2(500, 6)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fw2e3")
+instruction_input = 1
+instruction_text = "Avoid the Droplets"
+duration = 7.0
+
+[node name="ScottishWater" parent="." instance=ExtResource("2_6ui3u")]
+material = SubResource("ShaderMaterial_tx11l")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="Umbrella" type="Sprite2D" parent="."]
+position = Vector2(277, 200)
+texture = ExtResource("6_regl5")
+
+[node name="UmbrellaArea" type="Area2D" parent="Umbrella"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Umbrella/UmbrellaArea"]
+position = Vector2(0, -28)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_lwlk0")
+
+[node name="Raindrops" type="Node2D" parent="."]
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="CloudPng8" type="Sprite2D" parent="Clouds"]
+position = Vector2(128, 35)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="CloudPng9" type="Sprite2D" parent="Clouds"]
+position = Vector2(238, 34)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="CloudPng10" type="Sprite2D" parent="Clouds"]
+position = Vector2(350, 34)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="CloudPng11" type="Sprite2D" parent="Clouds"]
+position = Vector2(460, 32)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="RainArea" type="ReferenceRect" parent="."]
+visible = false
+offset_left = 38.0
+offset_top = 35.0
+offset_right = 538.0
+offset_bottom = 41.0
+pivot_offset = Vector2(0, 3)
+script = ExtResource("5_wfa2y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RainArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea/StaticBody2D"]
+position = Vector2(250, 3)
+shape = SubResource("RectangleShape2D_wfa2y")
+
+[node name="Blud" type="Sprite2D" parent="."]
+position = Vector2(278, 254.00002)
+scale = Vector2(2.8586147, 3.1361501)
+texture = ExtResource("7_dw35y")
