@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 
 func _ready() -> void:
 	animation = str(input_type)
+	print(input_type)
 	
 	var old_scale = scale
 	rotation_degrees = -100

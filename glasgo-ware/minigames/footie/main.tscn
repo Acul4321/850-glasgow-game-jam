@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8jls56jygh5n"]
+[gd_scene load_steps=17 format=3 uid="uid://b8jls56jygh5n"]
 
 [ext_resource type="Script" uid="uid://cxxk85rs3i4jc" path="res://minigames/footie/main.gd" id="1_p1ush"]
 [ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_2q3o1"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_4plcw"]
 [ext_resource type="Texture2D" uid="uid://d4bxoa7gv3i10" path="res://minigames/footie/rangers.png" id="5_3xu3w"]
-[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_fmcxa"]
 [ext_resource type="Texture2D" uid="uid://d3uvs1asy87j3" path="res://minigames/footie/celtic.png" id="5_u76kj"]
 [ext_resource type="Script" uid="uid://cnkfn6erhv05k" path="res://minigames/footie/ball.gd" id="7_p1ush"]
 [ext_resource type="Texture2D" uid="uid://dhqktn10ki1l5" path="res://minigames/footie/boot.png" id="7_wdfmp"]
@@ -23,12 +22,6 @@ shader_parameter/wave_amp = 0.10000000149012
 shader_parameter/wave_freq = 10.0
 shader_parameter/wave_speed = 0.50000002375
 shader_parameter/pixel_size = 4.000000142499999
-
-[sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
-font = ExtResource("5_fmcxa")
-font_size = 64
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u480o"]
 animations = [{
@@ -118,8 +111,8 @@ animations = [{
 script = ExtResource("1_p1ush")
 celtic_field = null
 celtic_cross = null
-instruction_input = 1
-instruction_text = "Keepy Ups!"
+instruction_input = null
+instruction_text = null
 duration = null
 timeout_counts_as_win = null
 win_by_default = true
@@ -128,13 +121,6 @@ win_by_default = true
 material = SubResource("ShaderMaterial_tx11l")
 offset_right = 576.0
 offset_bottom = 324.0
-
-[node name="BoomLabel" type="Label" parent="."]
-visible = false
-offset_right = 51.0
-offset_bottom = 23.0
-text = "BOOM!"
-label_settings = SubResource("LabelSettings_bcd04")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
