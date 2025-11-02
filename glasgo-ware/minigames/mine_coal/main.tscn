@@ -105,5 +105,7 @@ position = Vector2(425.50003, 164.5)
 shape = SubResource("RectangleShape2D_u480o")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+bus = &"Pitch"
 
 [connection signal="area_entered" from="Coal/Area2D" to="Pickaxe" method="_pickaxe_hit"]
