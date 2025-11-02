@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_4plcw"]
 [ext_resource type="Texture2D" uid="uid://d4bxoa7gv3i10" path="res://minigames/footie/rangers.png" id="5_3xu3w"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_fmcxa"]
-[ext_resource type="Script" uid="uid://by3bklrk3fwnl" path="res://minigames/mine_coal/boot.gd" id="6_u76kj"]
+[ext_resource type="Script" uid="uid://br28jr3n0rvay" path="res://minigames/footie/boot.gd" id="6_p1ush"]
 [ext_resource type="Texture2D" uid="uid://dhqktn10ki1l5" path="res://minigames/footie/boot.png" id="7_wdfmp"]
 [ext_resource type="Texture2D" uid="uid://bsv8dpbnlel0k" path="res://minigames/footie/ball.png" id="8_ja7uu"]
 
@@ -21,7 +21,7 @@ shader_parameter/feather = 0.030000001425
 shader_parameter/wave_amp = 0.10000000149012
 shader_parameter/wave_freq = 10.0
 shader_parameter/wave_speed = 0.50000002375
-shader_parameter/pixel_size = 1.0
+shader_parameter/pixel_size = 4.000000142499999
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
 font = ExtResource("5_fmcxa")
@@ -63,9 +63,8 @@ animations = [{
 size = Vector2(28.834503, 20)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u480o"]
-friction = 0.4
-rough = true
-bounce = 0.51
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yjjx"]
 radius = 54.00929
@@ -109,7 +108,7 @@ sprite_frames = SubResource("SpriteFrames_u480o")
 [node name="Boot" type="CharacterBody2D" parent="."]
 position = Vector2(267, 215)
 motion_mode = 1
-script = ExtResource("6_u76kj")
+script = ExtResource("6_p1ush")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boot"]
 position = Vector2(-0.9999999, -2.9999995)
