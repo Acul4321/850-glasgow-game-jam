@@ -1,0 +1,137 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8jls56jygh5n"]
+
+[ext_resource type="Script" uid="uid://cxxk85rs3i4jc" path="res://minigames/footie/main.gd" id="1_p1ush"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_2q3o1"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_4plcw"]
+[ext_resource type="Texture2D" uid="uid://d4bxoa7gv3i10" path="res://minigames/footie/rangers.png" id="5_3xu3w"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_fmcxa"]
+[ext_resource type="Script" uid="uid://by3bklrk3fwnl" path="res://minigames/mine_coal/boot.gd" id="6_u76kj"]
+[ext_resource type="Texture2D" uid="uid://dhqktn10ki1l5" path="res://minigames/footie/boot.png" id="7_wdfmp"]
+[ext_resource type="Texture2D" uid="uid://bsv8dpbnlel0k" path="res://minigames/footie/ball.png" id="8_ja7uu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+resource_local_to_scene = true
+shader = ExtResource("3_4plcw")
+shader_parameter/color_field = Color(0, 0.0666666, 1, 1)
+shader_parameter/color_cross = Color(0.9607843, 0, 0, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 6
+shader_parameter/cross_half_width = 0.06000000250074
+shader_parameter/feather = 0.030000001425
+shader_parameter/wave_amp = 0.10000000149012
+shader_parameter/wave_freq = 10.0
+shader_parameter/wave_speed = 0.50000002375
+shader_parameter/pixel_size = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
+font = ExtResource("5_fmcxa")
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u480o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3xu3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_138be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wdfmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3xu3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ush"]
+size = Vector2(28.834503, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u480o"]
+friction = 0.4
+rough = true
+bounce = 0.51
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yjjx"]
+radius = 54.00929
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ngqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ja7uu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_p1ush")
+instruction_input = 1
+instruction_text = "Keepy Ups!"
+win_by_default = true
+
+[node name="Soil" parent="." instance=ExtResource("2_2q3o1")]
+material = SubResource("ShaderMaterial_tx11l")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="BoomLabel" type="Label" parent="."]
+visible = false
+offset_right = 51.0
+offset_bottom = 23.0
+text = "BOOM!"
+label_settings = SubResource("LabelSettings_bcd04")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Footballer" type="AnimatedSprite2D" parent="."]
+position = Vector2(280, 153.00002)
+scale = Vector2(0.49166662, 0.49166667)
+sprite_frames = SubResource("SpriteFrames_u480o")
+
+[node name="Boot" type="CharacterBody2D" parent="."]
+position = Vector2(267, 215)
+motion_mode = 1
+script = ExtResource("6_u76kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boot"]
+position = Vector2(-0.9999999, -2.9999995)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_138be")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boot"]
+position = Vector2(-5, 41)
+scale = Vector2(2.6666663, 2.6666663)
+shape = SubResource("RectangleShape2D_p1ush")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(257.99997, 35.999996)
+disable_mode = 2
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u480o")
+gravity_scale = 0.75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("CircleShape2D_6yjjx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ball"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_4ngqs")
