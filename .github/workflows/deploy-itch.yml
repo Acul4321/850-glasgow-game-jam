@@ -12,6 +12,7 @@ env:
   GODOT_VERSION: 4.3
   # EXPORT_NAME: gmtk-jam-2025
   PROJECT_PATH: glasgo-ware
+  EXPORT_NAME: GlasgoWare
 
 jobs:
   export-web:
@@ -30,17 +31,17 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Web Build
+      - name: Windows Build
         run: |
           mkdir -v -p build/web
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+          godot --headless --verbose --export-release "Windows" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: web
-          path: build/web
+          name: windows
+          path: build/windows
       - name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
