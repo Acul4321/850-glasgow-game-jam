@@ -10,7 +10,7 @@ const BOSS_WAIT := 3
 @export var lives: int = 3
 @export var rounds_per_speedup: int = 5
 
-var round: int = 15
+var round: int = 1
 
 @onready var Door: AnimatedSprite2D = $Door
 @onready var Status: Label = $Status
@@ -177,6 +177,7 @@ func _ready() -> void:
 		if lives <= 0:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
+			SoundManager.play_voice("Jeers")
 			SoundManager.play_song("GameOver")
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
@@ -186,6 +187,7 @@ func _ready() -> void:
 		elif round >= 15 and Global.game_type == Constants.GAME_TYPE.REGULAR:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
+			SoundManager.play_voice("Cheers")
 			SoundManager.play_song("MinigameWin")
 			WinOrLose.text = "YOU WIN!"
 			WinOrLose.label_settings.font_color = Color(.7,1,.3)
