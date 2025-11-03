@@ -30,47 +30,47 @@ script = ExtResource("1_17ljh")
 
 [node name="MinigameBoss" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("6_gwbex")
-volume_db = -5.0
+volume_db = -8.0
 pitch_scale = 0.7
 
 [node name="CanBubble" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("1_4wfx6")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="CanHit" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("2_17ljh")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="CanOpen" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("3_f1kb7")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("4_5qap7")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="MinigameLose" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("5_3hjhw")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="MinigameSpeedUp" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("6_gwbex")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="MinigameWin" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("7_ecu6g")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="NextMinigame" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("8_qgyjk")
-volume_db = -5.0
+volume_db = -8.0
 bus = &"Pitch"
 
 [node name="Voices" type="Node" parent="."]
