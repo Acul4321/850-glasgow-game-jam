@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1762184965|5660074';
+const CACHE_VERSION = '1762187189|6503536';
 /** @type {string} */
 const CACHE_PREFIX = 'GlasgoWare-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
