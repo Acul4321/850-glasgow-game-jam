@@ -1,0 +1,14 @@
+extends Node
+
+enum GAME_TYPE {  
+	REGULAR,
+	ENDLESS  
+}  
+
+enum INPUT_TYPE {  
+	KEYBOARD,
+	MOUSE,
+	KEYBOARD_AND_MOUSE,
+	SPACE,
+	ARROW_KEYS
+} 

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdgau6w458by5"]
+
+[ext_resource type="Texture2D" uid="uid://7i5budylt6lv" path="res://minigames/shake_can_test/irn_bru.png" id="1_2psaw"]
+[ext_resource type="Script" uid="uid://jgtrrx66sop7" path="res://minigames/shake_can_test/main.gd" id="1_bcd04"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_ffra6"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_gs73v"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_gs73v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+resource_local_to_scene = true
+shader = ExtResource("3_gs73v")
+shader_parameter/color_field = Color(0.47559118, 0.15734497, 9.62615e-08, 1)
+shader_parameter/color_cross = Color(0.8579591, 0.5954738, 0.4160839, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_138be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2psaw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
+font = ExtResource("5_gs73v")
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bcd04")
+instruction_input = 3
+instruction_text = "Shake The Can!"
+duration = 8.0
+
+[node name="ScottishWater" parent="." instance=ExtResource("2_ffra6")]
+material = SubResource("ShaderMaterial_tx11l")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="IrnBru" type="AnimatedSprite2D" parent="."]
+position = Vector2(288, 162)
+scale = Vector2(0.24780378, 0.24780379)
+sprite_frames = SubResource("SpriteFrames_138be")
+
+[node name="BoomLabel" type="Label" parent="."]
+visible = false
+offset_right = 51.0
+offset_bottom = 23.0
+text = "BOOM!"
+label_settings = SubResource("LabelSettings_bcd04")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfbiit0thclts"]
+
+[ext_resource type="Script" uid="uid://bwp0fq5j7fpmg" path="res://scenes/elevator/instruction.gd" id="1_maccc"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="2_posfn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jjx2"]
+font = ExtResource("2_posfn")
+font_size = 25
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Instruction" type="CanvasLayer"]
+script = ExtResource("1_maccc")
+
+[node name="Prompt" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -11.5
+offset_right = 18.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST"
+label_settings = SubResource("LabelSettings_0jjx2")
+horizontal_alignment = 1

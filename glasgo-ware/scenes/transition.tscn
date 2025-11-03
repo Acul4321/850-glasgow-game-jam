@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://d357pljpuof7e"]
+
+[sub_resource type="GDScript" id="GDScript_kg4ax"]
+script/source = "extends CanvasLayer
+
+@onready var anim_player = $AnimationPlayer
+
+func fade_to_scene(path: String):
+	anim_player.play(\"fade_out\")
+	await anim_player.animation_finished
+	await Global.wait(.15)
+	
+	get_tree().change_scene_to_file(path)
+	await get_tree().scene_changed
+	
+	get_tree().paused = true
+	
+	anim_player.play(\"fade_in\")
+	await anim_player.animation_finished
+	await Global.wait(.15)
+	
+	get_tree().paused = false
+"
+
+[sub_resource type="Animation" id="Animation_rerct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kg4ax"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f0i4t"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f0i4t"]
+_data = {
+&"RESET": SubResource("Animation_rerct"),
+&"fade_in": SubResource("Animation_kg4ax"),
+&"fade_out": SubResource("Animation_f0i4t")
+}
+
+[node name="Transition" type="CanvasLayer"]
+process_mode = 3
+script = SubResource("GDScript_kg4ax")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -48.0
+offset_top = -17.0
+offset_right = 1217.0
+offset_bottom = 690.0
+mouse_filter = 2
+color = Color(0.08252167, 0.10241636, 0.15404904, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f0i4t")
+}
+speed_scale = 4.0

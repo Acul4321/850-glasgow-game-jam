@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3ne5ngmk0doi"]
+
+[ext_resource type="Script" uid="uid://dvefii04a6d8h" path="res://minigames/hide_behind_rain/main.gd" id="1_fw2e3"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_6ui3u"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_aa5jm"]
+[ext_resource type="Script" uid="uid://cw8lb8kn2v11n" path="res://minigames/hide_behind_rain/rain_area.gd" id="5_wfa2y"]
+[ext_resource type="Texture2D" uid="uid://dei8li2jybpju" path="res://minigames/hide_behind_rain/umbrella.png" id="6_regl5"]
+[ext_resource type="Texture2D" uid="uid://bfsrb7ajw5csi" path="res://minigames/hide_behind_rain/Cloud-PNG-8.webp" id="6_wfa2y"]
+[ext_resource type="Texture2D" uid="uid://bm83dnpistrhg" path="res://minigames/hide_behind_rain/terrier.png" id="7_regl5"]
+[ext_resource type="Script" uid="uid://teh0wcbsyw37" path="res://minigames/hide_behind_rain/blud.gd" id="8_dw35y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+resource_local_to_scene = true
+shader = ExtResource("3_aa5jm")
+shader_parameter/color_field = Color(0.025666676, 0, 0.07, 1)
+shader_parameter/color_cross = Color(0.063839994, 0.057600003, 0.12, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfa2y"]
+size = Vector2(500, 6)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fw2e3")
+instruction_input = 1
+instruction_text = "Avoid the Droplets"
+duration = 7.0
+
+[node name="ScottishWater" parent="." instance=ExtResource("2_6ui3u")]
+material = SubResource("ShaderMaterial_tx11l")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="Umbrella" type="Sprite2D" parent="."]
+position = Vector2(277, 200)
+texture = ExtResource("6_regl5")
+
+[node name="UmbrellaArea" type="Area2D" parent="Umbrella"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Umbrella/UmbrellaArea"]
+polygon = PackedVector2Array(8, -72.5, -5, -72.5, -9, -65.1, -34.1, -58.5, -38.5, -58.5, -54.5, -50.5, -56.7, -50.5, -90.7, -22.5, -91, -9, -89, -7.5, -89, -5.800003, -63, -0.9000015, -63, 0.5, -10.099998, 0.5, -11, 32.5, -11, 45.300003, -13.099998, 44.199997, -16.599998, 46.5, -19.199997, 46.5, -23.199997, 54.5, -26.400002, 54.5, -17, 70.899994, -17, 72.5, 4.199997, 72.5, 6.699997, 70.5, 8.5, 70.5, 11.5, 59.5, 12.900002, 59.5, 14, 33.5, 14, 0.40000153, 57.100006, -1.5, 69.3, -1.5, 82.3, -5.5, 86.8, -5.5, 90.8, -9.5, 91, -22.2, 63, -46.4, 63, -47.8, 43, -56.8, 43, -58.1, 17.199997, -64.5, 12.199997, -64.5, 12, -65, 12, -69.5)
+
+[node name="Raindrops" type="Node2D" parent="."]
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="CloudPng8" type="Sprite2D" parent="Clouds"]
+position = Vector2(128, 35)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="CloudPng9" type="Sprite2D" parent="Clouds"]
+position = Vector2(238, 34)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="CloudPng10" type="Sprite2D" parent="Clouds"]
+position = Vector2(350, 34)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="CloudPng11" type="Sprite2D" parent="Clouds"]
+position = Vector2(460, 32)
+scale = Vector2(2.0297, 1.5744776)
+texture = ExtResource("6_wfa2y")
+
+[node name="RainArea" type="ReferenceRect" parent="."]
+visible = false
+offset_left = 38.0
+offset_top = 35.0
+offset_right = 538.0
+offset_bottom = 41.0
+pivot_offset = Vector2(0, 3)
+script = ExtResource("5_wfa2y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RainArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea/StaticBody2D"]
+position = Vector2(250, 3)
+shape = SubResource("RectangleShape2D_wfa2y")
+
+[node name="Blud" type="Sprite2D" parent="."]
+position = Vector2(289, 265)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_regl5")
+script = ExtResource("8_dw35y")
+
+[node name="BludArea" type="Area2D" parent="Blud"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Blud/BludArea"]
+polygon = PackedVector2Array(108.5, -174, 97.20001, -180, 89.899994, -180, 84.600006, -178, 81.899994, -178, 67, -154.6, 67, -152.8, 43, -127.8, 43, -127.1, 34.5, -122, 32.100006, -122, 22.100006, -111, 20.899994, -111, -8, -68.6, -8, -67.8, -46.300003, -61, -49.399994, -61, -67, -54.4, -146, -59.9, -146, -61.300003, -162.3, -59, -167.6, -59, -189.6, -67, -199.5, -67, -207.5, -63, -209.8, -63, -217.8, -55, -219.4, -55, -223.4, -43, -226, -43, -221, -30.600006, -221, -28, -216, -24.100006, -216, -22.800003, -195.9, -12.800003, -202.2, 0, -203.8, 0, -208, 49.899994, -208, 55, -213.5, 74, -215, 74, -215, 92.29999, -201, 139.20001, -201, 142.70001, -193, 152.70001, -193, 154.4, -173, 162.29999, -173, 164.1, -153.9, 163, -151.7, 163, -131.7, 157, -128.2, 157, -115, 143.79999, -115, 141.29999, -101.5, 136, -99.100006, 136, -94.100006, 130, -92.600006, 130, -88.600006, 118, -65, 128.20001, -65, 130.70001, -51, 126.5, -44.199997, 126.79999, -45, 136.9, -45, 143.5, -42, 149.5, -42, 152.70001, -35, 161.6, -35, 163.20001, -25, 168.20001, -25, 169.6, -16, 171.6, -16, 173.1, 17.100006, 172, 26.600006, 172, 39, 174.6, 39, 176.6, 59.100006, 171, 62.799988, 171, 72.70001, 162, 74.5, 162, 77.5, 152, 79.399994, 152, 69, 96.5, 69, 90.79999, 76.70001, 84, 78.399994, 84, 83.399994, 69, 85.20001, 69, 84, 54.800003, 84, 52.600006, 77.70001, 39.199997, 99, 47.399994, 99, 49.300003, 116.29999, 47, 124.5, 47, 132.5, 43, 142.5, 43, 170.5, 29, 173, 29, 177, 24, 178.4, 24, 183.4, 10, 185.79999, 10, 175, -22.399994, 175, -24.800003, 158.9, -43, 158, -48.300003, 158, -52.6, 163.4, -66, 166, -66, 161, -78.5, 161, -81.8, 129.4, -115.5, 135.5, -137, 137.4, -137, 134, -156.3, 134, -159.8, 126, -168.8, 126, -170.6, 109.20001, -174)

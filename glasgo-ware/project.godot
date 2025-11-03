@@ -11,10 +11,36 @@ config_version=5
 [application]
 
 config/name="GlasgoWare"
+run/main_scene="uid://svrc040bbpki"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://assets/icons/icon.svg"
 
+[autoload]
+
+Constants="*res://scripts/constants.gd"
+Global="*res://scripts/global.gd"
+Settings="*res://scripts/settings.gd"
+TransitionManager="*res://scenes/transition/transition_manager.tscn"
+SoundManager="*res://scenes/soundsmanager/soundmanager.tscn"
+GameUI="*res://scenes/ui/gameui.tscn"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/decals/filter=0
+textures/light_projectors/filter=0
+environment/glow/upscale_mode=0

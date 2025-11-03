@@ -1,0 +1,201 @@
+[gd_scene load_steps=20 format=3 uid="uid://biacebml03o06"]
+
+[ext_resource type="Script" uid="uid://0fpks87xqkcn" path="res://minigames/drag_correct_cone/main.gd" id="1_8qtjh"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_dw50r"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="2_iwxms"]
+[ext_resource type="Texture2D" uid="uid://dtf4y7eg4b0db" path="res://minigames/drag_correct_cone/smile.png" id="3_d4pww"]
+[ext_resource type="Texture2D" uid="uid://cp5ihcpiehmms" path="res://minigames/drag_correct_cone/angry.png" id="3_m4cc1"]
+[ext_resource type="Texture2D" uid="uid://x20408aor0qk" path="res://minigames/drag_correct_cone/trafficcone.png" id="5_woc6a"]
+[ext_resource type="Texture2D" uid="uid://bkteasi8xdilq" path="res://minigames/drag_correct_cone/icecone.png" id="6_wlyed"]
+[ext_resource type="Texture2D" uid="uid://ep8fge3awb3i" path="res://minigames/drag_correct_cone/pinecone.png" id="7_pxt1a"]
+[ext_resource type="Shader" uid="uid://caby21xd634ak" path="res://minigames/drag_correct_cone/selection_box.gdshader" id="8_qoo6k"]
+[ext_resource type="Texture2D" uid="uid://d7a8ep4o4rtl" path="res://minigames/drag_correct_cone/horse.png" id="9_8u8mq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qoo6k"]
+resource_local_to_scene = true
+shader = ExtResource("2_iwxms")
+shader_parameter/color_field = Color(0.011764706, 0.21960784, 0.65882355, 1)
+shader_parameter/color_cross = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlyed"]
+atlas = ExtResource("3_m4cc1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxt1a"]
+atlas = ExtResource("3_m4cc1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4cc1"]
+atlas = ExtResource("3_d4pww")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woc6a"]
+atlas = ExtResource("3_d4pww")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wlyed"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlyed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxt1a")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4cc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woc6a")
+}],
+"loop": true,
+"name": &"smile",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cu2ju"]
+resource_local_to_scene = true
+shader = ExtResource("8_qoo6k")
+shader_parameter/enabled = true
+shader_parameter/border_width = 0.02
+shader_parameter/blur = 0.001
+shader_parameter/corner_radius = 0.05
+shader_parameter/dash_length = 0.1
+shader_parameter/dash_gap = 0.05
+shader_parameter/speed = 0.1
+shader_parameter/border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxt1a"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_woc6a")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wlyed")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pxt1a")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6dfk"]
+size = Vector2(49, 64)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8qtjh")
+instruction_input = 1
+instruction_text = "Drag the Traffic Cone"
+
+[node name="ScottishWater" parent="." instance=ExtResource("2_dw50r")]
+material = SubResource("ShaderMaterial_qoo6k")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="ConeSpots" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ConeSpots"]
+position = Vector2(81, 153)
+
+[node name="1" type="Node2D" parent="ConeSpots"]
+position = Vector2(83, 79)
+
+[node name="2" type="Node2D" parent="ConeSpots"]
+position = Vector2(81, 236)
+
+[node name="Horse" type="Sprite2D" parent="."]
+position = Vector2(280, 188)
+scale = Vector2(1.0694443, 1.0694445)
+texture = ExtResource("9_8u8mq")
+
+[node name="HorseSmile" type="AnimatedSprite2D" parent="."]
+position = Vector2(286.5, 144.375)
+scale = Vector2(3.9375024, 3.4531257)
+sprite_frames = SubResource("SpriteFrames_wlyed")
+animation = &"idle"
+flip_h = true
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cu2ju")
+position = Vector2(401.00003, 65)
+scale = Vector2(1.2272409, 1.0527345)
+sprite_frames = SubResource("SpriteFrames_pxt1a")
+animation = &"0"
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="Head"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
+shape = SubResource("RectangleShape2D_q6dfk")
+
+[node name="TrafficCone" type="AnimatedSprite2D" parent="."]
+position = Vector2(-60, 58.999996)
+scale = Vector2(1, 1.025)
+sprite_frames = SubResource("SpriteFrames_pxt1a")
+animation = &"0"
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="TrafficCone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficCone/Area2D"]
+shape = SubResource("RectangleShape2D_q6dfk")
+
+[node name="IceCone" type="AnimatedSprite2D" parent="."]
+position = Vector2(-70, 158)
+scale = Vector2(1, 1.025)
+sprite_frames = SubResource("SpriteFrames_pxt1a")
+animation = &"1"
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="IceCone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceCone/Area2D"]
+shape = SubResource("RectangleShape2D_q6dfk")
+
+[node name="PineCone" type="AnimatedSprite2D" parent="."]
+position = Vector2(-66, 265)
+scale = Vector2(1, 1.025)
+sprite_frames = SubResource("SpriteFrames_pxt1a")
+animation = &"2"
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="PineCone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PineCone/Area2D"]
+shape = SubResource("RectangleShape2D_q6dfk")

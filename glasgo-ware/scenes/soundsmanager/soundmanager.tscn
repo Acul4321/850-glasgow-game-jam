@@ -1,0 +1,140 @@
+[gd_scene load_steps=24 format=3 uid="uid://ba7is65xvwud0"]
+
+[ext_resource type="AudioStream" uid="uid://chfyyda4aawv2" path="res://assets/sounds/songs/can bubble demo.wav" id="1_4wfx6"]
+[ext_resource type="Script" uid="uid://c3p3w6eia16q2" path="res://scenes/soundsmanager/soundmanager.gd" id="1_17ljh"]
+[ext_resource type="AudioStream" uid="uid://corfqem77m1jx" path="res://assets/sounds/songs/can hit demo.wav" id="2_17ljh"]
+[ext_resource type="AudioStream" uid="uid://ba6npsmd5htjc" path="res://assets/sounds/songs/can open demo.wav" id="3_f1kb7"]
+[ext_resource type="AudioStream" uid="uid://dssn6hdumj542" path="res://assets/sounds/songs/game over demo.wav" id="4_5qap7"]
+[ext_resource type="AudioStream" uid="uid://flkgao7630ki" path="res://assets/sounds/songs/minigame lose demo.wav" id="5_3hjhw"]
+[ext_resource type="AudioStream" uid="uid://ct5xlfb6ccbhu" path="res://assets/sounds/songs/minigame speed up demo.wav" id="6_gwbex"]
+[ext_resource type="AudioStream" uid="uid://2j4cf123q0k4" path="res://assets/sounds/songs/minigame win demo.wav" id="7_ecu6g"]
+[ext_resource type="AudioStream" uid="uid://dp3btjwnnj5f4" path="res://assets/sounds/songs/next minigame demo.wav" id="8_qgyjk"]
+[ext_resource type="AudioStream" uid="uid://blqd0jwtftw6j" path="res://assets/sounds/voices/Track 1.wav" id="10_daq21"]
+[ext_resource type="AudioStream" uid="uid://ua5d3b7jx5cc" path="res://assets/sounds/voices/Track 2.wav" id="11_lt20s"]
+[ext_resource type="AudioStream" uid="uid://dv8364v8oj5kt" path="res://assets/sounds/voices/Track 3.wav" id="12_it52x"]
+[ext_resource type="AudioStream" uid="uid://5fjyocl546rx" path="res://assets/sounds/voices/Track 4.wav" id="13_nucm3"]
+[ext_resource type="AudioStream" uid="uid://dg4sc30n1gj82" path="res://assets/sounds/voices/Track 5.wav" id="14_dfe2n"]
+[ext_resource type="AudioStream" uid="uid://4cx3mlqefmtf" path="res://assets/sounds/voices/Track 6.wav" id="15_3n70a"]
+[ext_resource type="AudioStream" uid="uid://b23nmhd1j0h1o" path="res://assets/sounds/voices/Track 7.wav" id="16_h5gil"]
+[ext_resource type="AudioStream" uid="uid://byb0nb6yh7ux2" path="res://assets/sounds/voices/Track 8.wav" id="17_j4kuj"]
+[ext_resource type="AudioStream" uid="uid://ctweamp0bjwbk" path="res://assets/sounds/voices/Track 9.wav" id="18_qcq6l"]
+[ext_resource type="AudioStream" uid="uid://c0dygjv1ovocv" path="res://assets/sounds/voices/Track 10.wav" id="19_p6h73"]
+[ext_resource type="AudioStream" uid="uid://bpfl42hhrhyp" path="res://assets/sounds/voices/Track 11.wav" id="20_ojqu8"]
+[ext_resource type="AudioStream" uid="uid://caxhu0cahwg0g" path="res://assets/sounds/voices/Track 12.wav" id="21_vmfya"]
+[ext_resource type="AudioStream" uid="uid://cqfqboy3cfda3" path="res://assets/sounds/voices/Track 13.wav" id="22_t8jcq"]
+[ext_resource type="AudioStream" uid="uid://l68g7neo0a06" path="res://assets/sounds/sfx/success_bell-6776.mp3" id="23_lt20s"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_17ljh")
+
+[node name="Songs" type="Node" parent="."]
+
+[node name="MinigameBoss" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("6_gwbex")
+volume_db = -8.0
+pitch_scale = 0.7
+
+[node name="SmallVictory" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("1_4wfx6")
+volume_db = 2.0
+pitch_scale = 2.0
+bus = &"Pitch"
+
+[node name="CanBubble" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("1_4wfx6")
+volume_db = 2.0
+bus = &"Pitch"
+
+[node name="CanHit" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("2_17ljh")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="CanOpen" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("3_f1kb7")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("4_5qap7")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="MinigameLose" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("5_3hjhw")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="MinigameSpeedUp" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("6_gwbex")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="MinigameWin" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("7_ecu6g")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="NextMinigame" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("8_qgyjk")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="Voices" type="Node" parent="."]
+
+[node name="Cheers1" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("10_daq21")
+volume_db = -12.0
+
+[node name="Cheers2" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("11_lt20s")
+volume_db = -12.0
+
+[node name="Jeers1" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("12_it52x")
+volume_db = -12.0
+
+[node name="Jeers2" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("13_nucm3")
+volume_db = -12.0
+
+[node name="Cheers3" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("14_dfe2n")
+volume_db = -12.0
+
+[node name="Cheers4" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("15_3n70a")
+volume_db = -12.0
+
+[node name="Jeers3" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("16_h5gil")
+volume_db = -12.0
+
+[node name="Cheers5" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("17_j4kuj")
+volume_db = -12.0
+
+[node name="Jeers4" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("18_qcq6l")
+volume_db = -12.0
+
+[node name="Cheers6" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("19_p6h73")
+volume_db = -12.0
+
+[node name="Jeers5" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("20_ojqu8")
+volume_db = -12.0
+
+[node name="Jeers6" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("21_vmfya")
+volume_db = -12.0
+
+[node name="Cheers7" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("22_t8jcq")
+volume_db = -12.0
+
+[node name="Node" type="Node" parent="."]
+
+[node name="SuccessBell" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("23_lt20s")

@@ -1,11 +1,14 @@
 extends Node
 
+signal timer_update
+var game_type: Constants.GAME_TYPE
+var game_started := false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func wait(seconds: float, process_in_pause := false) -> void:
+	await get_tree().create_timer(seconds, process_in_pause).timeout
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func forever_wait_if_paused(node: Node) -> void:
+	if node.process_mode == Node.PROCESS_MODE_DISABLED:
+		var current = node.process_mode
+		while node.process_mode == current:
+			await get_tree().process_frame

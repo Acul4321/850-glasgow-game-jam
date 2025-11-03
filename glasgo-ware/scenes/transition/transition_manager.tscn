@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq1ijn7bfg0gd"]
+
+[ext_resource type="Script" uid="uid://l4qhwx8sa83b" path="res://scenes/transition/transition_manager.gd" id="1_qefhy"]
+[ext_resource type="Shader" uid="uid://bkvqbokhr7f43" path="res://shaders/transition_diagonal.gdshader" id="2_732pf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4le0u"]
+shader = ExtResource("2_732pf")
+shader_parameter/progress = 0.9
+
+[node name="TransitionManager" type="CanvasLayer"]
+layer = 99
+script = ExtResource("1_qefhy")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewportOld" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+oversampling = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="SubViewportNew" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+oversampling = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="TransitionLayer" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4le0u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

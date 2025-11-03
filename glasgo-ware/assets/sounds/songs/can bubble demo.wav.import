@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chfyyda4aawv2"
+path="res://.godot/imported/can bubble demo.wav-eef296534f97f7cbb2e679b993fb66b0.sample"
+
+[deps]
+
+source_file="res://assets/sounds/songs/can bubble demo.wav"
+dest_files=["res://.godot/imported/can bubble demo.wav-eef296534f97f7cbb2e679b993fb66b0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

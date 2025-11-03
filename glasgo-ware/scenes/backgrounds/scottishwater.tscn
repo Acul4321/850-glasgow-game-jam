@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5468xcx60vbq"]
+
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="1_v86u1"]
+[ext_resource type="Texture2D" uid="uid://bwaq47uu3i657" path="res://minigames/drag_correct_cone/coneguy.png" id="2_ehn7o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
+resource_local_to_scene = true
+shader = ExtResource("1_v86u1")
+shader_parameter/color_field = Color(0.011764706, 0.21960784, 0.65882355, 1)
+shader_parameter/color_cross = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[node name="ScottishWater" type="TextureRect"]
+material = SubResource("ShaderMaterial_tx11l")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehn7o")

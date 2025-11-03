@@ -1,0 +1,198 @@
+[gd_scene load_steps=14 format=3 uid="uid://svrc040bbpki"]
+
+[ext_resource type="Script" uid="uid://bxvrdc0a5xbmj" path="res://scenes/titlescreen/titlescreen.gd" id="1_goq6b"]
+[ext_resource type="Shader" uid="uid://c23xkg12oq5v1" path="res://scenes/titlescreen/pixelator.gdshader" id="2_33qfj"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="2_kkxvh"]
+[ext_resource type="Theme" uid="uid://dqvyubjurbx6y" path="res://scenes/ui/base_theme.tres" id="3_7w7l7"]
+[ext_resource type="Texture2D" uid="uid://df6ifqj3yt37" path="res://assets/ui/titlescreenflag.png" id="3_cfxbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w1ch"]
+shader = ExtResource("2_33qfj")
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="LabelSettings" id="LabelSettings_7q3kq"]
+font = ExtResource("2_kkxvh")
+font_size = 40
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33qfj"]
+bg_color = Color(0, 0.62352943, 0.0627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w1ch"]
+bg_color = Color(1.0227784e-06, 0.4896629, 0.039506875, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfxbx"]
+bg_color = Color(3.5376102e-06, 0.65731615, 0.07097603, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kclbj"]
+bg_color = Color(0.8985129, 0.24022785, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0es6h"]
+bg_color = Color(0.7372919, 0.120511524, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvocj"]
+bg_color = Color(0.98084897, 0.17938659, 9.62615e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_goq6b")
+
+[node name="BackColor" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2w1ch")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cfxbx")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_right = 340.0
+offset_bottom = 157.0
+grow_horizontal = 2
+pivot_offset = Vector2(340, 78.5)
+theme = ExtResource("3_7w7l7")
+text = "GLASGOWARE"
+label_settings = SubResource("LabelSettings_7q3kq")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.481995
+offset_top = -12.0
+offset_right = 70.48297
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70.483, 65.5)
+theme_override_constants/separation = 19
+
+[node name="Regular" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_7w7l7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_33qfj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2w1ch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfxbx")
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="Endless" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_7w7l7")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_kclbj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0es6h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvocj")
+text = "ENDLESS mode"
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_7w7l7")
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+metadata/_edit_use_anchors_ = true
