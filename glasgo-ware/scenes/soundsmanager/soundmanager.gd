@@ -9,6 +9,7 @@ func play_voice(sound_name: String):
 	_play(sound_name, true, false)
 
 func play_cheers():
+	SoundManager._play("SuccessBell", false, false)
 	_play("Cheers", true, false)
 
 func play_jeers():

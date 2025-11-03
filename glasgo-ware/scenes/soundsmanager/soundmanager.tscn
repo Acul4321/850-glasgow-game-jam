@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ba7is65xvwud0"]
+[gd_scene load_steps=24 format=3 uid="uid://ba7is65xvwud0"]
 
 [ext_resource type="AudioStream" uid="uid://chfyyda4aawv2" path="res://assets/sounds/songs/can bubble demo.wav" id="1_4wfx6"]
 [ext_resource type="Script" uid="uid://c3p3w6eia16q2" path="res://scenes/soundsmanager/soundmanager.gd" id="1_17ljh"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://bpfl42hhrhyp" path="res://assets/sounds/voices/Track 11.wav" id="20_ojqu8"]
 [ext_resource type="AudioStream" uid="uid://caxhu0cahwg0g" path="res://assets/sounds/voices/Track 12.wav" id="21_vmfya"]
 [ext_resource type="AudioStream" uid="uid://cqfqboy3cfda3" path="res://assets/sounds/voices/Track 13.wav" id="22_t8jcq"]
+[ext_resource type="AudioStream" uid="uid://l68g7neo0a06" path="res://assets/sounds/sfx/success_bell-6776.mp3" id="23_lt20s"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_17ljh")
@@ -33,9 +34,15 @@ stream = ExtResource("6_gwbex")
 volume_db = -8.0
 pitch_scale = 0.7
 
+[node name="SmallVictory" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("1_4wfx6")
+volume_db = 2.0
+pitch_scale = 2.0
+bus = &"Pitch"
+
 [node name="CanBubble" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("1_4wfx6")
-volume_db = -8.0
+volume_db = 2.0
 bus = &"Pitch"
 
 [node name="CanHit" type="AudioStreamPlayer" parent="Songs"]
@@ -126,3 +133,8 @@ volume_db = -12.0
 [node name="Cheers7" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("22_t8jcq")
 volume_db = -12.0
+
+[node name="Node" type="Node" parent="."]
+
+[node name="SuccessBell" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("23_lt20s")

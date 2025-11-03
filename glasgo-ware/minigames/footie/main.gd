@@ -11,7 +11,6 @@ extends Microgame
 @export var is_celtic = randi() % 2 == 0
 
 func _on_game_start() -> void:
-	is_success = true
 	if is_celtic:
 		print("celtic")
 		bg.material.set_shader_parameter("color_field", celtic_field)

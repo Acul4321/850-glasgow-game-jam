@@ -1,16 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvjds68xp3yaf"]
+[gd_scene load_steps=15 format=3 uid="uid://dvjds68xp3yaf"]
 
 [ext_resource type="Script" uid="uid://b6k5gpx16rpsf" path="res://minigames/count_the_beers/main.gd" id="1_rmh22"]
 [ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_1j0nu"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_hddrk"]
-[ext_resource type="Texture2D" uid="uid://3500m78bxuxw" path="res://minigames/count_the_beers/irn_bru.png" id="4_dxe2n"]
+[ext_resource type="Texture2D" uid="uid://banorl33kpevw" path="res://minigames/count_the_beers/beer1.png" id="4_hddrk"]
+[ext_resource type="Texture2D" uid="uid://cnc05wns3guba" path="res://minigames/count_the_beers/beer2.png" id="5_dxe2n"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_eea5v"]
+[ext_resource type="Texture2D" uid="uid://bhxtdj8wsbnvn" path="res://minigames/count_the_beers/beer3.png" id="6_eea5v"]
+[ext_resource type="Theme" uid="uid://dqvyubjurbx6y" path="res://scenes/ui/base_theme.tres" id="8_dxe2n"]
+[ext_resource type="AudioStream" uid="uid://dae06fhijbyor" path="res://minigames/count_the_beers/correct_buzzer.mp3" id="8_u4xue"]
+[ext_resource type="AudioStream" uid="uid://b8x8y2ia5kv05" path="res://minigames/count_the_beers/wrong_buzzer.mp3" id="9_lfubv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
 resource_local_to_scene = true
 shader = ExtResource("3_hddrk")
-shader_parameter/color_field = Color(0.47559118, 0.15734497, 9.62615e-08, 1)
-shader_parameter/color_cross = Color(0.8579591, 0.5954738, 0.4160839, 1)
+shader_parameter/color_field = Color(0.3076929, 0.27130932, 0.19646937, 1)
+shader_parameter/color_cross = Color(0.43578073, 0.38072276, 0.14801523, 1)
 shader_parameter/tiles_x = 6
 shader_parameter/tiles_y = 5
 shader_parameter/cross_half_width = 0.08
@@ -24,7 +29,13 @@ shader_parameter/pixel_size = 4.000000142499999
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_dxe2n")
+"texture": ExtResource("4_hddrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dxe2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eea5v")
 }],
 "loop": true,
 "name": &"default",
@@ -37,21 +48,29 @@ font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_eea5v"]
+font = ExtResource("5_eea5v")
+font_size = 18
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rmh22")
-instruction_input = 3
-instruction_text = "Shake The Can!"
-duration = 5.0
+instruction_input = 1
+instruction_text = "Count the Beers"
+duration = 11.0
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_1j0nu")]
 material = SubResource("ShaderMaterial_tx11l")
 offset_right = 576.0
 offset_bottom = 324.0
 
-[node name="IrnBru" type="AnimatedSprite2D" parent="."]
-position = Vector2(288, 162)
+[node name="Drink" type="AnimatedSprite2D" parent="."]
+position = Vector2(-102, 166)
 scale = Vector2(0.24780378, 0.24780379)
 sprite_frames = SubResource("SpriteFrames_138be")
+frame = 2
+frame_progress = 0.011972798
 
 [node name="BoomLabel" type="Label" parent="."]
 visible = false
@@ -59,3 +78,65 @@ offset_right = 51.0
 offset_bottom = 23.0
 text = "BOOM!"
 label_settings = SubResource("LabelSettings_bcd04")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="CorrectBuzzer" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_u4xue")
+volume_db = -5.0
+
+[node name="WrongBuzzer" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_lfubv")
+volume_db = -5.0
+
+[node name="BottleUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_dxe2n")
+
+[node name="Buttons" type="BoxContainer" parent="BottleUI"]
+layout_mode = 0
+offset_left = 169.5
+offset_top = 140.0
+offset_right = 406.5
+offset_bottom = 274.0
+theme_override_constants/separation = 25
+alignment = 1
+vertical = true
+
+[node name="0" type="Button" parent="BottleUI/Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("8_dxe2n")
+text = "INNIS & GUNS"
+
+[node name="2" type="Button" parent="BottleUI/Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("8_dxe2n")
+text = "BELHAVEN BEST"
+
+[node name="1" type="Button" parent="BottleUI/Buttons"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("8_dxe2n")
+text = "TENNETS"
+
+[node name="Label" type="Label" parent="BottleUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 576.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WHICH BOTTLE SHOWED UP MOST?"
+label_settings = SubResource("LabelSettings_eea5v")
+horizontal_alignment = 1
+vertical_alignment = 1

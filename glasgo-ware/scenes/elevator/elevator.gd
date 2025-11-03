@@ -16,6 +16,33 @@ var round: int = 1
 @onready var WinOrLose: Label = $WinOrLose
 @onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
 
+var minigame_ignorelist := []
+var rng:= RandomNumberGenerator.new()
+var last_index:= -1
+func next_minigame(count: int) -> int:
+	if count <= 1:
+		return 0
+
+	if minigame_ignorelist.is_empty():
+		minigame_ignorelist = range(count)
+		minigame_ignorelist.shuffle()
+
+		if last_index != -1 and minigame_ignorelist[0] == last_index:
+			var swap_i = rng.randi_range(1, minigame_ignorelist.size() - 1)
+			var temp = minigame_ignorelist[0]
+			minigame_ignorelist[0] = minigame_ignorelist[swap_i]
+			minigame_ignorelist[swap_i] = temp
+
+	var index = minigame_ignorelist.pop_back()
+
+	if index == last_index and not minigame_ignorelist.is_empty():
+		var new_index = minigame_ignorelist.pop_back()
+		minigame_ignorelist.append(index)
+		index = new_index
+
+	last_index = index
+	return index
+	
 func _ready() -> void:
 	var minigames: Array[PackedScene] = []
 	var dir := DirAccess.open("res://minigames")
@@ -76,8 +103,9 @@ func _ready() -> void:
 				
 				Engine.time_scale *= 1.25
 				AudioServer.playback_speed_scale *= 1.25
-
-		var minigame := minigames[randi() % minigames.size()].instantiate()
+		
+		var minigame_idx := next_minigame(minigames.size())
+		var minigame := minigames[minigame_idx].instantiate()
 		
 		var inputtype_node: Node2D = INPUTTYPE_SCENE.instantiate()
 		inputtype_node.input_type = minigame.instruction_input
