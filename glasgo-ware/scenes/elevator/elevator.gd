@@ -5,11 +5,12 @@ const INPUTTYPE_SCENE := preload("res://scenes/elevator/inputtype.tscn")
 
 const INSTRUCTION_WAIT := 1.2
 const SPEEDUP_WAIT := 2.5
+const BOSS_WAIT := 3
 
 @export var lives: int = 3
 @export var rounds_per_speedup: int = 5
 
-var round: int = 1
+var round: int = 15
 
 @onready var Door: AnimatedSprite2D = $Door
 @onready var Status: Label = $Status
@@ -88,9 +89,9 @@ func _ready() -> void:
 				SoundManager.play_song("MinigameBoss")
 				var speedup := INSTRUCTION_SCENE.instantiate()
 				speedup.is_boss = true
-				
-				speedup.start("BOSS TIME!", SPEEDUP_WAIT)
-				await Global.wait(SPEEDUP_WAIT)
+				add_child(speedup)
+				speedup.start("BOSS TIME!", BOSS_WAIT)
+				await Global.wait(BOSS_WAIT + 0.2)
 		else:
 			if round % rounds_per_speedup == 0:
 				SoundManager.play_song("MinigameSpeedUp")
@@ -99,7 +100,7 @@ func _ready() -> void:
 				add_child(speedup)
 				
 				speedup.start("SPEED UP!", SPEEDUP_WAIT)
-				await Global.wait(SPEEDUP_WAIT)
+				await Global.wait(SPEEDUP_WAIT + 0.2)
 				
 				Engine.time_scale *= 1.25
 				AudioServer.playback_speed_scale *= 1.25
@@ -179,6 +180,15 @@ func _ready() -> void:
 			SoundManager.play_song("GameOver")
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
+			await Global.wait(4)
+			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
+			break
+		elif round >= 15 and Global.game_type == Constants.GAME_TYPE.REGULAR:
+			Engine.time_scale = 1
+			AudioServer.playback_speed_scale = 1
+			SoundManager.play_song("MinigameWin")
+			WinOrLose.text = "YOU WIN!"
+			WinOrLose.label_settings.font_color = Color(.7,1,.3)
 			await Global.wait(4)
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break

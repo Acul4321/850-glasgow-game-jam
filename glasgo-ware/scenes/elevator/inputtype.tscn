@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dokw6bpr8qxvw"]
+[gd_scene load_steps=7 format=3 uid="uid://dokw6bpr8qxvw"]
 
 [ext_resource type="Texture2D" uid="uid://c4dkokh3wtwxv" path="res://assets/ui/keyboard.png" id="1_dp76c"]
 [ext_resource type="Script" uid="uid://cke1h86ad5qt1" path="res://scenes/elevator/inputtype.gd" id="1_j72rk"]
 [ext_resource type="Texture2D" uid="uid://dirjdwjyydgc3" path="res://assets/ui/mouse.png" id="2_1vcyy"]
 [ext_resource type="Texture2D" uid="uid://duqo2dtf1pi3v" path="res://assets/ui/space.png" id="3_wofx2"]
+[ext_resource type="Texture2D" uid="uid://dxg0kkvuuck8q" path="res://assets/ui/arrowkeys.png" id="4_nui2a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wofx2"]
 animations = [{
@@ -35,10 +36,19 @@ animations = [{
 "loop": true,
 "name": &"3",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nui2a")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
 }]
 
 [node name="InputType" type="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wofx2")
-animation = &"3"
+animation = &"4"
 script = ExtResource("1_j72rk")
+input_type = 4

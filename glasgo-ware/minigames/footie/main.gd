@@ -18,7 +18,6 @@ func _on_game_start() -> void:
 		footballer.play("celtic")
 
 
-	
 func _process(_delta):
 	if is_timer_running:
 		if ball.position.y >= get_viewport().size.y + 50:
