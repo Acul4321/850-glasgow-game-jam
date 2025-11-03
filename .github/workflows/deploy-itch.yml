@@ -18,7 +18,7 @@ jobs:
   export-web:
     permissions:
       contents: write
-    name: Web Export
+    name: Windows Export
     runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.3
@@ -36,7 +36,7 @@ jobs:
           mkdir -v -p build/windows
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Windows" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
+          godot --headless --verbose --export-release "Windows Desktop" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
