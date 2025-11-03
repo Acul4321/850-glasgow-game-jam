@@ -1,18 +1,182 @@
-[gd_scene load_steps=7 format=3 uid="uid://chygjssu373cc"]
+[gd_scene load_steps=29 format=3 uid="uid://chygjssu373cc"]
 
 [ext_resource type="Script" uid="uid://b8m7bp5dxlcb5" path="res://scenes/elevator/elevator.gd" id="1_x8gua"]
 [ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="2_7w7uo"]
-[ext_resource type="Texture2D" uid="uid://c28mtaasqij8l" path="res://assets/game/bomb/doorclosed.png" id="2_21fob"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_8ved2"]
+[ext_resource type="Texture2D" uid="uid://up2xl8ohlo63" path="res://assets/game/dukecone_sheet.png" id="2_21fob"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_flwkg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t22pv"]
+resource_local_to_scene = true
+shader = ExtResource("3_flwkg")
+shader_parameter/color_field = Color(0.011764706, 0.21960784, 0.65882355, 1)
+shader_parameter/color_cross = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hadwe"]
+atlas = ExtResource("2_21fob")
+region = Rect2(0, 972, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ved2"]
+atlas = ExtResource("2_21fob")
+region = Rect2(324, 972, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flwkg"]
+atlas = ExtResource("2_21fob")
+region = Rect2(0, 0, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t22pv"]
+atlas = ExtResource("2_21fob")
+region = Rect2(0, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty58a"]
+atlas = ExtResource("2_21fob")
+region = Rect2(324, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vslji"]
+atlas = ExtResource("2_21fob")
+region = Rect2(648, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2l5g"]
+atlas = ExtResource("2_21fob")
+region = Rect2(972, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx70k"]
+atlas = ExtResource("2_21fob")
+region = Rect2(1296, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dak2t"]
+atlas = ExtResource("2_21fob")
+region = Rect2(1620, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k448n"]
+atlas = ExtResource("2_21fob")
+region = Rect2(1944, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lni73"]
+atlas = ExtResource("2_21fob")
+region = Rect2(2268, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad0rn"]
+atlas = ExtResource("2_21fob")
+region = Rect2(2592, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afpyx"]
+atlas = ExtResource("2_21fob")
+region = Rect2(2916, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfmbb"]
+atlas = ExtResource("2_21fob")
+region = Rect2(3240, 324, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bv7d"]
+atlas = ExtResource("2_21fob")
+region = Rect2(324, 0, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snd85"]
+atlas = ExtResource("2_21fob")
+region = Rect2(648, 0, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwrvp"]
+atlas = ExtResource("2_21fob")
+region = Rect2(972, 0, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m0u3"]
+atlas = ExtResource("2_21fob")
+region = Rect2(1296, 0, 324, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atgsh"]
+atlas = ExtResource("2_21fob")
+region = Rect2(1620, 0, 324, 324)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_21fob"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_21fob")
+"texture": SubResource("AtlasTexture_hadwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ved2")
+}],
+"loop": true,
+"name": &"gameover",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flwkg")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t22pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty58a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vslji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2l5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx70k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dak2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k448n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lni73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad0rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afpyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfmbb")
+}],
+"loop": false,
+"name": &"lose",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flwkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bv7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snd85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwrvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m0u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atgsh")
+}],
+"loop": false,
+"name": &"win",
+"speed": 10.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_21fob"]
@@ -25,6 +189,8 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("2_7w7uo")
 font_size = 32
 font_color = Color(0, 1, 0, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Elevator" type="Control"]
 layout_mode = 3
@@ -37,10 +203,14 @@ pivot_offset = Vector2(576, 324)
 mouse_filter = 2
 script = ExtResource("1_x8gua")
 
-[node name="Door" type="AnimatedSprite2D" parent="."]
-position = Vector2(288, 162)
+[node name="ScottishWater" parent="." instance=ExtResource("2_8ved2")]
+material = SubResource("ShaderMaterial_t22pv")
+layout_mode = 1
+
+[node name="Horse" type="AnimatedSprite2D" parent="."]
+position = Vector2(162, 162)
 sprite_frames = SubResource("SpriteFrames_21fob")
-animation = &"idle"
+animation = &"win"
 
 [node name="Status" type="Label" parent="."]
 layout_mode = 1
@@ -49,13 +219,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -245.0
+offset_left = 32.0
 offset_top = -100.0
-offset_right = 245.0
+offset_right = 276.0
 grow_horizontal = 2
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_21fob")
-horizontal_alignment = 1
 
 [node name="WinOrLose" type="Label" parent="."]
 layout_mode = 1
@@ -66,12 +235,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -247.5
 offset_top = -147.0
-offset_right = 242.5
+offset_right = 252.0
 offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_hadwe")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Hide" type="ColorRect" parent="."]

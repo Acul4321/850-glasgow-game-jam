@@ -14,8 +14,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qoo6k"]
 resource_local_to_scene = true
 shader = ExtResource("2_iwxms")
-shader_parameter/color_field = Color(0.011764706, 0.21960784, 0.65882355, 1)
-shader_parameter/color_cross = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/color_field = Color(0.25780818, 0.20551297, 0.5601158, 1)
+shader_parameter/color_cross = Color(0.12217862, 0.47519636, 0.52295655, 1)
 shader_parameter/tiles_x = 6
 shader_parameter/tiles_y = 5
 shader_parameter/cross_half_width = 0.08
