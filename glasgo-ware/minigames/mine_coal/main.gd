@@ -14,7 +14,9 @@ func _process(_delta):
 	if is_timer_running:
 		coal.material.set_shader_parameter("pixel_size", pixel_size / (pickaxe.hits + 1))
 		
-		if pickaxe.hits >= required_hits:
+		if pickaxe.hits >= required_hits and !is_success:
+				has_already_played_voice = true
+				SoundManager.play_cheers()
 				is_success = true
 				coal.position.y = coal.position.y - 10000
 				

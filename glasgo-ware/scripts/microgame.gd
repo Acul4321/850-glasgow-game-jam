@@ -9,6 +9,7 @@ signal microgame_completed(success: bool)
 @export var timeout_counts_as_win: bool = false
 @export var win_by_default: bool = false
 
+var has_already_played_voice: bool = false
 var is_success: bool = false
 var is_timer_running: bool = false
 

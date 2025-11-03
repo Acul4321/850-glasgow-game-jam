@@ -7,7 +7,7 @@ const INSTRUCTION_WAIT := 1.2
 const SPEEDUP_WAIT := 2.5
 
 @export var lives: int = 3
-@export var rounds_per_speedup: int = 3
+@export var rounds_per_speedup: int = 5
 
 var round: int = 1
 
@@ -41,6 +41,8 @@ func _ready() -> void:
 	
 	Engine.time_scale = 1
 	AudioServer.playback_speed_scale = 1
+	
+	Global.game_started = true
 			
 	while true:
 		Global.timer_update.emit(-1)
@@ -52,17 +54,28 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
-		if round % rounds_per_speedup == 0:
-			SoundManager.play("MinigameSpeedUp")
-			var speedup := INSTRUCTION_SCENE.instantiate()
-			speedup.is_speedup = true
-			add_child(speedup)
-			
-			speedup.start("SPEED UP!", SPEEDUP_WAIT)
-			await Global.wait(SPEEDUP_WAIT)
-			
-			Engine.time_scale *= 1.25
-			AudioServer.playback_speed_scale *= 1.25
+		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 15:
+				Engine.time_scale = 1
+				AudioServer.playback_speed_scale = 1
+				
+				SoundManager.play_song("MinigameBoss")
+				var speedup := INSTRUCTION_SCENE.instantiate()
+				speedup.is_boss = true
+				
+				speedup.start("BOSS TIME!", SPEEDUP_WAIT)
+				await Global.wait(SPEEDUP_WAIT)
+		else:
+			if round % rounds_per_speedup == 0:
+				SoundManager.play_song("MinigameSpeedUp")
+				var speedup := INSTRUCTION_SCENE.instantiate()
+				speedup.is_speedup = true
+				add_child(speedup)
+				
+				speedup.start("SPEED UP!", SPEEDUP_WAIT)
+				await Global.wait(SPEEDUP_WAIT)
+				
+				Engine.time_scale *= 1.25
+				AudioServer.playback_speed_scale *= 1.25
 
 		var minigame := minigames[randi() % minigames.size()].instantiate()
 		
@@ -71,7 +84,7 @@ func _ready() -> void:
 		inputtype_node.position = (get_viewport_rect().size / 2)
 		add_child(inputtype_node)
 		
-		SoundManager.play("NextMinigame")
+		SoundManager.play_song("NextMinigame")
 		await Global.wait(1)
 		
 		var instruction := INSTRUCTION_SCENE.instantiate()
@@ -88,6 +101,7 @@ func _ready() -> void:
 		var shader_name = "Door" #TransitionManager.SHADERS.keys().pick_random()
 		TransitionManager.transition_to(minigame, 0.3, 0.0, false, false, self, shader_name)
 		
+		minigame.duration += 0.3
 		minigame.process_mode = Node.PROCESS_MODE_INHERIT
 		var parent = get_parent()
 		parent.add_child(minigame)
@@ -104,18 +118,23 @@ func _ready() -> void:
 		TransitionManager.transition_to(self, 0.3, 0.0, false, false, minigame, shader_name, true)
 		
 		if result:
-			SoundManager.play("MinigameWin")
+			SoundManager.play_song("MinigameWin")
 		else:
-			SoundManager.play("MinigameLose")
+			SoundManager.play_song("MinigameLose")
 		
 		await Global.wait(0.35)
 		
+		var has_already_played_voice : bool = minigame.has_already_played_voice
 		minigame.queue_free()
 		
 		if result:
+			if !has_already_played_voice:
+				SoundManager.play_voice("Cheers")
 			WinOrLose.text = "ROUND WIN!"
 			WinOrLose.label_settings.font_color = Color(0,1,0)
 		else:
+			if !has_already_played_voice:
+				SoundManager.play_voice("Jeers")
 			WinOrLose.text = "ROUND LOST!"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
 			lives -= 1
@@ -129,9 +148,10 @@ func _ready() -> void:
 		if lives <= 0:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
+			SoundManager.play_song("GameOver")
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
-			await Global.wait(2)
+			await Global.wait(4)
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
 		

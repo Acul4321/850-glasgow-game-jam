@@ -18,7 +18,9 @@ func _unhandled_input(event):
 		press_count += 1
 		increase_shake()
 
-		if press_count >= required_presses:
+		if press_count >= required_presses and !is_success:
+			has_already_played_voice = true
+			SoundManager.play_cheers()
 			is_success = true
 			explode_can()
 

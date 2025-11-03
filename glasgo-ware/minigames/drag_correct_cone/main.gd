@@ -47,10 +47,13 @@ func _on_game_start() -> void:
 									cone.queue_free()
 									head.material.set_shader_parameter("enabled", false)
 									
+									has_already_played_voice = true
 									if cone.name == "TrafficCone":
+										SoundManager.play_cheers()
 										$HorseSmile.play("smile")
 										is_success = true
 									else:
+										SoundManager.play_jeers()
 										$HorseSmile.play("sad")
 										is_success = false
 		)

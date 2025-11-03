@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_4plcw"]
 [ext_resource type="Texture2D" uid="uid://d4bxoa7gv3i10" path="res://minigames/footie/rangers.png" id="5_3xu3w"]
 [ext_resource type="Texture2D" uid="uid://d3uvs1asy87j3" path="res://minigames/footie/celtic.png" id="5_u76kj"]
-[ext_resource type="Script" uid="uid://cnkfn6erhv05k" path="res://minigames/footie/ball.gd" id="7_p1ush"]
+[ext_resource type="Script" path="res://minigames/footie/ball.gd" id="7_p1ush"]
 [ext_resource type="Texture2D" uid="uid://dhqktn10ki1l5" path="res://minigames/footie/boot.png" id="7_wdfmp"]
 [ext_resource type="Texture2D" uid="uid://bsv8dpbnlel0k" path="res://minigames/footie/ball.png" id="8_ja7uu"]
 
@@ -109,10 +109,7 @@ animations = [{
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_p1ush")
-celtic_field = null
-celtic_cross = null
 instruction_text = "Keepy Ups!"
-timeout_counts_as_win = null
 win_by_default = true
 
 [node name="BG" parent="." instance=ExtResource("2_2q3o1")]

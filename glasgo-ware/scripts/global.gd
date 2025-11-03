@@ -1,7 +1,8 @@
 extends Node
 
 signal timer_update
-@export var game_type: Constants.GAME_TYPE
+var game_type: Constants.GAME_TYPE
+var game_started := false
 
 func wait(seconds: float, process_in_pause := false) -> void:
 	await get_tree().create_timer(seconds, process_in_pause).timeout

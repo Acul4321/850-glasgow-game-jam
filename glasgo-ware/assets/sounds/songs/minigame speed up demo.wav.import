@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ct5xlfb6ccbhu"
-path="res://.godot/imported/minigame speed up demo.wav-82b67e2e87df2f01d4a124d303b1104e.sample"
+path="res://.godot/imported/minigame speed up demo.wav-db63ebe6b82baf98d5ef96be46515b95.sample"
 
 [deps]
 
-source_file="res://assets/sounds/minigame speed up demo.wav"
-dest_files=["res://.godot/imported/minigame speed up demo.wav-82b67e2e87df2f01d4a124d303b1104e.sample"]
+source_file="res://assets/sounds/songs/minigame speed up demo.wav"
+dest_files=["res://.godot/imported/minigame speed up demo.wav-db63ebe6b82baf98d5ef96be46515b95.sample"]
 
 [params]
 

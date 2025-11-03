@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dp3btjwnnj5f4"
-path="res://.godot/imported/next minigame demo.wav-80bb99ca522f5356a21155ba262e9c64.sample"
+path="res://.godot/imported/next minigame demo.wav-20f810334657b50b90b6bd801934bb60.sample"
 
 [deps]
 
-source_file="res://assets/sounds/next minigame demo.wav"
-dest_files=["res://.godot/imported/next minigame demo.wav-80bb99ca522f5356a21155ba262e9c64.sample"]
+source_file="res://assets/sounds/songs/next minigame demo.wav"
+dest_files=["res://.godot/imported/next minigame demo.wav-20f810334657b50b90b6bd801934bb60.sample"]
 
 [params]
 

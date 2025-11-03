@@ -11,7 +11,7 @@ extends Microgame
 @export var is_celtic = randi() % 2 == 0
 
 func _on_game_start() -> void:
-
+	is_success = true
 	if is_celtic:
 		print("celtic")
 		bg.material.set_shader_parameter("color_field", celtic_field)
@@ -22,7 +22,7 @@ func _on_game_start() -> void:
 	
 func _process(_delta):
 	if is_timer_running:
-		if ball.position.y >= get_viewport().size.y - 300:
+		if ball.position.y >= get_viewport().size.y + 50:
 			is_success = false
 
 
