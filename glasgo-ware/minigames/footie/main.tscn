@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8jls56jygh5n"]
+[gd_scene load_steps=18 format=3 uid="uid://b8jls56jygh5n"]
 
 [ext_resource type="Script" uid="uid://cxxk85rs3i4jc" path="res://minigames/footie/main.gd" id="1_p1ush"]
 [ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_2q3o1"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_4plcw"]
 [ext_resource type="Texture2D" uid="uid://d4bxoa7gv3i10" path="res://minigames/footie/rangers.png" id="5_3xu3w"]
 [ext_resource type="Texture2D" uid="uid://d3uvs1asy87j3" path="res://minigames/footie/celtic.png" id="5_u76kj"]
-[ext_resource type="Script" path="res://minigames/footie/ball.gd" id="7_p1ush"]
+[ext_resource type="Script" uid="uid://cnkfn6erhv05k" path="res://minigames/footie/ball.gd" id="7_p1ush"]
 [ext_resource type="Texture2D" uid="uid://dhqktn10ki1l5" path="res://minigames/footie/boot.png" id="7_wdfmp"]
 [ext_resource type="Texture2D" uid="uid://bsv8dpbnlel0k" path="res://minigames/footie/ball.png" id="8_ja7uu"]
 
@@ -92,6 +92,7 @@ radius = 13.125
 height = 26.25
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u480o"]
+bounce = 0.75
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yjjx"]
 radius = 54.00929
@@ -106,6 +107,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1ush"]
+size = Vector2(24, 300)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_p1ush")
@@ -128,6 +132,7 @@ animation = &"rangers"
 
 [node name="Boot" type="CharacterBody2D" parent="."]
 position = Vector2(267, 215)
+scale = Vector2(0.8008578, 0.8008578)
 script = SubResource("GDScript_4plcw")
 locked_y_position = 225.0
 
@@ -143,6 +148,7 @@ shape = SubResource("CapsuleShape2D_4plcw")
 
 [node name="Ball" type="RigidBody2D" parent="."]
 position = Vector2(257.99997, 35.999996)
+scale = Vector2(0.7599997, 0.7599997)
 disable_mode = 2
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_u480o")
@@ -158,5 +164,15 @@ shape = SubResource("CircleShape2D_6yjjx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ball"]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_4ngqs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12, 150)
+shape = SubResource("RectangleShape2D_p1ush")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(564, 149)
+shape = SubResource("RectangleShape2D_p1ush")
 
 [connection signal="body_entered" from="Ball" to="." method="_on_ball_body_entered"]
