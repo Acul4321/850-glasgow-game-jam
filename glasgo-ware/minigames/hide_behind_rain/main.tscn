@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dei8li2jybpju" path="res://minigames/hide_behind_rain/umbrella.png" id="6_regl5"]
 [ext_resource type="Texture2D" uid="uid://bfsrb7ajw5csi" path="res://minigames/hide_behind_rain/Cloud-PNG-8.webp" id="6_wfa2y"]
 [ext_resource type="Texture2D" uid="uid://bm83dnpistrhg" path="res://minigames/hide_behind_rain/terrier.png" id="7_regl5"]
-[ext_resource type="Script" uid="uid://teh0wcbsyw37" path="res://minigames/hide_behind_rain/blud.gd" id="8_dw35y"]
+[ext_resource type="Script" path="res://minigames/hide_behind_rain/blud.gd" id="8_dw35y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
 resource_local_to_scene = true

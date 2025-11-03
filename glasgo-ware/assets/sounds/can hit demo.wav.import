@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://corfqem77m1jx"
+path="res://.godot/imported/can hit demo.wav-3aec064ce541390bef5b71142f15f35d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/can hit demo.wav"
+dest_files=["res://.godot/imported/can hit demo.wav-3aec064ce541390bef5b71142f15f35d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

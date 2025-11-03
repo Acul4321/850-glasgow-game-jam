@@ -21,6 +21,7 @@ Constants="*res://scripts/constants.gd"
 Global="*res://scripts/global.gd"
 Settings="*res://scripts/settings.gd"
 TransitionManager="*res://scenes/transition/transition_manager.tscn"
+SoundManager="*res://scenes/soundsmanager/soundmanager.tscn"
 GameUI="*res://scenes/ui/gameui.tscn"
 
 [display]

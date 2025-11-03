@@ -4,9 +4,12 @@ const INSTRUCTION_SCENE := preload("res://scenes/elevator/instruction.tscn")
 const INPUTTYPE_SCENE := preload("res://scenes/elevator/inputtype.tscn")
 
 const INSTRUCTION_WAIT := 1.2
+const SPEEDUP_WAIT := 2.5
+
+@export var lives: int = 3
+@export var rounds_per_speedup: int = 3
 
 var round: int = 1
-@export var lives: int = 3
 
 @onready var Door: AnimatedSprite2D = $Door
 @onready var Status: Label = $Status
@@ -36,6 +39,9 @@ func _ready() -> void:
 		hide.queue_free()
 	hide = null
 	
+	Engine.time_scale = 1
+	AudioServer.playback_speed_scale = 1
+			
 	while true:
 		Global.timer_update.emit(-1)
 		Door.animation = "idle"
@@ -46,6 +52,18 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
+		if round % rounds_per_speedup == 0:
+			SoundManager.play("MinigameSpeedUp")
+			var speedup := INSTRUCTION_SCENE.instantiate()
+			speedup.is_speedup = true
+			add_child(speedup)
+			
+			speedup.start("SPEED UP!", SPEEDUP_WAIT)
+			await Global.wait(SPEEDUP_WAIT)
+			
+			Engine.time_scale *= 1.25
+			AudioServer.playback_speed_scale *= 1.25
+
 		var minigame := minigames[randi() % minigames.size()].instantiate()
 		
 		var inputtype_node: Node2D = INPUTTYPE_SCENE.instantiate()
@@ -53,6 +71,7 @@ func _ready() -> void:
 		inputtype_node.position = (get_viewport_rect().size / 2)
 		add_child(inputtype_node)
 		
+		SoundManager.play("NextMinigame")
 		await Global.wait(1)
 		
 		var instruction := INSTRUCTION_SCENE.instantiate()
@@ -66,7 +85,7 @@ func _ready() -> void:
 		var tween_2 := create_tween()
 		tween_2.tween_property(Door, "scale", Vector2(3, 3), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		
-		var shader_name = "Door"#TransitionManager.SHADERS.keys().pick_random()
+		var shader_name = "Door" #TransitionManager.SHADERS.keys().pick_random()
 		TransitionManager.transition_to(minigame, 0.3, 0.0, false, false, self, shader_name)
 		
 		minigame.process_mode = Node.PROCESS_MODE_INHERIT
@@ -83,6 +102,12 @@ func _ready() -> void:
 		tween_1.tween_property(Door, "scale", Vector2(1, 1), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween_1.parallel().tween_callback(func(): Door.animation = "idle").set_delay(0.3)
 		TransitionManager.transition_to(self, 0.3, 0.0, false, false, minigame, shader_name, true)
+		
+		if result:
+			SoundManager.play("MinigameWin")
+		else:
+			SoundManager.play("MinigameLose")
+		
 		await Global.wait(0.35)
 		
 		minigame.queue_free()
@@ -103,7 +128,7 @@ func _ready() -> void:
 		
 		if lives <= 0:
 			Engine.time_scale = 1
-			PitchEffect.pitch_scale = 1
+			AudioServer.playback_speed_scale = 1
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
 			await Global.wait(2)

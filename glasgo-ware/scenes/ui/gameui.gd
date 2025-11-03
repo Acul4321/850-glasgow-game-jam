@@ -1,6 +1,10 @@
 extends CanvasLayer
 
 @onready var bomb_sprite: AnimatedSprite2D = $Bomb
+@onready var paused_ui := $Paused
+@onready var paused_text := $Paused/Label
+
+var pause_debounce := false
 
 func _ready() -> void:
 	get_tree().node_added.connect(_on_node_added)
@@ -30,4 +34,22 @@ func _refresh() -> void:
 		visible = false
 	else:
 		visible = true
+		
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if pause_debounce:
+			return
+		pause_debounce = true
+		_set_paused(not get_tree().paused)
+		pause_debounce = false
+		
+func _set_paused(p: bool) -> void:
+	if not p:
+		for i in range(3,-1,-1):
+			paused_text.text = "GO!" if i == 0 else str(i)
+			await Global.wait(0.5, true)
+	else:
+		paused_text.text = "PAUSED"
+	paused_ui.visible = p
+	get_tree().paused = p
 	

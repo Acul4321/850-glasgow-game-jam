@@ -9,7 +9,7 @@ var settings_scene: PackedScene = preload("res://scenes/titlescreen/settingspage
 @onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
 
 func _ready():
-	Engine.time_scale = 1
+	AudioServer.playback_speed_scale = 1
 	PitchEffect.pitch_scale = 1
 	regular_button.pressed.connect(_regular_play_button)
 	endless_button.pressed.connect(_endless_play_button)

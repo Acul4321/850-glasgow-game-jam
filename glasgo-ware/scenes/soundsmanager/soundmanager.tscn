@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://ba7is65xvwud0"]
+
+[ext_resource type="AudioStream" uid="uid://chfyyda4aawv2" path="res://assets/sounds/can bubble demo.wav" id="1_4wfx6"]
+[ext_resource type="Script" uid="uid://c3p3w6eia16q2" path="res://scenes/soundsmanager/soundmanager.gd" id="1_17ljh"]
+[ext_resource type="AudioStream" uid="uid://corfqem77m1jx" path="res://assets/sounds/can hit demo.wav" id="2_17ljh"]
+[ext_resource type="AudioStream" uid="uid://ba6npsmd5htjc" path="res://assets/sounds/can open demo.wav" id="3_f1kb7"]
+[ext_resource type="AudioStream" uid="uid://dssn6hdumj542" path="res://assets/sounds/game over demo.wav" id="4_5qap7"]
+[ext_resource type="AudioStream" uid="uid://flkgao7630ki" path="res://assets/sounds/minigame lose demo.wav" id="5_3hjhw"]
+[ext_resource type="AudioStream" uid="uid://ct5xlfb6ccbhu" path="res://assets/sounds/minigame speed up demo.wav" id="6_gwbex"]
+[ext_resource type="AudioStream" uid="uid://2j4cf123q0k4" path="res://assets/sounds/minigame win demo.wav" id="7_ecu6g"]
+[ext_resource type="AudioStream" uid="uid://dp3btjwnnj5f4" path="res://assets/sounds/next minigame demo.wav" id="8_qgyjk"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_17ljh")
+
+[node name="CanBubble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4wfx6")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="CanHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_17ljh")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="CanOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f1kb7")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5qap7")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="MinigameLose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3hjhw")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="MinigameSpeedUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gwbex")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="MinigameWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ecu6g")
+volume_db = -5.0
+bus = &"Pitch"
+
+[node name="NextMinigame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qgyjk")
+volume_db = -5.0
+bus = &"Pitch"

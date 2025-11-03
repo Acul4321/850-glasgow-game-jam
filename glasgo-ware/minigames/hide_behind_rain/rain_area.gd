@@ -6,8 +6,8 @@ extends ReferenceRect
 var RainDrop := preload("res://minigames/hide_behind_rain/raindrop.tscn")
 var RNG := RandomNumberGenerator.new()
 
-const TIME_PER_RAINDROP := 0.03
-var time_delta := 0.0
+const TIME_PER_RAINDROP := 0.06
+var time_delta := -1.0
 
 func _ready() -> void:
 	pass

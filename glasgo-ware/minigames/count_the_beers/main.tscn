@@ -1,14 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdgau6w458by5"]
+[gd_scene load_steps=9 format=3 uid="uid://dvjds68xp3yaf"]
 
-[ext_resource type="Texture2D" uid="uid://7i5budylt6lv" path="res://minigames/shake_can_test/irn_bru.png" id="1_2psaw"]
-[ext_resource type="Script" uid="uid://jgtrrx66sop7" path="res://minigames/shake_can_test/main.gd" id="1_bcd04"]
-[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_ffra6"]
-[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_gs73v"]
-[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_gs73v"]
+[ext_resource type="Script" uid="uid://b6k5gpx16rpsf" path="res://minigames/count_the_beers/main.gd" id="1_rmh22"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_1j0nu"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_hddrk"]
+[ext_resource type="Texture2D" uid="uid://3500m78bxuxw" path="res://minigames/count_the_beers/irn_bru.png" id="4_dxe2n"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_eea5v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tx11l"]
 resource_local_to_scene = true
-shader = ExtResource("3_gs73v")
+shader = ExtResource("3_hddrk")
 shader_parameter/color_field = Color(0.47559118, 0.15734497, 9.62615e-08, 1)
 shader_parameter/color_cross = Color(0.8579591, 0.5954738, 0.4160839, 1)
 shader_parameter/tiles_x = 6
@@ -24,7 +24,7 @@ shader_parameter/pixel_size = 4.000000142499999
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2psaw")
+"texture": ExtResource("4_dxe2n")
 }],
 "loop": true,
 "name": &"default",
@@ -32,18 +32,18 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
-font = ExtResource("5_gs73v")
+font = ExtResource("5_eea5v")
 font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_bcd04")
+script = ExtResource("1_rmh22")
 instruction_input = 3
 instruction_text = "Shake The Can!"
-duration = 8.0
+duration = 5.0
 
-[node name="ScottishWater" parent="." instance=ExtResource("2_ffra6")]
+[node name="ScottishWater" parent="." instance=ExtResource("2_1j0nu")]
 material = SubResource("ShaderMaterial_tx11l")
 offset_right = 576.0
 offset_bottom = 324.0

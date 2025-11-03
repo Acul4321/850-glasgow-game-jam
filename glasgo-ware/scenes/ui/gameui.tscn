@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr8yryef5op4m"]
+[gd_scene load_steps=13 format=3 uid="uid://dr8yryef5op4m"]
 
 [ext_resource type="Script" uid="uid://wo6okcmlk6oa" path="res://scenes/ui/gameui.gd" id="1_33h1x"]
 [ext_resource type="Texture2D" uid="uid://deh8th5kuxwcq" path="res://assets/ui/border.png" id="1_txfg7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpssvxl72dsqx" path="res://assets/game/bomb/2.png" id="5_mxm7y"]
 [ext_resource type="Texture2D" uid="uid://dppibp5i0207e" path="res://assets/game/bomb/3.png" id="6_qvtsn"]
 [ext_resource type="Texture2D" uid="uid://cs8w4rhmvsfuq" path="res://assets/game/bomb/4.png" id="7_wwdku"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="10_mxm7y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4li0"]
 animations = [{
@@ -69,6 +70,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_qvtsn"]
+font = ExtResource("10_mxm7y")
+font_size = 20
+
 [node name="GameUI" type="CanvasLayer"]
 process_mode = 3
 layer = 100
@@ -87,3 +92,24 @@ texture = ExtResource("1_txfg7")
 position = Vector2(185, 281)
 sprite_frames = SubResource("SpriteFrames_t4li0")
 animation = &"-1"
+
+[node name="Paused" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0.7529412)
+
+[node name="Label" type="Label" parent="Paused"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_qvtsn")
+horizontal_alignment = 1
+vertical_alignment = 1
