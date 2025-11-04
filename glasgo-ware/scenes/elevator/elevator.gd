@@ -21,33 +21,52 @@ const max_round: int = 12
 var minigame_boss_ignorelist := []
 var minigame_ignorelist := []
 var rng:= RandomNumberGenerator.new()
-var last_index:= -1
+var last_index_normal := -1
+var last_index_boss := -1
 
-func next_minigame(count: int, ignore_list) -> int:
+func next_minigame(count: int, list: Array, is_boss: bool = false) -> int:
 	if count <= 1:
+		if is_boss:
+			last_index_boss = 0
+		else:
+			last_index_normal = 0
 		return 0
+		
+	var last_index_ref = last_index_boss if is_boss else last_index_normal
 
-	if ignore_list.is_empty():
-		ignore_list = range(count)
-		ignore_list.shuffle()
+	if list.is_empty():
+		list.resize(count)
+		for i in count:
+			list[i] = i
+	
+		for i in range(list.size() - 1, -1, 1):
+			var j = rng.randi_range(0, i)
+			var tmp = list[i]
+			list[i] = list[j]
+			list[j] = tmp
 
-		if last_index != -1 and ignore_list[0] == last_index:
-			var swap_i = rng.randi_range(1, ignore_list.size() - 1)
-			var temp = ignore_list[0]
-			ignore_list[0] = ignore_list[swap_i]
-			ignore_list[swap_i] = temp
+		if last_index_ref != -1 and list[0] == last_index_ref and list.size() > 1:
+			var k = rng.randi_range(1, list.size() - 1)
+			var t = list[0]
+			list[0] = list[k]
+			list[k] = t
 
-	var index = ignore_list.pop_back()
+	var index = list.pop_back()
 
-	if index == last_index and not ignore_list.is_empty():
-		var new_index = ignore_list.pop_back()
-		ignore_list.append(index)
+	if index == last_index_ref and not list.is_empty():
+		var new_index = list.pop_back()
+		list.append(index)
 		index = new_index
 
-	last_index = index
+	if is_boss:
+		last_index_boss = index
+	else:
+		last_index_normal = index
 	return index
-	
+
+
 func _ready() -> void:
+	rng.randomize()
 	var minigames: Array[PackedScene] = []
 	var minigames_boss: Array[PackedScene] = []
 	var dir1 := DirAccess.open("res://minigames")
