@@ -20,7 +20,7 @@ func _build_defaults() -> void:
 	page.hide()
 	for cat in page.get_children():
 		for n in cat.get_children():
-			if n is BaseButton and n.toggle_mode:
+			if n is CheckButton and n.toggle_mode:
 				_place(defaults, cat.name, n.name, n.button_pressed)
 					
 	page.queue_free()
@@ -59,13 +59,13 @@ func apply_to_page(root: Control) -> void:
 	for cat in root.get_children():
 		for n in cat.get_children():
 			var v = get_value(cat.name, n.name)
-			if n is BaseButton and n.toggle_mode:
+			if n is CheckButton and n.toggle_mode:
 				if v != null: n.button_pressed = bool(v)
 	
 func pull_from_page(root: Control) -> void:
 	for cat in root.get_children():
 		for n in cat.get_children():
-			if n is BaseButton and n.toggle_mode:
+			if n is CheckButton and n.toggle_mode:
 				set_value(cat.name, n.name, n.button_pressed)
 	
 func _place(target: Dictionary, cat: String, key: String, val) -> void:

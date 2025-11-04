@@ -8,9 +8,9 @@ const SPEEDUP_WAIT := 2.5
 const BOSS_WAIT := 3
 
 @export var lives: int = 3
-@export var rounds_per_speedup: int = 3
-
-var round: int = 11
+@export var rounds_per_speedup: int = 4
+@warning_ignore("shadowed_global_identifier")
+var round: int = 1
 const max_round: int = 12
 
 @onready var Horse: AnimatedSprite2D = $Horse
@@ -53,6 +53,7 @@ func _ready() -> void:
 	var dir1 := DirAccess.open("res://minigames")
 	var dir2 := DirAccess.open("res://minigames_boss")
 	
+	@warning_ignore("shadowed_variable_base_class")
 	var hide = get_node_or_null("Hide")
 	if hide:
 		hide.visible = true
@@ -92,7 +93,7 @@ func _ready() -> void:
 		var round_text = str(round)
 		if Global.game_type == Constants.GAME_TYPE.REGULAR:
 			round_text += "/" + str(max_round)
-		Status.text = "Round: " + round_text + "\nLives: " + "O".repeat(lives)
+		Status.text = "Round: " + round_text + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
 		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= max_round:
@@ -198,10 +199,12 @@ func _ready() -> void:
 		round_text = str(round)
 		if Global.game_type == Constants.GAME_TYPE.REGULAR:
 			round_text += "/" + str(max_round)
-		Status.text = "Round: " + round_text + "\nLives: " + "O".repeat(lives)
+		Status.text = "Round: " + round_text + "\nLives: " + "X".repeat(lives)
 		Status.visible = true
 		
 		await Global.wait(1.5)
+		
+		EndlessSave._save_endless_round(round)
 		
 		if lives <= 0:
 			Engine.time_scale = 1

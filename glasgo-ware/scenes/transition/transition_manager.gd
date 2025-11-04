@@ -8,6 +8,7 @@ const SHADERS := {
 	Scotland = preload("res://shaders/transition_scotland.gdshader"),
 }
 
+var transition_fade = preload("res://shaders/transition_fade.gdshader")
 var mat: ShaderMaterial
 
 @onready var container: SubViewportContainer = $SubViewportContainer
@@ -44,6 +45,9 @@ func transition_to(
 	
 	var new_shader: Shader = SHADERS[preferred_shader_name if preferred_shader_name else SHADERS.keys().pick_random()]
 
+	if Settings.get_value("controls", "disable_transitions"):
+		new_shader = transition_fade
+	
 	if transition_rect.material == null:
 		transition_rect.material = ShaderMaterial.new()
 

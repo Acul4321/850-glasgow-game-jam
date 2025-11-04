@@ -202,6 +202,8 @@ grow_vertical = 2
 pivot_offset = Vector2(576, 324)
 mouse_filter = 2
 script = ExtResource("1_x8gua")
+lives = null
+rounds_per_speedup = null
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_8ved2")]
 material = SubResource("ShaderMaterial_t22pv")

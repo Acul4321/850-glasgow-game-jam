@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://svrc040bbpki"]
+[gd_scene load_steps=15 format=3 uid="uid://svrc040bbpki"]
 
 [ext_resource type="Script" uid="uid://bxvrdc0a5xbmj" path="res://scenes/titlescreen/titlescreen.gd" id="1_goq6b"]
 [ext_resource type="Shader" uid="uid://c23xkg12oq5v1" path="res://scenes/titlescreen/pixelator.gdshader" id="2_33qfj"]
@@ -112,6 +112,12 @@ expand_margin_top = 8.0
 expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_33qfj"]
+font = ExtResource("2_kkxvh")
+font_size = 12
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
 [node name="MainMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -196,3 +202,12 @@ theme = ExtResource("3_7w7l7")
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 metadata/_edit_use_anchors_ = true
+
+[node name="Endless" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 270.0
+offset_right = 575.0
+offset_bottom = 321.0
+label_settings = SubResource("LabelSettings_33qfj")
+vertical_alignment = 2

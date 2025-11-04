@@ -9,6 +9,10 @@ var settings_scene: PackedScene = preload("res://scenes/titlescreen/settingspage
 @onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
 
 func _ready():
+	var round = EndlessSave._load_endless_round()
+	if round and round > 0:
+		$Endless.text = "ENDLESS HIGH SCORE: " + str(round)
+	
 	Global.game_started = false
 	AudioServer.playback_speed_scale = 1
 	PitchEffect.pitch_scale = 1
@@ -36,6 +40,10 @@ func _settings_spawn():
 	add_child(active_settings_scene)
 
 func _disable_buttons(disable: bool = true):
+	var round = EndlessSave._load_endless_round()
+	if round and round > 0:
+		$Endless.text = "ENDLESS HIGH SCORE: " + str(round)
+		
 	for b in buttons.get_children():
 		if b is Button:
 			b.disabled = disable

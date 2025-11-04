@@ -23,6 +23,7 @@ Settings="*res://scripts/settings.gd"
 TransitionManager="*res://scenes/transition/transition_manager.tscn"
 SoundManager="*res://scenes/soundsmanager/soundmanager.tscn"
 GameUI="*res://scenes/ui/gameui.tscn"
+EndlessSave="*res://scripts/endless_save.gd"
 
 [display]
 

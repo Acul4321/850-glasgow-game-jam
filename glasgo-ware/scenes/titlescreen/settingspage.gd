@@ -13,3 +13,9 @@ func _ready() -> void:
 		closed.emit()
 		queue_free()
 	)
+	
+	$Settings/controls/reset_endless_score.pressed.connect(func():
+		var save_path := "user://endless.cfg"
+		if FileAccess.file_exists(save_path):
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(save_path))
+	)
