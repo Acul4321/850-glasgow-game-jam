@@ -113,19 +113,19 @@ vertical = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("8_dxe2n")
-text = "INNIS & GUNS"
+text = "INNIS & GUNN"
 
 [node name="2" type="Button" parent="BottleUI/Buttons"]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("8_dxe2n")
-text = "BELHAVEN BEST"
+text = "BELLHAVEN BEST"
 
 [node name="1" type="Button" parent="BottleUI/Buttons"]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("8_dxe2n")
-text = "TENNETS"
+text = "TENNENTS"
 
 [node name="Label" type="Label" parent="BottleUI"]
 layout_mode = 1
