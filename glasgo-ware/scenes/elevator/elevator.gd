@@ -68,7 +68,7 @@ func _ready() -> void:
 		var path := "res://minigames_boss/" + subdir_name + "/main.tscn"
 		if ResourceLoader.exists(path):
 			minigames_boss.append(load(path))
-			print("Loaded minigame:", path)
+			print("Loaded minigame boss:", path)
 		
 	await Global.forever_wait_if_paused(self)
 	
