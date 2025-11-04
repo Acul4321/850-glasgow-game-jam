@@ -25,7 +25,7 @@ shader_parameter/wave_speed = 0.5830000276925
 shader_parameter/pixel_size = 4.000000142499999
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0npd3"]
-radius = 639.92
+radius = 146.18106
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_djlot"]
 shader = ExtResource("9_ek0kp")
@@ -40,7 +40,7 @@ script = ExtResource("1_uwpbo")
 statueSprite = Array[CompressedTexture2D]([ExtResource("2_gtwn6"), ExtResource("3_ek0kp"), ExtResource("4_djlot")])
 instruction_input = 1
 instruction_text = "Find The DUKE!"
-duration = 10.0
+duration = 20.0
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_5seao")]
 material = SubResource("ShaderMaterial_2qml6")
