@@ -17,6 +17,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position = get_viewport().get_mouse_position()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if(!$"../Coal".texture):
+		inside = false
+	if(event is InputEventMouseButton && $"../Coal".texture):
+		audio_stream_player.stream = mine_sound
+		audio_stream_player.play()
+		hits += 1
+
 
 func _pickaxe_hit(area: Area2D) -> void:
 	audio_stream_player.stream = mine_sound

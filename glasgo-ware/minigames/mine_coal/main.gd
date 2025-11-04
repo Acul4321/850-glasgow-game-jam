@@ -2,7 +2,7 @@ extends Microgame
 
 @onready var pickaxe: AnimatedSprite2D = $Pickaxe
 @onready var coal: TextureRect = $Coal
-@onready var required_hits := 5
+@onready var required_hits := 10
 
 var pixel_size = 64
 
@@ -18,6 +18,6 @@ func _process(_delta):
 				has_already_played_voice = true
 				SoundManager.play_cheers()
 				is_success = true
-				coal.position.y = coal.position.y - 10000
+				coal.texture = null
 				
 		

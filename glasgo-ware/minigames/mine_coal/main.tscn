@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8jls56jygh5n"]
 
 [ext_resource type="Script" uid="uid://kfn661hgsjcw" path="res://minigames/mine_coal/main.gd" id="1_qsl5n"]
-[ext_resource type="Shader" path="res://shaders/flag_dupe.gdshader" id="2_i0kkh"]
+[ext_resource type="Shader" uid="uid://c4s88lu62xlve" path="res://shaders/flag_dupe.gdshader" id="2_i0kkh"]
 [ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_krw02"]
 [ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_ex2bo"]
 [ext_resource type="Texture2D" uid="uid://dy1nwmng0w8g7" path="res://minigames/mine_coal/pickaxe.png" id="4_bcaes"]
