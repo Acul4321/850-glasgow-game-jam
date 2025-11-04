@@ -8,7 +8,7 @@ const SPEEDUP_WAIT := 2.5
 const BOSS_WAIT := 3
 
 @export var lives: int = 3
-@export var rounds_per_speedup: int = 5
+@export var rounds_per_speedup: int = 4
 
 var round: int = 1
 
@@ -81,10 +81,11 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + "♥".repeat(lives)
 		Status.visible = true
 		
-		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 15:
+		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 10:
 				Engine.time_scale = 1
 				AudioServer.playback_speed_scale = 1
 				
+				SoundManager.play_voice("BossTime")
 				SoundManager.play_song("MinigameBoss")
 				var speedup := INSTRUCTION_SCENE.instantiate()
 				speedup.is_boss = true
@@ -93,6 +94,7 @@ func _ready() -> void:
 				await Global.wait(BOSS_WAIT + 0.2)
 		else:
 			if round % rounds_per_speedup == 0:
+				SoundManager.play_voice("SpeedUp")
 				SoundManager.play_song("MinigameSpeedUp")
 				var speedup := INSTRUCTION_SCENE.instantiate()
 				speedup.is_speedup = true
@@ -176,7 +178,7 @@ func _ready() -> void:
 		if lives <= 0:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
-			SoundManager.play_voice("Jeers")
+			SoundManager.play_voice("GameOver")
 			SoundManager.play_song("GameOver")
 			Horse.play("gameover")
 			WinOrLose.text = "GAME OVER"
@@ -189,11 +191,11 @@ func _ready() -> void:
 				await tw.finished
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
-		elif round >= 15 and Global.game_type == Constants.GAME_TYPE.REGULAR:
+		elif round >= 10 and Global.game_type == Constants.GAME_TYPE.REGULAR:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
-			SoundManager.play_voice("Cheers")
-			SoundManager.play_song("MinigameWin")
+			SoundManager.play_voice("Victory")
+			SoundManager.play_song("MinigameVictory")
 			Horse.play("win")
 			WinOrLose.text = "YOU WIN!"
 			WinOrLose.label_settings.font_color = Color(.7,1,.3)

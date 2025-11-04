@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7o7ai6auhkgx"
+path="res://.godot/imported/boss time sound.mp3-6b56e47da49606b43e239df7c06db35b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/songs/boss time sound.mp3"
+dest_files=["res://.godot/imported/boss time sound.mp3-6b56e47da49606b43e239df7c06db35b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

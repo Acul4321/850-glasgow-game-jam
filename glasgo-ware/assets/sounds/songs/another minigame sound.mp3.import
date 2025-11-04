@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6mojj2ucgqlt"
+path="res://.godot/imported/another minigame sound.mp3-4d9797ccc355a60677a7b8066430f4e3.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/songs/another minigame sound.mp3"
+dest_files=["res://.godot/imported/another minigame sound.mp3-4d9797ccc355a60677a7b8066430f4e3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://x0mh8mhhkabr"
+path="res://.godot/imported/minigame loss sound.mp3-f566b47a987c4c9a2041404dce31e32b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/songs/minigame loss sound.mp3"
+dest_files=["res://.godot/imported/minigame loss sound.mp3-f566b47a987c4c9a2041404dce31e32b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

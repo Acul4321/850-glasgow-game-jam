@@ -1,25 +1,37 @@
-[gd_scene load_steps=24 format=3 uid="uid://ba7is65xvwud0"]
+[gd_scene load_steps=36 format=3 uid="uid://ba7is65xvwud0"]
 
 [ext_resource type="AudioStream" uid="uid://chfyyda4aawv2" path="res://assets/sounds/songs/can bubble demo.wav" id="1_4wfx6"]
 [ext_resource type="Script" uid="uid://c3p3w6eia16q2" path="res://scenes/soundsmanager/soundmanager.gd" id="1_17ljh"]
+[ext_resource type="AudioStream" uid="uid://7o7ai6auhkgx" path="res://assets/sounds/songs/boss time sound.mp3" id="2_5u8dk"]
 [ext_resource type="AudioStream" uid="uid://corfqem77m1jx" path="res://assets/sounds/songs/can hit demo.wav" id="2_17ljh"]
 [ext_resource type="AudioStream" uid="uid://ba6npsmd5htjc" path="res://assets/sounds/songs/can open demo.wav" id="3_f1kb7"]
-[ext_resource type="AudioStream" uid="uid://dssn6hdumj542" path="res://assets/sounds/songs/game over demo.wav" id="4_5qap7"]
-[ext_resource type="AudioStream" uid="uid://flkgao7630ki" path="res://assets/sounds/songs/minigame lose demo.wav" id="5_3hjhw"]
-[ext_resource type="AudioStream" uid="uid://ct5xlfb6ccbhu" path="res://assets/sounds/songs/minigame speed up demo.wav" id="6_gwbex"]
-[ext_resource type="AudioStream" uid="uid://2j4cf123q0k4" path="res://assets/sounds/songs/minigame win demo.wav" id="7_ecu6g"]
-[ext_resource type="AudioStream" uid="uid://dp3btjwnnj5f4" path="res://assets/sounds/songs/next minigame demo.wav" id="8_qgyjk"]
+[ext_resource type="AudioStream" uid="uid://1jsn0rir58jf" path="res://assets/sounds/songs/game over sound.mp3" id="6_5u8dk"]
+[ext_resource type="AudioStream" uid="uid://x0mh8mhhkabr" path="res://assets/sounds/songs/minigame loss sound.mp3" id="7_6wyci"]
+[ext_resource type="AudioStream" uid="uid://mak0p3pfbupw" path="res://assets/sounds/songs/speed up sound.mp3" id="8_voisu"]
+[ext_resource type="AudioStream" uid="uid://bodvhtxe0pxim" path="res://assets/sounds/songs/you've won sound.mp3" id="9_6wyci"]
 [ext_resource type="AudioStream" uid="uid://blqd0jwtftw6j" path="res://assets/sounds/voices/Track 1.wav" id="10_daq21"]
+[ext_resource type="AudioStream" uid="uid://c001gcykp3v7y" path="res://assets/sounds/voices/Track 14.wav" id="10_vmfya"]
+[ext_resource type="AudioStream" uid="uid://cpnr6vdad3um3" path="res://assets/sounds/songs/minigame win sound.mp3" id="10_voisu"]
+[ext_resource type="AudioStream" uid="uid://c6mojj2ucgqlt" path="res://assets/sounds/songs/another minigame sound.mp3" id="11_5u8dk"]
 [ext_resource type="AudioStream" uid="uid://ua5d3b7jx5cc" path="res://assets/sounds/voices/Track 2.wav" id="11_lt20s"]
-[ext_resource type="AudioStream" uid="uid://dv8364v8oj5kt" path="res://assets/sounds/voices/Track 3.wav" id="12_it52x"]
+[ext_resource type="AudioStream" uid="uid://kmibchminhwc" path="res://assets/sounds/voices/Track 15.wav" id="11_t8jcq"]
+[ext_resource type="AudioStream" uid="uid://cfq61y05u207j" path="res://assets/sounds/voices/Track 16.wav" id="12_5u8dk"]
+[ext_resource type="AudioStream" uid="uid://f1amq805dqvg" path="res://assets/sounds/voices/Track 17.wav" id="13_6wyci"]
 [ext_resource type="AudioStream" uid="uid://5fjyocl546rx" path="res://assets/sounds/voices/Track 4.wav" id="13_nucm3"]
 [ext_resource type="AudioStream" uid="uid://dg4sc30n1gj82" path="res://assets/sounds/voices/Track 5.wav" id="14_dfe2n"]
+[ext_resource type="AudioStream" uid="uid://cvft4iq2ly033" path="res://assets/sounds/voices/Track 18.wav" id="14_voisu"]
 [ext_resource type="AudioStream" uid="uid://4cx3mlqefmtf" path="res://assets/sounds/voices/Track 6.wav" id="15_3n70a"]
+[ext_resource type="AudioStream" uid="uid://tjool6n4di2w" path="res://assets/sounds/voices/Track 19.wav" id="15_d31w4"]
+[ext_resource type="AudioStream" uid="uid://n2p0xhv6e1o2" path="res://assets/sounds/voices/Track 20.wav" id="16_6a48m"]
 [ext_resource type="AudioStream" uid="uid://b23nmhd1j0h1o" path="res://assets/sounds/voices/Track 7.wav" id="16_h5gil"]
 [ext_resource type="AudioStream" uid="uid://byb0nb6yh7ux2" path="res://assets/sounds/voices/Track 8.wav" id="17_j4kuj"]
+[ext_resource type="AudioStream" uid="uid://cy8knkc10ty5e" path="res://assets/sounds/voices/Track 21.wav" id="17_sv57c"]
 [ext_resource type="AudioStream" uid="uid://ctweamp0bjwbk" path="res://assets/sounds/voices/Track 9.wav" id="18_qcq6l"]
+[ext_resource type="AudioStream" uid="uid://deaffey2fswwv" path="res://assets/sounds/voices/Track 22.wav" id="18_r0qid"]
 [ext_resource type="AudioStream" uid="uid://c0dygjv1ovocv" path="res://assets/sounds/voices/Track 10.wav" id="19_p6h73"]
+[ext_resource type="AudioStream" uid="uid://daj6letfbydi8" path="res://assets/sounds/voices/Track 23.wav" id="19_xordf"]
 [ext_resource type="AudioStream" uid="uid://bpfl42hhrhyp" path="res://assets/sounds/voices/Track 11.wav" id="20_ojqu8"]
+[ext_resource type="AudioStream" uid="uid://eksi5yuscald" path="res://assets/sounds/voices/Track 24.wav" id="20_taa4d"]
 [ext_resource type="AudioStream" uid="uid://caxhu0cahwg0g" path="res://assets/sounds/voices/Track 12.wav" id="21_vmfya"]
 [ext_resource type="AudioStream" uid="uid://cqfqboy3cfda3" path="res://assets/sounds/voices/Track 13.wav" id="22_t8jcq"]
 [ext_resource type="AudioStream" uid="uid://l68g7neo0a06" path="res://assets/sounds/sfx/success_bell-6776.mp3" id="23_lt20s"]
@@ -30,15 +42,8 @@ script = ExtResource("1_17ljh")
 [node name="Songs" type="Node" parent="."]
 
 [node name="MinigameBoss" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("6_gwbex")
-volume_db = -8.0
-pitch_scale = 0.7
-
-[node name="SmallVictory" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("1_4wfx6")
-volume_db = 2.0
-pitch_scale = 2.0
-bus = &"Pitch"
+stream = ExtResource("2_5u8dk")
+volume_db = -7.0
 
 [node name="CanBubble" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("1_4wfx6")
@@ -56,31 +61,80 @@ volume_db = -8.0
 bus = &"Pitch"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("4_5qap7")
+stream = ExtResource("6_5u8dk")
 volume_db = -8.0
 bus = &"Pitch"
 
 [node name="MinigameLose" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("5_3hjhw")
+stream = ExtResource("7_6wyci")
 volume_db = -8.0
 bus = &"Pitch"
 
 [node name="MinigameSpeedUp" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("6_gwbex")
+stream = ExtResource("8_voisu")
+volume_db = -8.0
+bus = &"Pitch"
+
+[node name="MinigameVictory" type="AudioStreamPlayer" parent="Songs"]
+stream = ExtResource("9_6wyci")
 volume_db = -8.0
 bus = &"Pitch"
 
 [node name="MinigameWin" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("7_ecu6g")
+stream = ExtResource("10_voisu")
 volume_db = -8.0
 bus = &"Pitch"
 
 [node name="NextMinigame" type="AudioStreamPlayer" parent="Songs"]
-stream = ExtResource("8_qgyjk")
+stream = ExtResource("11_5u8dk")
 volume_db = -8.0
 bus = &"Pitch"
 
 [node name="Voices" type="Node" parent="."]
+
+[node name="Victory4" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("10_vmfya")
+volume_db = -18.0
+
+[node name="Victory3" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("11_t8jcq")
+volume_db = -18.0
+
+[node name="Victory2" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("12_5u8dk")
+volume_db = -18.0
+
+[node name="Victory1" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("13_6wyci")
+volume_db = -18.0
+
+[node name="BossTime2" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("14_voisu")
+volume_db = -18.0
+
+[node name="BossTime1" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("15_d31w4")
+volume_db = -18.0
+
+[node name="GameOver3" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("16_6a48m")
+volume_db = -18.0
+
+[node name="GameOver2" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("17_sv57c")
+volume_db = -18.0
+
+[node name="GameOver1" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("18_r0qid")
+volume_db = -18.0
+
+[node name="SpeedUp2" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("19_xordf")
+volume_db = -18.0
+
+[node name="SpeedUp1" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("20_taa4d")
+volume_db = -18.0
 
 [node name="Cheers1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("10_daq21")
@@ -91,12 +145,8 @@ stream = ExtResource("11_lt20s")
 volume_db = -12.0
 
 [node name="Jeers1" type="AudioStreamPlayer" parent="Voices"]
-stream = ExtResource("12_it52x")
-volume_db = -12.0
-
-[node name="Jeers2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("13_nucm3")
-volume_db = -12.0
+volume_db = -6.0
 
 [node name="Cheers3" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("14_dfe2n")
@@ -106,7 +156,7 @@ volume_db = -12.0
 stream = ExtResource("15_3n70a")
 volume_db = -12.0
 
-[node name="Jeers3" type="AudioStreamPlayer" parent="Voices"]
+[node name="Jeers2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("16_h5gil")
 volume_db = -12.0
 
@@ -114,7 +164,7 @@ volume_db = -12.0
 stream = ExtResource("17_j4kuj")
 volume_db = -12.0
 
-[node name="Jeers4" type="AudioStreamPlayer" parent="Voices"]
+[node name="Jeers3" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("18_qcq6l")
 volume_db = -12.0
 
@@ -122,11 +172,11 @@ volume_db = -12.0
 stream = ExtResource("19_p6h73")
 volume_db = -12.0
 
-[node name="Jeers5" type="AudioStreamPlayer" parent="Voices"]
+[node name="Jeers4" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("20_ojqu8")
 volume_db = -12.0
 
-[node name="Jeers6" type="AudioStreamPlayer" parent="Voices"]
+[node name="Jeers5" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("21_vmfya")
 volume_db = -12.0
 
