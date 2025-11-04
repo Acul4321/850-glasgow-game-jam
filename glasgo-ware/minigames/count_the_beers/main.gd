@@ -11,8 +11,8 @@ var rng := RandomNumberGenerator.new()
 @onready var incorrect_buzzer := $Sounds/WrongBuzzer
 
 const amount_of_clones := 10
-const delay_step := 0.2
-const tween_delay := 1.5
+const delay_step := 0.35
+const tween_delay := 0.3
 const total_drinks_wait_duration := (delay_step * amount_of_clones) + tween_delay
 
 var most_drinks := {}
@@ -62,7 +62,7 @@ func _on_game_start() -> void:
 
 func move_can(delay: float, can: Node2D):
 	var tween := create_tween()
-	tween.tween_property(can, "global_position", Vector2(680.0, can.position.y), 1.5) \
+	tween.tween_property(can, "global_position", Vector2(680.0, can.position.y), 2.5) \
 		.set_trans(Tween.TRANS_LINEAR) \
 		.set_delay(delay)
 

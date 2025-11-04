@@ -27,4 +27,4 @@ func _process(_delta):
 func _on_ball_body_entered(body: Node) -> void:
 	
 	if body is CharacterBody2D:
-		ball.apply_impulse(Vector2(randi_range(-50,50), -150))
+		ball.apply_impulse(Vector2(randi_range(-50,50), -50))

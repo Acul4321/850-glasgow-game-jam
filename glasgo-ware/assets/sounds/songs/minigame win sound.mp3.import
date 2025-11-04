@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpnr6vdad3um3"
+path="res://.godot/imported/minigame win sound.mp3-aff99ecdceb5dc0e9e0293e3256f0df5.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/songs/minigame win sound.mp3"
+dest_files=["res://.godot/imported/minigame win sound.mp3-aff99ecdceb5dc0e9e0293e3256f0df5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
