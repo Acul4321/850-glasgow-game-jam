@@ -63,7 +63,6 @@ size = Vector2(209, 143)
 script = ExtResource("1_qsl5n")
 instruction_input = 1
 instruction_text = "Mine Coal!"
-duration = 8.0
 
 [node name="Soil" parent="." instance=ExtResource("2_krw02")]
 material = SubResource("ShaderMaterial_tx11l")

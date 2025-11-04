@@ -41,7 +41,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_bcd04")
 instruction_input = 3
 instruction_text = "Shake The Can!"
-duration = 8.0
+duration = 7.0
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_ffra6")]
 material = SubResource("ShaderMaterial_tx11l")

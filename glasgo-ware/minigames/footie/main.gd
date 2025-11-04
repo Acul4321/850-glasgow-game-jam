@@ -20,7 +20,7 @@ func _on_game_start() -> void:
 
 func _process(_delta):
 	if is_timer_running:
-		if ball.position.y >= get_viewport().size.y + 50:
+		if ball.position.y >= 290:
 			is_success = false
 
 
