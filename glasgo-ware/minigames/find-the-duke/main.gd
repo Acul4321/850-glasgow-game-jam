@@ -50,7 +50,7 @@ func _on_target_statue_clicked() -> void:
 	%spotlight.visible = true
 	SoundManager.play_cheers()
 	
-	if current_time > 2:
-		current_time = 2
+	if current_time > 3:
+		current_time = 3
 	
 	
