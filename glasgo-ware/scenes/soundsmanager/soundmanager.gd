@@ -44,3 +44,6 @@ func stop_all():
 	for child in ($Songs).get_children():
 		if child is AudioStreamPlayer:
 			child.stop()
+	for child in ($Rounds).get_children():
+		if child is AudioStreamPlayer:
+			child.stop()

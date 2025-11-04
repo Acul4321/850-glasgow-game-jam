@@ -8,9 +8,10 @@ const SPEEDUP_WAIT := 2.5
 const BOSS_WAIT := 3
 
 @export var lives: int = 3
-@export var rounds_per_speedup: int = 4
+@export var rounds_per_speedup: int = 5
 
 var round: int = 1
+const max_round: int = 15
 
 @onready var Horse: AnimatedSprite2D = $Horse
 @onready var Status: Label = $Status
@@ -20,6 +21,7 @@ var round: int = 1
 var minigame_ignorelist := []
 var rng:= RandomNumberGenerator.new()
 var last_index:= -1
+
 func next_minigame(count: int) -> int:
 	if count <= 1:
 		return 0
@@ -81,17 +83,17 @@ func _ready() -> void:
 		Status.text = "Round: " + str(round) + "\nLives: " + "♥".repeat(lives)
 		Status.visible = true
 		
-		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 10:
-				Engine.time_scale = 1
-				AudioServer.playback_speed_scale = 1
-				
-				SoundManager.play_voice("BossTime")
-				SoundManager.play_song("MinigameBoss")
-				var speedup := INSTRUCTION_SCENE.instantiate()
-				speedup.is_boss = true
-				add_child(speedup)
-				speedup.start("BOSS TIME!", BOSS_WAIT)
-				await Global.wait(BOSS_WAIT + 0.2)
+		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= max_round:
+			Engine.time_scale = 1
+			AudioServer.playback_speed_scale = 1
+			
+			SoundManager.play_voice("BossTime")
+			SoundManager.play_song("MinigameBoss")
+			var speedup := INSTRUCTION_SCENE.instantiate()
+			speedup.is_boss = true
+			add_child(speedup)
+			speedup.start("BOSS TIME!", BOSS_WAIT)
+			await Global.wait(BOSS_WAIT + 0.2)
 		else:
 			if round % rounds_per_speedup == 0:
 				SoundManager.play_voice("SpeedUp")
@@ -127,7 +129,12 @@ func _ready() -> void:
 		
 		var tween_2 := create_tween()
 		#tween_2.tween_property(Horse, "scale", Vector2(3, 3), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		
+		tween_2.tween_callback(func():
+			if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= max_round:
+				SoundManager._play("BossRound", true, false)
+			else:
+				SoundManager._play("Round", true, false)
+		).set_delay(0.3)
 		var shader_name = TransitionManager.SHADERS.keys().pick_random()
 		TransitionManager.transition_to(minigame, 0.3, 0.0, false, false, self, shader_name)
 		
@@ -191,7 +198,7 @@ func _ready() -> void:
 				await tw.finished
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
-		elif round >= 10 and Global.game_type == Constants.GAME_TYPE.REGULAR:
+		elif round >= max_round and Global.game_type == Constants.GAME_TYPE.REGULAR:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
 			SoundManager.play_voice("Victory")
