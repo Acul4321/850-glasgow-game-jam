@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjee8ggki37dd"
+path="res://.godot/imported/1. 8 bit beat [drums].mp3-89182050b88ed31405253dc065dd0c70.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/songs/rounds/1. 8 bit beat [drums].mp3"
+dest_files=["res://.godot/imported/1. 8 bit beat [drums].mp3-89182050b88ed31405253dc065dd0c70.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

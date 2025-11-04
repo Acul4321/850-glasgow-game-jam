@@ -12,6 +12,9 @@ signal microgame_completed(success: bool)
 var has_already_played_voice: bool = false
 var is_success: bool = false
 var is_timer_running: bool = false
+var show_timer: bool = true
+
+var current_time: int = duration
 
 func _ready() -> void:
 	is_success = win_by_default
@@ -23,9 +26,9 @@ func _ready() -> void:
 	_on_game_start()
 	is_timer_running = true
 	
-	var current_time: int = duration
+	current_time = duration
 	while current_time > -1:
-		Global.timer_update.emit(current_time)
+		Global.timer_update.emit(current_time, show_timer)
 		await Global.wait(0.6)
 		current_time -= 1
 		

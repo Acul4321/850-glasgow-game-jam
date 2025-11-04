@@ -8,37 +8,40 @@ const SPEEDUP_WAIT := 2.5
 const BOSS_WAIT := 3
 
 @export var lives: int = 3
-@export var rounds_per_speedup: int = 4
+@export var rounds_per_speedup: int = 3
 
-var round: int = 1
+var round: int = 11
+const max_round: int = 12
 
 @onready var Horse: AnimatedSprite2D = $Horse
 @onready var Status: Label = $Status
 @onready var WinOrLose: Label = $WinOrLose
 @onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
 
+var minigame_boss_ignorelist := []
 var minigame_ignorelist := []
 var rng:= RandomNumberGenerator.new()
 var last_index:= -1
-func next_minigame(count: int) -> int:
+
+func next_minigame(count: int, ignore_list) -> int:
 	if count <= 1:
 		return 0
 
-	if minigame_ignorelist.is_empty():
-		minigame_ignorelist = range(count)
-		minigame_ignorelist.shuffle()
+	if ignore_list.is_empty():
+		ignore_list = range(count)
+		ignore_list.shuffle()
 
-		if last_index != -1 and minigame_ignorelist[0] == last_index:
-			var swap_i = rng.randi_range(1, minigame_ignorelist.size() - 1)
-			var temp = minigame_ignorelist[0]
-			minigame_ignorelist[0] = minigame_ignorelist[swap_i]
-			minigame_ignorelist[swap_i] = temp
+		if last_index != -1 and ignore_list[0] == last_index:
+			var swap_i = rng.randi_range(1, ignore_list.size() - 1)
+			var temp = ignore_list[0]
+			ignore_list[0] = ignore_list[swap_i]
+			ignore_list[swap_i] = temp
 
-	var index = minigame_ignorelist.pop_back()
+	var index = ignore_list.pop_back()
 
-	if index == last_index and not minigame_ignorelist.is_empty():
-		var new_index = minigame_ignorelist.pop_back()
-		minigame_ignorelist.append(index)
+	if index == last_index and not ignore_list.is_empty():
+		var new_index = ignore_list.pop_back()
+		ignore_list.append(index)
 		index = new_index
 
 	last_index = index
@@ -46,16 +49,24 @@ func next_minigame(count: int) -> int:
 	
 func _ready() -> void:
 	var minigames: Array[PackedScene] = []
-	var dir := DirAccess.open("res://minigames")
+	var minigames_boss: Array[PackedScene] = []
+	var dir1 := DirAccess.open("res://minigames")
+	var dir2 := DirAccess.open("res://minigames_boss")
 	
 	var hide = get_node_or_null("Hide")
 	if hide:
 		hide.visible = true
 	
-	for subdir_name in dir.get_directories():
+	for subdir_name in dir1.get_directories():
 		var path := "res://minigames/" + subdir_name + "/main.tscn"
 		if ResourceLoader.exists(path):
 			minigames.append(load(path))
+			print("Loaded minigame:", path)
+			
+	for subdir_name in dir2.get_directories():
+		var path := "res://minigames_boss/" + subdir_name + "/main.tscn"
+		if ResourceLoader.exists(path):
+			minigames_boss.append(load(path))
 			print("Loaded minigame:", path)
 		
 	await Global.forever_wait_if_paused(self)
@@ -78,20 +89,23 @@ func _ready() -> void:
 		Horse.modulate.a = 1
 		WinOrLose.visible = false
 		
-		Status.text = "Round: " + str(round) + "\nLives: " + "♥".repeat(lives)
+		var round_text = str(round)
+		if Global.game_type == Constants.GAME_TYPE.REGULAR:
+			round_text += "/" + str(max_round)
+		Status.text = "Round: " + round_text + "\nLives: " + "O".repeat(lives)
 		Status.visible = true
 		
-		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 10:
-				Engine.time_scale = 1
-				AudioServer.playback_speed_scale = 1
-				
-				SoundManager.play_voice("BossTime")
-				SoundManager.play_song("MinigameBoss")
-				var speedup := INSTRUCTION_SCENE.instantiate()
-				speedup.is_boss = true
-				add_child(speedup)
-				speedup.start("BOSS TIME!", BOSS_WAIT)
-				await Global.wait(BOSS_WAIT + 0.2)
+		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= max_round:
+			Engine.time_scale = 1
+			AudioServer.playback_speed_scale = 1
+			
+			SoundManager.play_voice("BossTime")
+			SoundManager.play_song("MinigameBoss")
+			var speedup := INSTRUCTION_SCENE.instantiate()
+			speedup.is_boss = true
+			add_child(speedup)
+			speedup.start("BOSS TIME!", BOSS_WAIT)
+			await Global.wait(BOSS_WAIT + 0.2)
 		else:
 			if round % rounds_per_speedup == 0:
 				SoundManager.play_voice("SpeedUp")
@@ -103,11 +117,16 @@ func _ready() -> void:
 				speedup.start("SPEED UP!", SPEEDUP_WAIT)
 				await Global.wait(SPEEDUP_WAIT + 0.2)
 				
-				Engine.time_scale *= 1.25
-				AudioServer.playback_speed_scale *= 1.25
+				Engine.time_scale *= 1.15
+				AudioServer.playback_speed_scale *= 1.15
 		
-		var minigame_idx := next_minigame(minigames.size())
-		var minigame := minigames[minigame_idx].instantiate()
+		var minigame: Node
+		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= max_round:
+			var minigame_idx := next_minigame(minigames_boss.size(), minigame_boss_ignorelist)
+			minigame = minigames_boss[minigame_idx].instantiate()
+		else:
+			var minigame_idx := next_minigame(minigames.size(), minigame_ignorelist)
+			minigame = minigames[minigame_idx].instantiate()
 		
 		var inputtype_node: Node2D = INPUTTYPE_SCENE.instantiate()
 		inputtype_node.input_type = minigame.instruction_input
@@ -127,7 +146,12 @@ func _ready() -> void:
 		
 		var tween_2 := create_tween()
 		#tween_2.tween_property(Horse, "scale", Vector2(3, 3), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		
+		tween_2.tween_callback(func():
+			if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= max_round:
+				SoundManager._play("BossRound", true, false)
+			else:
+				SoundManager._play("Round", true, false)
+		).set_delay(0.3)
 		var shader_name = TransitionManager.SHADERS.keys().pick_random()
 		TransitionManager.transition_to(minigame, 0.3, 0.0, false, false, self, shader_name)
 		
@@ -170,7 +194,11 @@ func _ready() -> void:
 			lives -= 1
 		
 		WinOrLose.visible = true
-		Status.text = "Round: " + str(round) + "\nLives: " + "♥".repeat(lives)
+		
+		round_text = str(round)
+		if Global.game_type == Constants.GAME_TYPE.REGULAR:
+			round_text += "/" + str(max_round)
+		Status.text = "Round: " + round_text + "\nLives: " + "O".repeat(lives)
 		Status.visible = true
 		
 		await Global.wait(1.5)
@@ -191,7 +219,8 @@ func _ready() -> void:
 				await tw.finished
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
-		elif round >= 10 and Global.game_type == Constants.GAME_TYPE.REGULAR:
+		elif round >= max_round and Global.game_type == Constants.GAME_TYPE.REGULAR:
+			Status.text = ""
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
 			SoundManager.play_voice("Victory")

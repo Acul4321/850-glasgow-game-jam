@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ba7is65xvwud0"]
+[gd_scene load_steps=40 format=3 uid="uid://ba7is65xvwud0"]
 
 [ext_resource type="AudioStream" uid="uid://chfyyda4aawv2" path="res://assets/sounds/songs/can bubble demo.wav" id="1_4wfx6"]
 [ext_resource type="Script" uid="uid://c3p3w6eia16q2" path="res://scenes/soundsmanager/soundmanager.gd" id="1_17ljh"]
@@ -35,6 +35,10 @@
 [ext_resource type="AudioStream" uid="uid://caxhu0cahwg0g" path="res://assets/sounds/voices/Track 12.wav" id="21_vmfya"]
 [ext_resource type="AudioStream" uid="uid://cqfqboy3cfda3" path="res://assets/sounds/voices/Track 13.wav" id="22_t8jcq"]
 [ext_resource type="AudioStream" uid="uid://l68g7neo0a06" path="res://assets/sounds/sfx/success_bell-6776.mp3" id="23_lt20s"]
+[ext_resource type="AudioStream" uid="uid://c5ggpx4as6bp" path="res://assets/sounds/songs/rounds/1. 8 bit beat 2 [drums].mp3" id="35_r0qid"]
+[ext_resource type="AudioStream" uid="uid://dnodg7w2rirq7" path="res://assets/sounds/songs/rounds/4. 8bit battle.mp3" id="37_taa4d"]
+[ext_resource type="AudioStream" uid="uid://ccqswx2k147y4" path="res://assets/sounds/songs/rounds/6. 8 bit harmo [drums].mp3" id="38_aa3mg"]
+[ext_resource type="AudioStream" uid="uid://xo7b82o4hs4e" path="res://assets/sounds/songs/rounds/7. 8 bit chroma [drums].mp3" id="39_6nfff"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_17ljh")
@@ -43,7 +47,7 @@ script = ExtResource("1_17ljh")
 
 [node name="MinigameBoss" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("2_5u8dk")
-volume_db = -7.0
+volume_db = -13.0
 
 [node name="CanBubble" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("1_4wfx6")
@@ -57,7 +61,7 @@ bus = &"Pitch"
 
 [node name="CanOpen" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("3_f1kb7")
-volume_db = -8.0
+volume_db = -12.0
 bus = &"Pitch"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Songs"]
@@ -67,7 +71,7 @@ bus = &"Pitch"
 
 [node name="MinigameLose" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("7_6wyci")
-volume_db = -8.0
+volume_db = -12.0
 bus = &"Pitch"
 
 [node name="MinigameSpeedUp" type="AudioStreamPlayer" parent="Songs"]
@@ -77,114 +81,137 @@ bus = &"Pitch"
 
 [node name="MinigameVictory" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("9_6wyci")
-volume_db = -8.0
+volume_db = -20.0
 bus = &"Pitch"
 
 [node name="MinigameWin" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("10_voisu")
-volume_db = -8.0
+volume_db = -10.0
 bus = &"Pitch"
 
 [node name="NextMinigame" type="AudioStreamPlayer" parent="Songs"]
 stream = ExtResource("11_5u8dk")
-volume_db = -8.0
+volume_db = -13.0
 bus = &"Pitch"
 
 [node name="Voices" type="Node" parent="."]
 
 [node name="Victory4" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("10_vmfya")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="Victory3" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("11_t8jcq")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="Victory2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("12_5u8dk")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="Victory1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("13_6wyci")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="BossTime2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("14_voisu")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="BossTime1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("15_d31w4")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="GameOver3" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("16_6a48m")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="GameOver2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("17_sv57c")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="GameOver1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("18_r0qid")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="SpeedUp2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("19_xordf")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="SpeedUp1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("20_taa4d")
-volume_db = -18.0
+volume_db = -20.0
 
 [node name="Cheers1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("10_daq21")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Cheers2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("11_lt20s")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Jeers1" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("13_nucm3")
-volume_db = -6.0
+volume_db = -20.0
 
 [node name="Cheers3" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("14_dfe2n")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Cheers4" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("15_3n70a")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Jeers2" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("16_h5gil")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Cheers5" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("17_j4kuj")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Jeers3" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("18_qcq6l")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Cheers6" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("19_p6h73")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Jeers4" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("20_ojqu8")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Jeers5" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("21_vmfya")
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="Cheers7" type="AudioStreamPlayer" parent="Voices"]
 stream = ExtResource("22_t8jcq")
-volume_db = -12.0
+volume_db = -20.0
 
-[node name="Node" type="Node" parent="."]
+[node name="Rounds" type="Node" parent="."]
 
-[node name="SuccessBell" type="AudioStreamPlayer" parent="Node"]
+[node name="Round1" type="AudioStreamPlayer" parent="Rounds"]
+stream = ExtResource("35_r0qid")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="BossRound" type="AudioStreamPlayer" parent="Rounds"]
+stream = ExtResource("37_taa4d")
+volume_db = -5.0
+parameters/looping = true
+
+[node name="Round2" type="AudioStreamPlayer" parent="Rounds"]
+stream = ExtResource("38_aa3mg")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="Round3" type="AudioStreamPlayer" parent="Rounds"]
+stream = ExtResource("39_6nfff")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SuccessBell" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("23_lt20s")
+volume_db = -5.0
