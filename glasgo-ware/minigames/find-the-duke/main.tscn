@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccg4vjt3l3326"]
+
+[ext_resource type="Script" uid="uid://ckcm4ruvj5jqh" path="res://minigames/find-the-duke/main.gd" id="1_uwpbo"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_5seao"]
+[ext_resource type="Texture2D" uid="uid://bobrdotu0n7km" path="res://minigames/find-the-duke/statue/Duke_of_Wellington_coned_statue_Glasgow.jpg" id="2_bg5eo"]
+[ext_resource type="Texture2D" uid="uid://c572a2q3nqpw8" path="res://minigames/find-the-duke/statue/lobey-dosser-statue.jpg" id="3_0npd3"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_adhv3"]
+[ext_resource type="Texture2D" uid="uid://drf40e1ncjksq" path="res://minigames/find-the-duke/statue/homeless.jpg" id="4_gtwn6"]
+[ext_resource type="Script" uid="uid://cr6jjg4y5g8v1" path="res://minigames/find-the-duke/statue.gd" id="6_0npd3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qml6"]
+resource_local_to_scene = true
+shader = ExtResource("3_adhv3")
+shader_parameter/color_field = Color(0.025666676, 0, 0.07, 1)
+shader_parameter/color_cross = Color(0.063839994, 0.057600003, 0.12, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0npd3"]
+radius = 639.92
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_uwpbo")
+statueSprite = Array[CompressedTexture2D]([ExtResource("3_0npd3"), ExtResource("4_gtwn6")])
+instruction_input = 1
+instruction_text = "Find The DUKE!"
+
+[node name="ScottishWater" parent="." instance=ExtResource("2_5seao")]
+material = SubResource("ShaderMaterial_2qml6")
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="statues" type="Node2D" parent="."]
+
+[node name="target" type="Sprite2D" parent="statues"]
+position = Vector2(270.85, 156)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_bg5eo")
+script = ExtResource("6_0npd3")
+
+[node name="Area2D" type="Area2D" parent="statues/target"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="statues/target/Area2D"]
+position = Vector2(-0.001953125, 0)
+shape = SubResource("CircleShape2D_0npd3")
+debug_color = Color(0.55577797, 0.48560417, 0.7507459, 0.41960785)
+
+[connection signal="statue_clicked" from="statues/target" to="." method="_on_target_statue_clicked"]
+[connection signal="input_event" from="statues/target/Area2D" to="statues/target" method="_on_self_area_input_event"]
