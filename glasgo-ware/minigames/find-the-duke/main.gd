@@ -5,7 +5,7 @@ extends Microgame
 @onready var statue := preload("res://minigames/find-the-duke/statue.tscn")
 @onready var target: Sprite2D = $target
 @onready var shader_material: ShaderMaterial = %spotlight.material
-@onready var amount := 100
+@onready var amount := 60
 
 func get_random_screen_pos() -> Vector2:
 	var viewport_size = get_viewport_rect().size
@@ -41,5 +41,16 @@ func _on_target_statue_clicked() -> void:
 	var uv_pos = Vector2(viewport_pos.x / screen_size.x, viewport_pos.y / screen_size.y)
 	
 	shader_material.set_shader_parameter("center", uv_pos)
+	shader_material.set_shader_parameter("radius", 0.75)
+
+	# Create a tween
+	var t = create_tween()
+	t.tween_property(shader_material, "shader_parameter/radius", 0.06, 0.2)
+	t.play()
 	%spotlight.visible = true
+	SoundManager.play_cheers()
+	
+	if current_time > 2:
+		current_time = 2
+	
 	
