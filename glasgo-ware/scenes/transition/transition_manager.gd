@@ -91,7 +91,7 @@ func transition_to(
 	vp_new.render_target_update_mode = SubViewport.UPDATE_ONCE
 	await get_tree().process_frame
 	vp_old.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	vp_new.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	vp_new.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	await get_tree().process_frame
 
 	var tw := create_tween()
