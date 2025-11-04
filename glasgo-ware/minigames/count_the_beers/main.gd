@@ -42,6 +42,8 @@ func _on_game_start() -> void:
 			else:
 				incorrect_buzzer.play()
 				SoundManager.play_jeers()
+			if current_time > 3:
+				current_time = 3
 			bottle_ui.visible = false
 		)
 		
