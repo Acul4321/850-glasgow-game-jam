@@ -10,7 +10,7 @@ const BOSS_WAIT := 3
 @export var lives: int = 3
 @export var rounds_per_speedup: int = 4
 
-var round: int = 1
+var round: int = 11
 
 @onready var Horse: AnimatedSprite2D = $Horse
 @onready var Status: Label = $Status
