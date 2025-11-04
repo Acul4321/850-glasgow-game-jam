@@ -15,7 +15,11 @@ const delay_step := 0.35
 const tween_delay := 0.3
 const total_drinks_wait_duration := (delay_step * amount_of_clones) + tween_delay
 
-var most_drinks := {}
+var most_drinks := {
+	0: 0,
+	1: 0,
+	2: 0
+}
 	
 func _on_game_start() -> void:
 	bottle_ui.visible = false
