@@ -82,13 +82,24 @@ func transition_to(
 	mat.set_shader_parameter("tex_next", vp_old.get_texture() if inverse_transition_effect else vp_new.get_texture())
 	mat.set_shader_parameter("center", Vector2(0.5, 0.5))
 	
-	var tw := create_tween()
 	if inverse_transition_effect:
 		mat.set_shader_parameter("progress", 1.1)
-		tw.tween_property(mat, "shader_parameter/progress", 0.0, duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	else:
 		mat.set_shader_parameter("progress", 0.0)
+	
+	vp_old.render_target_update_mode = SubViewport.UPDATE_ONCE
+	vp_new.render_target_update_mode = SubViewport.UPDATE_ONCE
+	await get_tree().process_frame
+	vp_old.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	vp_new.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	await get_tree().process_frame
+
+	var tw := create_tween()
+	if inverse_transition_effect:
+		tw.tween_property(mat, "shader_parameter/progress", 0.0, duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	else:
 		tw.tween_property(mat, "shader_parameter/progress", 1.1, duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	
 	
 	await tw.finished
 	if post_duration > 0:

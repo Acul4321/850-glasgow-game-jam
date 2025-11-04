@@ -8,6 +8,8 @@ var settings_scene: PackedScene = preload("res://scenes/titlescreen/settingspage
 @onready var settings_button: Button = $Buttons/Settings
 @onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
 
+const ELEVATOR_SCENE := preload("res://scenes/elevator/elevator.tscn")
+
 func _ready():
 	var round = EndlessSave._load_endless_round()
 	if round and round > 0:
@@ -24,13 +26,13 @@ func _regular_play_button():
 	_disable_buttons()
 	SoundManager._play("CanOpen")
 	Global.game_type = Constants.GAME_TYPE.REGULAR
-	TransitionManager.transition_to(load("res://scenes/elevator/elevator.tscn"), 0.4, 0.2, true, true, null, "Scotland")
+	TransitionManager.transition_to(ELEVATOR_SCENE, 0.4, 0.2, true, true, null, "Scotland")
 
 func _endless_play_button():
 	_disable_buttons()
 	SoundManager._play("CanOpen")
 	Global.game_type = Constants.GAME_TYPE.ENDLESS
-	TransitionManager.transition_to(load("res://scenes/elevator/elevator.tscn"), 0.4, 0.2, true, true, null, "Scotland")
+	TransitionManager.transition_to(ELEVATOR_SCENE, 0.4, 0.2, true, true, null, "Scotland")
 	
 func _settings_spawn():
 	_disable_buttons()
