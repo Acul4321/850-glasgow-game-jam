@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqafpkweputia"]
+
+[ext_resource type="Script" uid="uid://cr6jjg4y5g8v1" path="res://minigames/find-the-duke/statue.gd" id="1_o2f7b"]
+
+[node name="Statue" type="Sprite2D"]
+script = ExtResource("1_o2f7b")

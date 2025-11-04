@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjrdm3xp4wlux"
-path="res://.godot/imported/terrier.png-4baee64a6728befbe9fe69135590d007.ctex"
+uid="uid://dy5ty75wymccq"
+path="res://.godot/imported/lobey.png-9fb03f088ab6415ece85f8cdcfb7ed7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/rain/terrier.png"
-dest_files=["res://.godot/imported/terrier.png-4baee64a6728befbe9fe69135590d007.ctex"]
+source_file="res://minigames/find-the-duke/statue/lobey.png"
+dest_files=["res://.godot/imported/lobey.png-9fb03f088ab6415ece85f8cdcfb7ed7d.ctex"]
 
 [params]
 
