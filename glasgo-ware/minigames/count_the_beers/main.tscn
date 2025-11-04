@@ -58,7 +58,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_rmh22")
 instruction_input = 1
 instruction_text = "Count the Beers"
-duration = 11.0
+duration = 12.0
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_1j0nu")]
 material = SubResource("ShaderMaterial_tx11l")

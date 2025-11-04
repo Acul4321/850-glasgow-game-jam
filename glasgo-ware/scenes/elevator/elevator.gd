@@ -8,11 +8,11 @@ const SPEEDUP_WAIT := 2.5
 const BOSS_WAIT := 3
 
 @export var lives: int = 3
-@export var rounds_per_speedup: int = 5
+@export var rounds_per_speedup: int = 4
 
 var round: int = 1
 
-@onready var Door: AnimatedSprite2D = $Door
+@onready var Horse: AnimatedSprite2D = $Horse
 @onready var Status: Label = $Status
 @onready var WinOrLose: Label = $WinOrLose
 @onready var PitchEffect: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index("Pitch"), 0)
@@ -64,8 +64,7 @@ func _ready() -> void:
 		var tw := create_tween()
 		tw.tween_property(hide, "modulate:a", 0, 0.2).set_trans(Tween.TRANS_CIRC)
 		await tw.finished
-		hide.queue_free()
-	hide = null
+		hide.visible = false
 	
 	Engine.time_scale = 1
 	AudioServer.playback_speed_scale = 1
@@ -74,18 +73,19 @@ func _ready() -> void:
 			
 	while true:
 		Global.timer_update.emit(-1)
-		Door.animation = "idle"
-		Door.scale = Vector2(1, 1)
-		Door.modulate.a = 1
+		Horse.animation = "idle"
+		Horse.scale = Vector2(1, 1)
+		Horse.modulate.a = 1
 		WinOrLose.visible = false
 		
-		Status.text = "Round: " + str(round) + "\nLives: " + "X".repeat(lives)
+		Status.text = "Round: " + str(round) + "\nLives: " + "♥".repeat(lives)
 		Status.visible = true
 		
-		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 15:
+		if Global.game_type == Constants.GAME_TYPE.REGULAR and round >= 10:
 				Engine.time_scale = 1
 				AudioServer.playback_speed_scale = 1
 				
+				SoundManager.play_voice("BossTime")
 				SoundManager.play_song("MinigameBoss")
 				var speedup := INSTRUCTION_SCENE.instantiate()
 				speedup.is_boss = true
@@ -94,6 +94,7 @@ func _ready() -> void:
 				await Global.wait(BOSS_WAIT + 0.2)
 		else:
 			if round % rounds_per_speedup == 0:
+				SoundManager.play_voice("SpeedUp")
 				SoundManager.play_song("MinigameSpeedUp")
 				var speedup := INSTRUCTION_SCENE.instantiate()
 				speedup.is_speedup = true
@@ -125,9 +126,9 @@ func _ready() -> void:
 		inputtype_node.queue_free()
 		
 		var tween_2 := create_tween()
-		tween_2.tween_property(Door, "scale", Vector2(3, 3), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		#tween_2.tween_property(Horse, "scale", Vector2(3, 3), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		
-		var shader_name = "Door" #TransitionManager.SHADERS.keys().pick_random()
+		var shader_name = TransitionManager.SHADERS.keys().pick_random()
 		TransitionManager.transition_to(minigame, 0.3, 0.0, false, false, self, shader_name)
 		
 		minigame.duration += 0.3
@@ -142,8 +143,8 @@ func _ready() -> void:
 		minigame.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		var tween_1 := create_tween()
-		tween_1.tween_property(Door, "scale", Vector2(1, 1), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		tween_1.parallel().tween_callback(func(): Door.animation = "idle").set_delay(0.3)
+		#tween_1.tween_property(Horse, "scale", Vector2(1, 1), 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween_1.parallel().tween_callback(func(): Horse.play("win" if result else "lose")).set_delay(0.3)
 		TransitionManager.transition_to(self, 0.3, 0.0, false, false, minigame, shader_name, true)
 		
 		if result:
@@ -169,7 +170,7 @@ func _ready() -> void:
 			lives -= 1
 		
 		WinOrLose.visible = true
-		Status.text = "Round: " + str(round) + "\nLives: " + ("X".repeat(lives))
+		Status.text = "Round: " + str(round) + "\nLives: " + "♥".repeat(lives)
 		Status.visible = true
 		
 		await Global.wait(1.5)
@@ -177,21 +178,33 @@ func _ready() -> void:
 		if lives <= 0:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
-			SoundManager.play_voice("Jeers")
+			SoundManager.play_voice("GameOver")
 			SoundManager.play_song("GameOver")
+			Horse.play("gameover")
 			WinOrLose.text = "GAME OVER"
 			WinOrLose.label_settings.font_color = Color(1,0,0)
 			await Global.wait(4)
+			if hide: 
+				var tw := create_tween()
+				tw.tween_property(hide, "modulate:a", 1, 0.1).set_trans(Tween.TRANS_CIRC)
+				hide.visible = true
+				await tw.finished
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
-		elif round >= 15 and Global.game_type == Constants.GAME_TYPE.REGULAR:
+		elif round >= 10 and Global.game_type == Constants.GAME_TYPE.REGULAR:
 			Engine.time_scale = 1
 			AudioServer.playback_speed_scale = 1
-			SoundManager.play_voice("Cheers")
-			SoundManager.play_song("MinigameWin")
+			SoundManager.play_voice("Victory")
+			SoundManager.play_song("MinigameVictory")
+			Horse.play("win")
 			WinOrLose.text = "YOU WIN!"
 			WinOrLose.label_settings.font_color = Color(.7,1,.3)
 			await Global.wait(4)
+			if hide: 
+				var tw := create_tween()
+				tw.tween_property(hide, "modulate:a", 1, 0.1).set_trans(Tween.TRANS_CIRC)
+				hide.visible = true
+				await tw.finished
 			TransitionManager.transition_to(load("res://scenes/titlescreen/titlescreen.tscn"), 0.4, 0.2, true, true, null, "Scotland")
 			break
 		

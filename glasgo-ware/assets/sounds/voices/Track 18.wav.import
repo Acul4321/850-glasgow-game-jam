@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvft4iq2ly033"
+path="res://.godot/imported/Track 18.wav-e8cf1f5ffa868f371975e51ca0f88960.sample"
+
+[deps]
+
+source_file="res://assets/sounds/voices/Track 18.wav"
+dest_files=["res://.godot/imported/Track 18.wav-e8cf1f5ffa868f371975e51ca0f88960.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
