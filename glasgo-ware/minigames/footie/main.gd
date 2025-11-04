@@ -20,7 +20,10 @@ func _on_game_start() -> void:
 
 func _process(_delta):
 	if is_timer_running:
-		if ball.position.y >= 290:
+		if ball.position.y >= 320:
+			if !has_already_played_voice:
+				has_already_played_voice = true
+				SoundManager.play_jeers()
 			is_success = false
 
 
