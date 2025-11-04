@@ -28,7 +28,7 @@ func _ready() -> void:
 	current_time = int(duration)
 	while current_time > -1:
 		Global.timer_update.emit(current_time, show_timer)
-		await Global.wait(0.6)
+		await Global.wait(0.8)
 		current_time -= 1
 		
 	Global.timer_update.emit(-1)
