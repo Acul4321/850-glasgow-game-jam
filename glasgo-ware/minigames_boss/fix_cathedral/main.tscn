@@ -1,0 +1,203 @@
+[gd_scene load_steps=21 format=3 uid="uid://m3y58y1jg4go"]
+
+[ext_resource type="Script" uid="uid://b3v802eqb4uma" path="res://minigames_boss/fix_cathedral/main.gd" id="1_f27w8"]
+[ext_resource type="PackedScene" uid="uid://b5468xcx60vbq" path="res://scenes/backgrounds/scottishwater.tscn" id="2_ko5eh"]
+[ext_resource type="Shader" uid="uid://clf18qs65pm4b" path="res://shaders/flag.gdshader" id="3_6jwu3"]
+[ext_resource type="FontFile" uid="uid://b2eeqg4o0l1wm" path="res://assets/f7-mega-yolk.otf" id="5_0pi7v"]
+[ext_resource type="Texture2D" uid="uid://doow8wpid4i8m" path="res://minigames_boss/fix_cathedral/cath.png" id="5_2i62u"]
+[ext_resource type="Texture2D" uid="uid://cqylg7ho17omb" path="res://minigames_boss/fix_cathedral/1.png" id="6_0a2ix"]
+[ext_resource type="Texture2D" uid="uid://duyihwpa8bw4u" path="res://minigames_boss/fix_cathedral/2.png" id="7_lcuqn"]
+[ext_resource type="Texture2D" uid="uid://bkao5vr3kxry8" path="res://minigames_boss/fix_cathedral/3.png" id="8_shkr8"]
+[ext_resource type="Texture2D" uid="uid://cw4wv6x2nc886" path="res://minigames_boss/fix_cathedral/4.png" id="9_14y8l"]
+[ext_resource type="Texture2D" uid="uid://dbh6bk38snjy7" path="res://minigames_boss/fix_cathedral/5.png" id="10_sxofp"]
+[ext_resource type="Texture2D" uid="uid://c4pe7vt83clhb" path="res://minigames_boss/fix_cathedral/6.png" id="11_0a2ix"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jexq1"]
+resource_local_to_scene = true
+shader = ExtResource("3_6jwu3")
+shader_parameter/color_field = Color(0, 0, 0, 1)
+shader_parameter/color_cross = Color(0.28118676, 0.2811869, 0.28118682, 1)
+shader_parameter/tiles_x = 6
+shader_parameter/tiles_y = 5
+shader_parameter/cross_half_width = 0.08
+shader_parameter/feather = 0.01
+shader_parameter/wave_amp = 0.0850000040375
+shader_parameter/wave_freq = 9.20400043393012
+shader_parameter/wave_speed = 0.5830000276925
+shader_parameter/pixel_size = 4.000000142499999
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcd04"]
+font = ExtResource("5_0pi7v")
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jexq1"]
+size = Vector2(49, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ylc7"]
+size = Vector2(49, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llw6b"]
+size = Vector2(49, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhkf0"]
+size = Vector2(49, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxhdc"]
+size = Vector2(49, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubavs"]
+size = Vector2(49, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jexq1"]
+font = ExtResource("5_0pi7v")
+font_size = 24
+outline_size = 13
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_f27w8")
+instruction_input = 1
+instruction_text = "Fix The Castle"
+duration = 40.0
+
+[node name="ScottishWater" parent="." instance=ExtResource("2_ko5eh")]
+material = SubResource("ShaderMaterial_jexq1")
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="BoomLabel" type="Label" parent="."]
+visible = false
+offset_right = 51.0
+offset_bottom = 23.0
+text = "BOOM!"
+label_settings = SubResource("LabelSettings_bcd04")
+
+[node name="Cath" type="Sprite2D" parent="."]
+position = Vector2(288.59973, 137.59962)
+scale = Vector2(0.5999988, 0.5999988)
+texture = ExtResource("5_2i62u")
+
+[node name="Cones" type="Node" parent="."]
+
+[node name="1" type="Sprite2D" parent="Cones"]
+position = Vector2(300, 53.000004)
+scale = Vector2(0.5999988, 0.5999988)
+texture = ExtResource("6_0a2ix")
+
+[node name="Area2D" type="Area2D" parent="Cones/1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cones/1/Area2D"]
+shape = SubResource("RectangleShape2D_jexq1")
+
+[node name="2" type="Sprite2D" parent="Cones"]
+position = Vector2(213, 182.99998)
+scale = Vector2(0.5999988, 0.5999988)
+texture = ExtResource("7_lcuqn")
+
+[node name="Area2D" type="Area2D" parent="Cones/2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cones/2/Area2D"]
+shape = SubResource("RectangleShape2D_8ylc7")
+
+[node name="3" type="Sprite2D" parent="Cones"]
+position = Vector2(377.00003, 201.00002)
+scale = Vector2(0.5999988, 0.5999988)
+texture = ExtResource("8_shkr8")
+
+[node name="Area2D" type="Area2D" parent="Cones/3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cones/3/Area2D"]
+shape = SubResource("RectangleShape2D_llw6b")
+
+[node name="4" type="Sprite2D" parent="Cones"]
+position = Vector2(305, 131)
+scale = Vector2(0.5999988, 0.5999988)
+texture = ExtResource("9_14y8l")
+
+[node name="Area2D" type="Area2D" parent="Cones/4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cones/4/Area2D"]
+shape = SubResource("RectangleShape2D_jhkf0")
+
+[node name="5" type="Sprite2D" parent="Cones"]
+position = Vector2(266, 156)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_sxofp")
+
+[node name="Area2D" type="Area2D" parent="Cones/5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cones/5/Area2D"]
+shape = SubResource("RectangleShape2D_bxhdc")
+
+[node name="6" type="Sprite2D" parent="Cones"]
+position = Vector2(290, 196.00002)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_0a2ix")
+
+[node name="Area2D" type="Area2D" parent="Cones/6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cones/6/Area2D"]
+shape = SubResource("RectangleShape2D_ubavs")
+
+[node name="ConeSpots" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="ConeSpots"]
+position = Vector2(56, 59)
+
+[node name="2" type="Node2D" parent="ConeSpots"]
+position = Vector2(55, 138)
+
+[node name="3" type="Node2D" parent="ConeSpots"]
+position = Vector2(56, 239)
+
+[node name="4" type="Node2D" parent="ConeSpots"]
+position = Vector2(501, 52)
+
+[node name="5" type="Node2D" parent="ConeSpots"]
+position = Vector2(498, 123)
+
+[node name="6" type="Node2D" parent="ConeSpots"]
+position = Vector2(499, 211)
+scale = Vector2(0.6, 0.6)
+
+[node name="CorrectSpots" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="CorrectSpots"]
+position = Vector2(300, 53.000004)
+scale = Vector2(0.5999988, 0.5999988)
+
+[node name="2" type="Node2D" parent="CorrectSpots"]
+position = Vector2(213, 182.99998)
+scale = Vector2(0.5999988, 0.5999988)
+
+[node name="3" type="Node2D" parent="CorrectSpots"]
+position = Vector2(377.00003, 201.00002)
+scale = Vector2(0.5999988, 0.5999988)
+
+[node name="4" type="Node2D" parent="CorrectSpots"]
+position = Vector2(305, 131)
+scale = Vector2(0.5999988, 0.5999988)
+
+[node name="5" type="Node2D" parent="CorrectSpots"]
+position = Vector2(266, 156)
+scale = Vector2(0.6, 0.6)
+
+[node name="6" type="Node2D" parent="CorrectSpots"]
+position = Vector2(290, 196.00002)
+scale = Vector2(0.6, 0.6)
+
+[node name="Timer" type="Label" parent="."]
+offset_top = 243.0
+offset_right = 576.0
+offset_bottom = 294.0
+text = "TIME LEFT: "
+label_settings = SubResource("LabelSettings_jexq1")
+horizontal_alignment = 1
+vertical_alignment = 2

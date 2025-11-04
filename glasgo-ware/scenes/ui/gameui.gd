@@ -23,7 +23,8 @@ func _exit_tree() -> void:
 func _on_node_added(node: Node) -> void:
 	_refresh()
 		
-func _on_timer_updated(time_left: int):
+func _on_timer_updated(time_left: int, show_timer: bool = true):
+	bomb_sprite.visible = show_timer
 	if time_left >= 0 and time_left <= 5:
 		bomb_sprite.animation = str(time_left)
 	else:
