@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7wgwaua8e2wg"]
+
+[ext_resource type="Script" uid="uid://btsqeayf38ky2" path="res://assets/ui/post_process.gd" id="1_ttjp8"]
+[ext_resource type="Shader" uid="uid://ddi2la0rpixw7" path="res://shaders/colourBlind.gdshader" id="2_rg63r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bex4j"]
+shader = ExtResource("2_rg63r")
+shader_parameter/mode = 0
+shader_parameter/model = 0
+shader_parameter/severity = 1.0
+
+[node name="PostProcess" type="CanvasLayer"]
+script = ExtResource("1_ttjp8")
+
+[node name="FilterRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bex4j")
+offset_right = 576.0
+offset_bottom = 324.0
+mouse_filter = 2

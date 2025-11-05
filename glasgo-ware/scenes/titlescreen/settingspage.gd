@@ -10,6 +10,7 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void:
 		Settings.pull_from_page(settings_buttons)
 		Settings.save()
+		PostProcess.mat.set_shader_parameter("mode", Settings.get_value("controls", "colour_blindness"))
 		closed.emit()
 		queue_free()
 	)

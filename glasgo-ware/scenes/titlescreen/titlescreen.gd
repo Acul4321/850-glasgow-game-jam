@@ -17,6 +17,7 @@ func _ready():
 	
 	Global.game_started = false
 	AudioServer.playback_speed_scale = 1
+	PostProcess.mat.set_shader_parameter("mode", Settings.get_value("controls", "colour_blindness"))
 	PitchEffect.pitch_scale = 1
 	regular_button.pressed.connect(_regular_play_button)
 	endless_button.pressed.connect(_endless_play_button)

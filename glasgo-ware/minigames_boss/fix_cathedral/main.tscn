@@ -59,7 +59,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_f27w8")
 instruction_input = 1
-instruction_text = "Fix The Castle"
+instruction_text = "Fix The Cathedral"
 duration = 40.0
 
 [node name="ScottishWater" parent="." instance=ExtResource("2_ko5eh")]

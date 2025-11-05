@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xfruleeod2k"]
+[gd_scene load_steps=6 format=3 uid="uid://xfruleeod2k"]
 
 [ext_resource type="Script" uid="uid://dp2ac0ntiyjxt" path="res://scenes/titlescreen/settingspage.gd" id="1_2lbp1"]
 [ext_resource type="Theme" uid="uid://dqvyubjurbx6y" path="res://scenes/ui/base_theme.tres" id="2_ytj6n"]
@@ -6,9 +6,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_n6cl6"]
 font = ExtResource("3_6t30a")
-font_size = 30
-outline_size = 10
+font_size = 12
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_6t30a"]
+default_font = ExtResource("3_6t30a")
+default_font_size = 12
 
 [node name="SettingsPage" type="Control"]
 layout_mode = 3
@@ -89,9 +92,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -152.0
-offset_top = -4.0
+offset_top = -23.0
 offset_right = 152.0
-offset_bottom = 20.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(152, 14)
@@ -109,9 +112,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -152.0
-offset_top = -58.0
+offset_top = -77.0
 offset_right = 152.0
-offset_bottom = -34.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(152, 14)
@@ -121,6 +124,43 @@ theme_override_font_sizes/font_size = 12
 text = "slower countdown"
 alignment = 1
 
+[node name="colour_blindness" type="OptionButton" parent="Settings/controls"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 182.0
+offset_right = 504.0
+offset_bottom = 214.0
+theme = SubResource("Theme_6t30a")
+theme_override_fonts/font = ExtResource("3_6t30a")
+item_count = 4
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Protan"
+popup/item_1/id = 1
+popup/item_2/text = "Deutan"
+popup/item_2/id = 2
+popup/item_3/text = "Tritan"
+popup/item_3/id = 3
+
+[node name="Title" type="Label" parent="Settings/controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3298611
+anchor_top = 0.42701188
+anchor_right = 0.3298611
+anchor_bottom = 0.42701188
+offset_left = -287.0
+offset_top = -20.351852
+offset_right = 393.0
+offset_bottom = 136.64815
+grow_horizontal = 2
+pivot_offset = Vector2(340, 78.5)
+theme = ExtResource("2_ytj6n")
+text = "COLOUR BLINDNESS FILTER"
+label_settings = SubResource("LabelSettings_n6cl6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="reset_endless_score" type="Button" parent="Settings/controls"]
 layout_mode = 1
 anchors_preset = 8
@@ -129,9 +169,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -97.0
-offset_top = 51.0
+offset_top = 67.0
 offset_right = 97.0
-offset_bottom = 71.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ytj6n")

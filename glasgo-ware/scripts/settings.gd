@@ -22,6 +22,9 @@ func _build_defaults() -> void:
 		for n in cat.get_children():
 			if n is CheckButton and n.toggle_mode:
 				_place(defaults, cat.name, n.name, n.button_pressed)
+			elif n is OptionButton:
+				_place(defaults, cat.name, n.name, n.selected)
+
 					
 	page.queue_free()
 
@@ -61,12 +64,18 @@ func apply_to_page(root: Control) -> void:
 			var v = get_value(cat.name, n.name)
 			if n is CheckButton and n.toggle_mode:
 				if v != null: n.button_pressed = bool(v)
+			elif n is OptionButton:
+				if v != null: n.selected = int(v)
 	
 func pull_from_page(root: Control) -> void:
 	for cat in root.get_children():
 		for n in cat.get_children():
 			if n is CheckButton and n.toggle_mode:
 				set_value(cat.name, n.name, n.button_pressed)
+			elif n is OptionButton:
+				set_value(cat.name, n.name, n.selected)
+
+
 	
 func _place(target: Dictionary, cat: String, key: String, val) -> void:
 	if not target.has(cat):
